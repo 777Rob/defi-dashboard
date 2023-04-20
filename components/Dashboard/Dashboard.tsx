@@ -64,7 +64,16 @@ const PancakeChartBSC = () => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
-            <YAxis yAxisId="left" orientation="left" tickFormatter={(tick) => `${tick}k`} />
+            <YAxis
+              yAxisId="left"
+              orientation="left"
+              tickFormatter={(tick) => `${tick / 1000000}M`}
+              ticks={[
+                0, 20000000, 40000000, 60000000, 80000000, 100000000, 120000000, 140000000,
+                160000000, 180000000, 200000000, 220000000, 240000000, 260000000, 280000000,
+                300000000, 320000000, 340000000,
+              ]}
+            />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip content={<CustomTooltip />} />
             <Legend />

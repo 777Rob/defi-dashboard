@@ -4,6 +4,10 @@ import { Box, Button, Container, Grid, Paper, Skeleton, Text } from '@mantine/co
 import { gql, useQuery } from '@apollo/client';
 import usePancakeDayDataBSC from '../../hooks/usePancakeDayDataBSC';
 import { useMemo } from 'react';
+import { EthereumIcon } from '../icons';
+
+// const { EthereumIcon, BinanceIcon } = icons;
+
 import {
   BarChart,
   Bar,
@@ -29,6 +33,7 @@ const CustomTooltip = React.memo(({ active, payload, label }: any) => {
           console.log(payload, active);
         }}
       >
+        <EthereumIcon />
         <Text>
           <strong>Date: </strong>
           {label}
@@ -88,7 +93,6 @@ const PancakeChartBSC = () => {
         Pancake Swap Trading Trend Diagram{' '}
       </Text>
       <Button.Group>
-        <Button onClick={() => console.log(data)}>Log Data</Button>
         <Button
           onClick={() => {
             setTimePeriod(7);
@@ -137,10 +141,10 @@ const PancakeChartBSC = () => {
               yAxisId="left"
               dataKey="dailyVolumeUSD"
               name="Daily Volume USD"
-              fill="#8884d8"
+              fill="#00abfb"
               unit="k"
             />
-            <LineChart dataKey="date">
+            <LineChart>
               <Line
                 yAxisId="right"
                 type="monotone"

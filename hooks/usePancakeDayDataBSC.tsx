@@ -58,10 +58,14 @@ const usePancakeDayDataBSC = () => {
     }
 
     let pancakeDayDatasFormatted: PancakeDataEntry[] = pancakeDayDatas.map(
-      (dataEntry: PancakeDataEntryRequest) => {
+      (dataEntry: PancakeDataEntryRequest, index: any) => {
         return {
           ...dataEntry,
           date: new Date(dataEntry.date * 1000).toLocaleDateString(),
+          totalTransactions: Math.abs(
+            parseInt(dataEntry.totalTransactions) -
+              (parseInt(pancakeDayDatas[index - 1]?.totalTransactions) || 0)
+          ),
         };
       }
     );

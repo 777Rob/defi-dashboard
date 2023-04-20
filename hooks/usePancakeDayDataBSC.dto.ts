@@ -3,7 +3,7 @@ export type PancakeDataEntry = {
   dailyVolumeUSD: string;
   dailyVolumeBNB: string;
   dailyVolumeUntracked: string;
-  totalTransactions: string;
+  totalTransactions: number;
   id: string;
   clipped?: boolean;
   originalVolume?: string;

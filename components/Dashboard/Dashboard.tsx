@@ -4,9 +4,7 @@ import { Box, Button, Container, Grid, Paper, Skeleton, Text } from '@mantine/co
 import { gql, useQuery } from '@apollo/client';
 import usePancakeDayDataBSC from '../../hooks/usePancakeDayDataBSC';
 import { useMemo } from 'react';
-import { EthereumIcon } from '../icons';
-
-// const { EthereumIcon, BinanceIcon } = icons;
+import { EthereumIcon, BinanceIcon } from '../icons';
 
 import {
   BarChart,
@@ -33,7 +31,6 @@ const CustomTooltip = React.memo(({ active, payload, label }: any) => {
           console.log(payload, active);
         }}
       >
-        <EthereumIcon />
         <Text>
           <strong>Date: </strong>
           {label}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import AppShell from '../AppShell/AppShell';
-import { Box, Container, Grid, Paper, Skeleton, Text } from '@mantine/core';
+import { Box, Button, Container, Grid, Paper, Skeleton, Text } from '@mantine/core';
 import { gql, useQuery } from '@apollo/client';
 import usePancakeDayDataBSC from '../../hooks/usePancakeDayDataBSC';
+import { useMemo } from 'react';
 import {
   BarChart,
   Bar,
@@ -17,9 +18,9 @@ import {
   ReferenceLine,
 } from 'recharts';
 
-const CustomTooltip = ({ active, payload, label }: any) => {
-  console.log(payload);
+const CustomTooltip = React.memo(({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
+    console.log(payload);
     return (
       <Paper
         p="md"
@@ -28,56 +29,117 @@ const CustomTooltip = ({ active, payload, label }: any) => {
           console.log(payload, active);
         }}
       >
-        <div>
+        <Text>
           <strong>Date: </strong>
           {label}
-        </div>
-        <div>
+        </Text>
+        <Text>
           <strong>Volume USD: </strong>
           {(payload[0].value / 1000000).toPrecision(6)} M
-        </div>
-        <div>
+        </Text>
+        <Text>
           <strong>Transaction Count: </strong>
           {payload[0]?.payload.totalTransactions}
-        </div>
+        </Text>
       </Paper>
     );
   }
 
   return null;
-};
+});
 
+const generateTicks = (data: any) => {
+  if (!data) return [];
+
+  const ticks = [];
+  const step = 20000000;
+  let max = 0;
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].dailyVolumeUSD > max) {
+      max = data[i].dailyVolumeUSD;
+    }
+  }
+
+  for (let i = 0; i < max / step; i++) {
+    ticks.push(step * i);
+    console.log(max, ticks);
+  }
+
+  return ticks;
+};
 const PancakeChartBSC = () => {
   const { loading, error, data } = usePancakeDayDataBSC();
   const [timePeriod, setTimePeriod] = useState<any>(7);
+
+  const ticks = useMemo(() => {
+    return generateTicks(data?.splice(0, timePeriod));
+  }, [data, timePeriod]);
+
+  const dataForPeriod = useMemo(() => {
+    if (!data) return [];
+
+    return data?.slice(0, timePeriod);
+  }, [ticks]);
 
   return (
     <Paper shadow="lg" p="md">
       <Text weight={700} pb="sm" sx={{ textAlign: 'center' }} size="lg">
         Pancake Swap Trading Trend Diagram{' '}
       </Text>
+      <Button.Group>
+        <Button onClick={() => console.log(data)}>Log Data</Button>
+        <Button
+          onClick={() => {
+            setTimePeriod(7);
+          }}
+        >
+          <Text weight={700} size="sm">
+            7 Days
+          </Text>
+        </Button>
+
+        <Button
+          onClick={() => {
+            setTimePeriod(30);
+          }}
+        >
+          <Text weight={700} size="sm">
+            30 Days
+          </Text>
+        </Button>
+
+        <Button
+          onClick={() => {
+            setTimePeriod(90);
+          }}
+        >
+          <Text weight={700} size="sm">
+            90 Days
+          </Text>
+        </Button>
+      </Button.Group>
       <Skeleton sx={{ width: '100%', height: '100%' }} mih={350} p="lg" visible={loading}>
         <ResponsiveContainer width="100%" height={400}>
-          <BarChart
-            data={data?.splice(0, timePeriod) || []}
-            margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
-          >
+          <BarChart data={dataForPeriod} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis
               yAxisId="left"
               orientation="left"
               tickFormatter={(tick) => `${tick / 1000000}M`}
-              ticks={[
-                0, 20000000, 40000000, 60000000, 80000000, 100000000, 120000000, 140000000,
-                160000000, 180000000, 200000000, 220000000, 240000000, 260000000, 280000000,
-                300000000, 320000000, 340000000,
-              ]}
+              ticks={ticks}
             />
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Bar yAxisId="left" dataKey="dailyVolumeUSD" fill="#8884d8" unit="k" />
+            <Bar
+              yAxisId="left"
+              dataKey="dailyVolumeUSD"
+              name="Daily Volume USD"
+              fill="#8884d8"
+              unit="k"
+            />
             <LineChart dataKey="date">
               <Line
                 yAxisId="right"
@@ -89,7 +151,8 @@ const PancakeChartBSC = () => {
               <Line
                 yAxisId="right"
                 type="monotone"
-                dataKey="dailyVolumeUSD"
+                label="Daily Volume USD"
+                dataKey="Daily Volume USD"
                 stroke="#387908"
                 activeDot={{ r: 5 }}
               />

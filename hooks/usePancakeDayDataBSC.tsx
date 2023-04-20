@@ -46,7 +46,7 @@ const usePancakeDayDataBSC = () => {
 
   const GET_VOLUMES_BSC = gql`
     query GetPancakeDayDatasBSC {
-      pancakeDayDatas(first: 120) {
+      pancakeDayDatas(first: "90") {
         dailyVolumeUSD
         date
         totalTransactions
@@ -62,6 +62,10 @@ const usePancakeDayDataBSC = () => {
     fetchPolicy: 'cache-first',
   });
 
+  if (error) {
+    console.log('TCL: usePancakeDayDataBSC -> error', error);
+  }
+
   if (!loading) {
     const { pancakeDayDatas } = data;
 
@@ -73,8 +77,6 @@ const usePancakeDayDataBSC = () => {
         };
       }
     );
-
-    pancakeDayDatasFormatted = clipOutliers(pancakeDayDatasFormatted);
 
     return {
       loading,

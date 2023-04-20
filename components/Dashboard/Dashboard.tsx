@@ -1,19 +1,20 @@
 import React from 'react';
 import AppShell from '../AppShell/AppShell';
-import { Container, Paper, Text } from '@mantine/core';
+import { Box, Container, Paper, Text } from '@mantine/core';
 import { gql, useQuery } from '@apollo/client';
 import usePancakeDayDataBSC from '../../hooks/usePancakeDayDataBSC';
 
 function Dashboard() {
   const { loading, error, data } = usePancakeDayDataBSC();
-
+  console.log(data);
   return (
-    <Container>
-      <Text>Dashboard</Text>
-      <Paper>
-        <Text>Pancake Swap Trading Trend Diagram </Text>
+    <Box>
+      <Paper shadow="lg" w="50%" h="400px">
+        <Text weight={700} size="lg" p="md">
+          Pancake Swap Trading Trend Diagram{' '}
+        </Text>
       </Paper>
-    </Container>
+    </Box>
   );
 }
 

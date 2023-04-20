@@ -1,6 +1,15 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client';
 
 type PancakeDataEntry = {
+  date: Date;
+  dailyVolumeUSD: string;
+  dailyVolumeBNB: string;
+  dailyVolumeUntracked: string;
+  totalTransactions: string;
+  id: number;
+};
+
+type PancakeDataEntryRequest = {
   date: number;
   dailyVolumeUSD: string;
   dailyVolumeBNB: string;
@@ -32,16 +41,18 @@ const usePancakeDayDataBSC = () => {
   const { loading, data, error, networkStatus } = useQuery(GET_VOLUMES_BSC, {
     fetchPolicy: 'cache-first',
   });
-  console.log(networkStatus);
+
   if (!loading) {
     const { pancakeDayDatas } = data;
 
-    const pancakeDayDatasFormatted = pancakeDayDatas.map((dataEntry: PancakeDataEntry) => {
-      return {
-        ...dataEntry,
-        date: new Date(dataEntry.date * 1000),
-      };
-    });
+    const pancakeDayDatasFormatted: PancakeDataEntry = pancakeDayDatas.map(
+      (dataEntry: PancakeDataEntryRequest) => {
+        return {
+          ...dataEntry,
+          date: new Date(dataEntry.date * 1000),
+        };
+      }
+    );
 
     console.log(pancakeDayDatasFormatted);
 

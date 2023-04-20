@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 import React from 'react';
 import { useRouter } from 'next/router';
 
@@ -23,7 +23,7 @@ export const NavButton = ({ children, href, icon }: any) => {
       variant={pathname == href ? 'filled' : 'subtle'}
       size="lg"
     >
-      {children}
+      <Text weight={700}>{children}</Text>
     </Button>
   );
 };

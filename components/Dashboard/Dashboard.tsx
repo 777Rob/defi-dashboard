@@ -1,9 +1,16 @@
 import React from 'react';
 import AppShell from '../AppShell/AppShell';
-import { Text } from '@mantine/core';
+import { Container, Paper, Text } from '@mantine/core';
 
 function Dashboard() {
-  return <Text>Dashboard</Text>;
+  return (
+    <Container>
+      <Text>Dashboard</Text>
+      <Paper>
+        <Text>Pancake Swap Trading Trend Diagram </Text>
+      </Paper>
+    </Container>
+  );
 }
 
 export default Dashboard;

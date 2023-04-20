@@ -7,6 +7,7 @@ type PancakeDataEntry = {
   dailyVolumeUntracked: string;
   totalTransactions: string;
   id: number;
+  uniqueUserWallets: number;
 };
 
 type PancakeDataEntryRequest = {
@@ -16,6 +17,26 @@ type PancakeDataEntryRequest = {
   dailyVolumeUntracked: string;
   totalTransactions: string;
   id: number;
+};
+
+const calculateDailyTransactionCount = (data) => {
+  return data.map((item, index) => {
+    if (index === 0) {
+      return { ...item, dailyTransactionCount: item.transactionCount };
+    } else {
+      const dailyTransactionCount = item.transactionCount - data[index - 1].transactionCount;
+      return { ...item, dailyTransactionCount };
+    }
+  });
+};
+
+const clipOutliers = (data: any, threshold = 500000000) => {
+  return data.map((item: any) => {
+    if (item.volume > threshold) {
+      return { ...item, volume: threshold, clipped: true, originalVolume: item.volume };
+    }
+    return item;
+  });
 };
 
 const usePancakeDayDataBSC = () => {
@@ -33,7 +54,6 @@ const usePancakeDayDataBSC = () => {
         dailyVolumeBNB
         dailyVolumeUntracked
         totalLiquidityUSD
-        totalTransactions
       }
     }
   `;
@@ -45,16 +65,16 @@ const usePancakeDayDataBSC = () => {
   if (!loading) {
     const { pancakeDayDatas } = data;
 
-    const pancakeDayDatasFormatted: PancakeDataEntry = pancakeDayDatas.map(
+    let pancakeDayDatasFormatted: PancakeDataEntry[] = pancakeDayDatas.map(
       (dataEntry: PancakeDataEntryRequest) => {
         return {
           ...dataEntry,
-          date: new Date(dataEntry.date * 1000),
+          date: new Date(dataEntry.date * 1000).toLocaleDateString(),
         };
       }
     );
 
-    console.log(pancakeDayDatasFormatted);
+    pancakeDayDatasFormatted = clipOutliers(pancakeDayDatasFormatted);
 
     return {
       loading,

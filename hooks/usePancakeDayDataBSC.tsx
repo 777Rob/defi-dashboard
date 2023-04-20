@@ -1,25 +1,8 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { dummyData } from './dummyData';
+import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayDataBSC.dto';
 
-type PancakeDataEntry = {
-  date: Date;
-  dailyVolumeUSD: string;
-  dailyVolumeBNB: string;
-  dailyVolumeUntracked: string;
-  totalTransactions: string;
-  id: number;
-  uniqueUserWallets: number;
-};
-
-type PancakeDataEntryRequest = {
-  date: number;
-  dailyVolumeUSD: string;
-  dailyVolumeBNB: string;
-  dailyVolumeUntracked: string;
-  totalTransactions: string;
-  id: number;
-};
-
-const calculateDailyTransactionCount = (data) => {
+const calculateDailyTransactionCount = (data: any[]) => {
   return data.map((item, index) => {
     if (index === 0) {
       return { ...item, dailyTransactionCount: item.transactionCount };
@@ -33,7 +16,7 @@ const calculateDailyTransactionCount = (data) => {
 const clipOutliers = (data: any, threshold = 500000000) => {
   return data.map((item: any) => {
     if (item.volume > threshold) {
-      return { ...item, volume: threshold, clipped: true, originalVolume: item.volume };
+      return { ...item, volume: threshold, clipped: true, originalVolume: item.dailyVolumeUSD };
     }
     return item;
   });
@@ -62,12 +45,13 @@ const usePancakeDayDataBSC = () => {
     fetchPolicy: 'cache-first',
   });
 
-  if (error) {
-    console.log('TCL: usePancakeDayDataBSC -> error', error);
-  }
-
   if (!loading) {
-    const { pancakeDayDatas } = data;
+    let pancakeDayDatas: PancakeDataEntryRequest[] = [];
+    if (error) {
+      pancakeDayDatas = dummyData;
+    } else {
+      pancakeDayDatas = data.pancakeDayDatas;
+    }
 
     let pancakeDayDatasFormatted: PancakeDataEntry[] = pancakeDayDatas.map(
       (dataEntry: PancakeDataEntryRequest) => {

@@ -46,6 +46,10 @@ const usePancakeDayDataBSC = () => {
   });
 
   if (!loading) {
+    /**
+     * @NOTE: API Rate is limited in case limit is reached, use dummy data
+     */
+
     let pancakeDayDatas: PancakeDataEntryRequest[] = [];
     if (error) {
       pancakeDayDatas = dummyData;

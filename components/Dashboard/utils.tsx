@@ -13,7 +13,6 @@ export const generateTicks = (data: any) => {
 
   for (let i = 0; i < max / step; i++) {
     ticks.push(step * i);
-    console.log(max, ticks);
   }
 
   return ticks;

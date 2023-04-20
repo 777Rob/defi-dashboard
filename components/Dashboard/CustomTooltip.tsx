@@ -3,15 +3,8 @@ import { Paper, Text } from '@mantine/core';
 
 export const CustomTooltip = React.memo(({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
-    console.log(payload);
     return (
-      <Paper
-        p="md"
-        shadow="xs"
-        onClick={() => {
-          console.log(payload, active);
-        }}
-      >
+      <Paper p="md" shadow="xs">
         <Text>
           <strong>Date: </strong>
           {label}

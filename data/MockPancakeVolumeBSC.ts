@@ -1,4 +1,4 @@
-import { PancakeDataEntryRequest } from './usePancakeDayDataBSC.dto';
+import { PancakeDataEntryRequest } from '../hooks/usePancakeDayDataBSC.dto';
 
 export const dummyData: PancakeDataEntryRequest[] = [
   {

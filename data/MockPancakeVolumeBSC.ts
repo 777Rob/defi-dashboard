@@ -1,6 +1,6 @@
 import { PancakeDataEntryRequest } from '../hooks/usePancakeDayDataBSC.dto';
 
-export const dummyData: PancakeDataEntryRequest[] = [
+export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
   {
     dailyVolumeUSD: '178683909.5419510839044125355990483',
     date: 1681948800,

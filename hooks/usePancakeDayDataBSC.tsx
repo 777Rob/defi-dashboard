@@ -1,6 +1,6 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client';
-import { dummyData } from './dummyData';
 import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayDataBSC.dto';
+import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
 
 const calculateDailyTransactionCount = (data: any[]) => {
   return data.map((item, index) => {
@@ -47,12 +47,12 @@ const usePancakeDayDataBSC = () => {
 
   if (!loading) {
     /**
-     * @NOTE: API Rate is limited in case limit is reached, use dummy data
+     * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
 
     let pancakeDayDatas: PancakeDataEntryRequest[] = [];
     if (error) {
-      pancakeDayDatas = dummyData;
+      pancakeDayDatas = mockPancakeBSCVolumeData;
     } else {
       pancakeDayDatas = data.pancakeDayDatas;
     }

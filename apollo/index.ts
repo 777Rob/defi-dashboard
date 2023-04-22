@@ -1,8 +1,17 @@
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, gql, HttpLink } from '@apollo/client';
 
-const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:4000/graphql',
+export const bscClient = new ApolloClient({
+  link: new HttpLink({
+    uri: process.env.NEXT_PUBLIC_BSC_GRAPHQL_URL,
+  }),
   cache: new InMemoryCache(),
 });
 
-export default client;
+export const ethClient = new ApolloClient({
+  link: new HttpLink({
+    uri: process.env.NEXT_PUBLIC_ETH_GRAPHQL_URL,
+  }),
+  cache: new InMemoryCache(),
+});
+
+export default bscClient;

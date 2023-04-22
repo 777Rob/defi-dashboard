@@ -25,7 +25,6 @@ export const generateTicks = (data: any) => {
 export const customRound = (value: any) => {
   try {
     let precision;
-    console.log(value);
     if (Math.floor(value) !== 0) {
       precision = 2;
     } else {

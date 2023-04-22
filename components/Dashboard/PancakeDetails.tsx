@@ -1,23 +1,61 @@
-import { Paper, Grid, Box, Button } from '@mantine/core';
-import React from 'react';
-import { PancakeTextIcon } from '../icons';
+import { Avatar, Box, Grid, Group, Select, Text } from '@mantine/core';
 import usePancakeDetails from 'hooks/usePancakeDetails';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { displayNumber } from '../../utils/index';
 import StatisticCard from './StatisticCard';
+
+const chains = [
+  {
+    image: 'bsc.png',
+    label: 'Binance Smart Chain',
+    value: 'bsc',
+  },
+  {
+    image: 'eth.png',
+    label: 'Ethereum',
+    value: 'eth',
+  },
+  {
+    image: 'multiple.svg',
+    label: 'All Networks',
+    value: 'all',
+  },
+];
+
+interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {
+  image: string;
+  label: string;
+}
+
+const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
+  ({ image, label, ...others }: ItemProps, ref) => (
+    <div ref={ref} {...others}>
+      <Group noWrap>
+        <Avatar src={image} />
+        <div>
+          <Text size="sm">{label}</Text>
+        </div>
+      </Group>
+    </div>
+  )
+);
 
 const PancakeDetails = () => {
   const { data, loading, error } = usePancakeDetails();
   console.log(data, loading, error);
+  const [chain, setChain] = useState('bsc');
 
   return (
-    <Grid>
+    <Grid align="stretch">
       <Grid.Col span={3}>
         <StatisticCard
           loading={loading}
           title="Volume USD (24h)"
           tooltip="Total amount of USD traded on the exchange in the past 24 hours"
         >
-          ${displayNumber(data?.dailyVolumeUSD)}
+          <Text weight={700} size="xl">
+            ${displayNumber(data?.dailyVolumeUSD || 0)}
+          </Text>
         </StatisticCard>
       </Grid.Col>
       <Grid.Col span={3}>
@@ -26,7 +64,9 @@ const PancakeDetails = () => {
           title="Total Liquidity USD"
           tooltip="Total amount of USD currently locked in the exchange"
         >
-          ${displayNumber(data?.totalLiquidityUSD)}
+          <Text weight={700} size="xl">
+            ${displayNumber(data?.totalLiquidityUSD || 0)}
+          </Text>
         </StatisticCard>
       </Grid.Col>
       <Grid.Col span={3}>
@@ -35,16 +75,31 @@ const PancakeDetails = () => {
           title="Volume USD (All Time)"
           tooltip="Total amount of $USD traded on the exchange in the past 24 hours"
         >
-          ${displayNumber(data?.totalVolumeUSD)}
+          <Text weight={700} size="xl">
+            ${displayNumber(data?.totalVolumeUSD || 0)}
+          </Text>
         </StatisticCard>
       </Grid.Col>
       <Grid.Col span={3}>
         <StatisticCard
           loading={loading}
-          title="Volume USD (24h)"
-          tooltip="Total amount of $USD traded on the exchange in the past 24 hours"
+          title="Select Network"
+          tooltip="Data will be displayed for the selected network"
         >
-          ${displayNumber(data?.dailyVolumeUSD)}
+          <Select
+            allowDeselect={false}
+            withinPortal={true}
+            size="md"
+            clearable={false}
+            value={chain}
+            variant="filled"
+            onChange={(value: string) => setChain(value)}
+            icon={<Avatar size="1.8rem" src={chains.find((c) => c.value === chain)?.image} />}
+            defaultValue={chains[0].value}
+            dropdownPosition="bottom"
+            itemComponent={SelectItem}
+            data={chains}
+          />
         </StatisticCard>
       </Grid.Col>
     </Grid>

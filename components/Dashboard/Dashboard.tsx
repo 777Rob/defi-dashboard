@@ -1,6 +1,7 @@
 import { Box, Grid } from '@mantine/core';
-import { PancakeChartBSC } from './PancakeChartBSC';
+import { PancakeChartBSC } from './PancakeChartBSC/PancakeChartBSC';
 import PancakeDetails from './PancakeDetails';
+import TopTokensBSC from './TopTokensBSC';
 
 function Dashboard() {
   return (
@@ -11,6 +12,9 @@ function Dashboard() {
         </Grid.Col>
         <Grid.Col span={12}>
           <PancakeChartBSC />
+        </Grid.Col>
+        <Grid.Col span={12}>
+          <TopTokensBSC />
         </Grid.Col>
       </Grid>
     </Box>

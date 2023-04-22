@@ -38,14 +38,13 @@ const useTopTokens = (): {
     }
   `;
 
-  const { loading, data, error, networkStatus } = useQuery(GET_TOP_TOKENS, {
+  const { loading, data, error } = useQuery(GET_TOP_TOKENS, {
     fetchPolicy: 'cache-first',
     variables: {
       topTokens: topTokens,
     },
   });
 
-  console.log(data);
   const getLogoUri = (address: string) => {
     const checksumAddress = getAddress(address);
     const baseURL = `https://tokens.pancakeswap.finance/images/${checksumAddress}.png`;

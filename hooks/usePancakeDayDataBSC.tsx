@@ -29,7 +29,7 @@ const usePancakeDayDataBSC = () => {
 
   const GET_VOLUMES_BSC = gql`
     query GetPancakeDayDatasBSC {
-      pancakeDayDatas(first: 90) {
+      pancakeDayDatas(first: 90, orderBy: date, orderDirection: desc) {
         dailyVolumeUSD
         date
         totalTransactions

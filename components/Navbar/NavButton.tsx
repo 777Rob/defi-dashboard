@@ -14,7 +14,6 @@ export const NavButton = ({ children, href, icon }: any) => {
       fullWidth={true}
       sx={{ alignItems: 'flex-start' }}
       leftIcon={icon}
-      // @TODO: Update Mantine to allow to align items with align prop
       styles={{
         inner: {
           justifyContent: 'flex-start',

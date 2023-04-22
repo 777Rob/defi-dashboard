@@ -4,7 +4,7 @@ import { IconInfoSquare } from '@tabler/icons';
 
 const StatisticCard = ({ title, tooltip, children, loading = false }: any) => {
   return (
-    <Card>
+    <Card h={'100%'}>
       <Group position="apart">
         <Text size="md" weight={600}>
           {title}
@@ -18,9 +18,7 @@ const StatisticCard = ({ title, tooltip, children, loading = false }: any) => {
         )}
       </Group>
       <Skeleton visible={loading} py="sm">
-        <Text size="xl" weight={700}>
-          {children}
-        </Text>
+        {children}
       </Skeleton>
     </Card>
   );

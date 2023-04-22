@@ -1,11 +1,14 @@
-import { Paper } from '@mantine/core';
+import { Paper, Card } from '@mantine/core';
 import React from 'react';
 import { PancakeTextIcon } from '../icons';
+import usePancakeDetails from 'hooks/usePancakeDetails';
 
 const PancakeDetails = () => {
+  const { data, loading, error } = usePancakeDetails();
+  console.log(data, loading, error);
   return (
-    <Paper shadow="lg" p="lg" display="flex" sx={{ justifyContent: 'center' }}>
-      <PancakeTextIcon width="50%" />
+    <Card>
+      <PancakeTextIcon width="40%" />
       {/* <Text
           weight={700}
           pb="sm"
@@ -16,7 +19,7 @@ const PancakeDetails = () => {
           >
           Binance Smart Chain <BinanceIcon width={35} />
         </Text> */}
-    </Paper>
+    </Card>
   );
 };
 

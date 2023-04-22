@@ -12,9 +12,11 @@ notes.md
 /.next/
 /out/
 
+
 # production
 /build
 
+.env
 # misc
 .DS_Store
 *.pem
@@ -26,6 +28,7 @@ yarn-error.log*
 
 # local env files
 .env.local
+
 .env.development.local
 .env.test.local
 .env.production.local

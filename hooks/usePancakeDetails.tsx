@@ -3,7 +3,22 @@ import bscClient, { ethClient } from 'apollo';
 
 type Chain = 'bsc' | 'eth';
 
-const usePancakeDetails = (chain: Chain = 'bsc') => {
+type PancakeDetails = {
+  totalPairs: number;
+  totalVolumeUSD: number;
+  dailyVolumeUSD: number;
+  totalTransactions: number;
+  totalLiquidityUSD: number;
+  id: string;
+};
+
+const usePancakeDetails = (
+  chain: Chain = 'bsc'
+): {
+  loading: boolean;
+  data?: PancakeDetails;
+  error?: any;
+} => {
   const GET_PANCAKE_DETAILS_BSC = gql`
     query GetCombinedDetails {
       pancakeFactory {

@@ -1,4 +1,4 @@
-import { Button, Group, Paper, Skeleton, Text } from '@mantine/core';
+import { Card, Group, Paper, SegmentedControl, Skeleton, Text } from '@mantine/core';
 import { useMemo, useState } from 'react';
 import usePancakeDayDataBSC from '../../hooks/usePancakeDayDataBSC';
 import {
@@ -31,61 +31,41 @@ export const PancakeChartBSC = () => {
     return data?.slice(0, timePeriod);
   }, [ticks]);
 
+  const timePeriods = [
+    { label: '7 Days', value: '7' },
+    { label: '30 Days', value: '30' },
+    { label: '90 Days', value: '90' },
+  ];
+
   return (
-    <Paper shadow="lg" p="lg">
-      <Group position="apart">
-        <Text weight={700} pb="sm" size="xl">
-          Pancake Swap Trading Volume Diagram
-        </Text>
-        <Text
-          weight={700}
-          pb="sm"
-          display="flex"
-          align="center"
-          sx={{ alignItems: 'center', columnGap: '10px' }}
-          size="xl"
-        >
-          Binance Smart Chain <BinanceIcon width={35} />
-        </Text>
-      </Group>
-      <Button.Group
-        style={{ display: 'flex', justifyContent: 'center', margin: '0 auto', columnGap: '10px' }}
-      >
-        <Button
-          onClick={() => {
-            setTimePeriod(7);
-          }}
-        >
-          <Text weight={700} size="sm">
-            7 Days
+    <Card>
+      <Card.Section px="xl" py="md">
+        <Group position="apart">
+          <Text weight={700} size="xl">
+            Pancake Swap Trading Volume Diagram
           </Text>
-        </Button>
 
-        <Button
-          onClick={() => {
-            setTimePeriod(30);
-          }}
-        >
-          <Text weight={700} size="sm">
-            30 Days
-          </Text>
-        </Button>
-
-        <Button
-          onClick={() => {
-            setTimePeriod(90);
-          }}
-        >
-          <Text weight={700} size="sm">
-            90 Days
-          </Text>
-        </Button>
-      </Button.Group>
+          <SegmentedControl
+            data={timePeriods}
+            color="blue"
+            value={timePeriod.toString()}
+            onChange={(value) => setTimePeriod(parseInt(value))}
+          />
+        </Group>
+      </Card.Section>
 
       <Skeleton sx={{ width: '100%', height: '100%' }} mih={350} visible={loading}>
         <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={dataForPeriod} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" />
+          <BarChart
+            margin={{
+              bottom: 0,
+              left: 0,
+              right: 0,
+              top: 0,
+            }}
+            data={dataForPeriod}
+          >
+            <CartesianGrid />
             <XAxis dataKey="date" />
             <YAxis
               yAxisId="left"
@@ -123,6 +103,6 @@ export const PancakeChartBSC = () => {
           </BarChart>
         </ResponsiveContainer>
       </Skeleton>
-    </Paper>
+    </Card>
   );
 };

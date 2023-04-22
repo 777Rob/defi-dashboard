@@ -2,7 +2,7 @@ import { Text, Card, Tooltip, ActionIcon, Group, Skeleton } from '@mantine/core'
 import React from 'react';
 import { IconInfoSquare } from '@tabler/icons';
 
-export const StatisticCard = ({ title, tooltip, children, loading = false }: any) => {
+const StatisticCard = ({ title, tooltip, children, loading = false }: any) => {
   return (
     <Card>
       <Group position="apart">
@@ -25,3 +25,5 @@ export const StatisticCard = ({ title, tooltip, children, loading = false }: any
     </Card>
   );
 };
+
+export default StatisticCard;

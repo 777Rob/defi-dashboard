@@ -29,7 +29,7 @@ const usePancakeDayDataBSC = () => {
 
   const GET_VOLUMES_BSC = gql`
     query GetPancakeDayDatasBSC {
-      pancakeDayDatas(first: "90") {
+      pancakeDayDatas(first: 90) {
         dailyVolumeUSD
         date
         totalTransactions
@@ -61,6 +61,7 @@ const usePancakeDayDataBSC = () => {
       (dataEntry: PancakeDataEntryRequest, index: any) => {
         return {
           ...dataEntry,
+          dailyVolumeUSD: dataEntry.dailyVolumeUSD.split('.')[0],
           date: new Date(dataEntry.date * 1000).toLocaleDateString(),
           totalTransactions: Math.abs(
             parseInt(dataEntry.totalTransactions) -

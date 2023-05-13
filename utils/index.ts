@@ -10,6 +10,26 @@ export const displayNumber = (number: number) => {
   }
 };
 
+export const calculateDailyTransactionCount = (data: any[]) => {
+  return data.map((item, index) => {
+    if (index === 0) {
+      return { ...item, dailyTransactionCount: item.transactionCount };
+    } else {
+      const dailyTransactionCount = item.transactionCount - data[index - 1].transactionCount;
+      return { ...item, dailyTransactionCount };
+    }
+  });
+};
+
+export const clipOutliers = (data: any, threshold = 500000000) => {
+  return data.map((item: any) => {
+    if (item.volume > threshold) {
+      return { ...item, volume: threshold, clipped: true, originalVolume: item.dailyVolumeUSD };
+    }
+    return item;
+  });
+};
+
 export const getMaxVolume = (data: any) => {
   return Math.max(...data.map((entry: any) => entry.dailyVolumeUSD));
 };

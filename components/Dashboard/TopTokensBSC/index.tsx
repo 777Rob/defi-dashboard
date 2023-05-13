@@ -1,4 +1,4 @@
-import { Card, Skeleton } from '@mantine/core';
+import { Card, Pagination, Skeleton } from '@mantine/core';
 import React, { useState } from 'react';
 import useTopTokens from 'hooks/useTopTokensBSC';
 import { TRow } from './TRow';
@@ -13,6 +13,7 @@ const TopTokensBSC = () => {
     liquidityUSD: 'desc',
     volumeUSD: 'desc',
   });
+  const [activePage, setPage] = useState(0);
 
   const handleSortChange = (newSortBy: SortableField) => {
     setSortBy(newSortBy);
@@ -29,7 +30,11 @@ const TopTokensBSC = () => {
       <Skeleton visible={loading} mih={400}>
         <Card.Section px="lg">
           <THead onSortChange={handleSortChange} />
-          {sortedData.length > 0 && sortedData.map((token: any) => <TRow {...token} />)}
+          {sortedData.length > 0 &&
+            sortedData
+              .slice(activePage * 10 - 10, activePage * 10)
+              .map((token: any) => <TRow {...token} />)}
+          <Pagination position="center" mt="md" value={activePage} onChange={setPage} total={5} />
         </Card.Section>
       </Skeleton>
     </Card>

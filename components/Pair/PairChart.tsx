@@ -47,8 +47,8 @@ const PairChart = ({ data, loading, error }: any) => {
     <Card>
       <Card.Section px="xl" py="md">
         <Group position="apart">
-          <Text weight={700} size="xl" display="flex" sx={{ alignItems: 'center', gap: '10px' }}>
-            {data && data[0] && (
+          {data && data[0] && (
+            <Text weight={700} size="xl" display="flex" sx={{ alignItems: 'center', gap: '10px' }}>
               <Avatar.Group className="flex -gap-y-4">
                 <Avatar radius="xl" src={getLogoUri(data[0].token0.id)} size="md">
                   <IconCircle fill="white" size="full" />
@@ -57,10 +57,11 @@ const PairChart = ({ data, loading, error }: any) => {
                   <IconCircle fill="white" size="full" />
                 </Avatar>
               </Avatar.Group>
-            )}
-            {data && data[0] && data[0].token0.symbol}/{data && data[0] && data[0].token1.symbol}
-            {'  '} Trading Volume Diagram
-          </Text>
+              {data[0].token0.symbol}/{data[0].token1.symbol}
+              {'  '}
+              Trading Volume Diagram
+            </Text>
+          )}
 
           <SegmentedControl
             data={timePeriods}

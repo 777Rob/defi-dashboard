@@ -3,16 +3,19 @@ import React, { useState } from 'react';
 import useTopTokens from 'hooks/useTopTokens';
 import { TRow } from './TRow';
 import { SortableField, SortOrder, sortData, THead } from './THead';
+import useTopPairs from 'hooks/useTopPairs';
 
-const TopTokensBSC = () => {
-  const { loading, data } = useTopTokens();
-  const [sortBy, setSortBy] = useState<SortableField>('name');
+const TopPairs = () => {
+  const { loading, data } = useTopPairs();
+  console.log(data);
+  const [sortBy, setSortBy] = useState<SortableField>('dailyTxns');
+
   const [sortOrder, setSortOrder] = useState<SortOrder>({
-    name: 'desc',
-    priceUSD: 'desc',
-    liquidityUSD: 'desc',
-    volumeUSD: 'desc',
+    dailyTxns: 'desc',
+    dailyVolumeUSD: 'desc',
+    reserveUSD: 'desc',
   });
+
   const [activePage, setPage] = useState(1);
 
   const handleSortChange = (newSortBy: SortableField) => {
@@ -23,17 +26,18 @@ const TopTokensBSC = () => {
     }));
   };
 
-  const sortedData = data ? sortData(data, sortBy, sortOrder) : [];
+  const sortedData = data ? sortData([...data], sortBy, sortOrder) : [];
 
   return (
     <Card>
       <Skeleton visible={loading} mih={400}>
         <Card.Section px="lg">
           <THead onSortChange={handleSortChange} />
-          {sortedData.length > 0 &&
+          {sortedData &&
+            sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
-              .map((token: any) => <TRow {...token} />)}
+              .map((pair: any) => <TRow {...pair} />)}
           <Pagination position="center" mt="md" value={activePage} onChange={setPage} total={5} />
         </Card.Section>
       </Skeleton>
@@ -41,4 +45,4 @@ const TopTokensBSC = () => {
   );
 };
 
-export default TopTokensBSC;
+export default TopPairs;

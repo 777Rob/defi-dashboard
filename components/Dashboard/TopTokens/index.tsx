@@ -30,7 +30,8 @@ const TopTokens = () => {
       <Skeleton visible={loading} mih={400}>
         <Card.Section px="lg">
           <THead onSortChange={handleSortChange} />
-          {sortedData.length > 0 &&
+          {sortedData &&
+            sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
               .map((token: any) => <TRow {...token} />)}

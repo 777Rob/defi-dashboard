@@ -1,0 +1,95 @@
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayData.dto';
+import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
+import { Chains } from 'utils/chain';
+import { useCallback, useEffect, useState } from 'react';
+import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
+import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
+
+export type RawPairDayData = Pick<
+  PairDayData,
+  'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'dailyTxns' | 'date'
+> & {
+  token0: Pick<
+    Token,
+    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
+  >;
+  token1: Pick<
+    Token,
+    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
+  >;
+};
+
+export type FormattedPairDayData = Omit<
+  Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'dailyTxns' | 'date'>,
+  'date'
+> & {
+  date: string;
+  token0: Pick<
+    Token,
+    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
+  >;
+  token1: Pick<
+    Token,
+    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
+  >;
+};
+
+const usePairDayDatas = (chain = Chains.BSC) => {
+  const [getPancakeDayDatasBsc, { loading, data, error, called }] = useGetPairDayDatasBscLazyQuery({
+    fetchPolicy: 'cache-first',
+    onCompleted: (data) => {
+      if (data) {
+        const formattedData = formatData(data.pairDayDatas);
+        setFormattedData(formattedData);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (chain == Chains.BSC) {
+      getPancakeDayDatasBsc();
+    } else {
+      // getPancakeDayDatasEth();
+    }
+  }, [chain]);
+
+  const [formattedData, setFormattedData] = useState<FormattedPairDayData[] | undefined>(undefined);
+
+  const formatData = useCallback(
+    (rawData: RawPairDayData[]) => {
+      const formattedData = rawData.map((item, index) => {
+        return {
+          ...item,
+          dailyVolumeUSD: item.dailyVolumeUSD.split('.')[0],
+          date: new Date(item.date * 1000).toLocaleDateString(),
+          dailyTxns: Math.abs(
+            parseInt(item.dailyTxns) - (parseInt(item[index - 1]?.totalTransactions) || 0)
+          ),
+        };
+      });
+
+      return formattedData;
+    },
+    [data]
+  );
+
+  if (!loading && called) {
+    /**
+     * @NOTE: API Rate is limited in case limit is reached, use mock data
+     */
+    if (error) {
+      return { loading, error, data: formatData(mockPairDayDataBSC) };
+    }
+
+    return {
+      loading,
+      data: formattedData,
+      error,
+    };
+  }
+
+  return { loading, data: undefined, error };
+};
+
+export default usePairDayDatas;

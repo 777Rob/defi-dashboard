@@ -1,5 +1,38 @@
 import { gql } from '@apollo/client';
 
+export const GET_PAIR_DAY_DATAS_BSC = gql`
+  query GetPairDayDatasBSC($pairAddress: Bytes!) {
+    pairDayDatas(
+      where: { pairAddress: $pairAddress }
+      orderBy: date
+      orderDirection: desc
+      first: 90
+    ) {
+      dailyVolumeUSD
+      date
+      token0 {
+        name
+        symbol
+        totalTransactions
+        tradeVolume
+        derivedUSD
+        id
+      }
+      token1 {
+        name
+        symbol
+        totalTransactions
+        tradeVolume
+        derivedUSD
+        id
+      }
+      dailyTxns
+      reserveUSD
+      id
+    }
+  }
+`;
+
 export const GET_TOP_TOKENS = gql`
   query GetTopTokensBSC($topTokens: [ID!]) {
     tokenDayDatas(orderBy: dailyVolumeUSD, orderDirection: desc, where: { id_in: $topTokens }) {

@@ -35,10 +35,14 @@ export type FormattedPairDayData = Omit<
   >;
 };
 
-const usePairDayDatas = (chain = Chains.BSC) => {
+const usePairDayDatas = (chain = Chains.BSC, pairAddress: string) => {
   const [getPancakeDayDatasBsc, { loading, data, error, called }] = useGetPairDayDatasBscLazyQuery({
     fetchPolicy: 'cache-first',
+    variables: {
+      pairAddress: pairAddress,
+    },
     onCompleted: (data) => {
+      console.log(data);
       if (data) {
         const formattedData = formatData(data.pairDayDatas);
         setFormattedData(formattedData);
@@ -52,7 +56,7 @@ const usePairDayDatas = (chain = Chains.BSC) => {
     } else {
       // getPancakeDayDatasEth();
     }
-  }, [chain]);
+  }, [chain, pairAddress]);
 
   const [formattedData, setFormattedData] = useState<FormattedPairDayData[] | undefined>(undefined);
 

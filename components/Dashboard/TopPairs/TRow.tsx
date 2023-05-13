@@ -5,6 +5,7 @@ import { IconCircle } from '@tabler/icons';
 import { displayNumber } from 'utils';
 import { PairDayData } from 'generated/bsc-query-types';
 import { getLogoUri } from 'utils/getLogoUri';
+import { useRouter } from 'next/router';
 
 export const TRow = ({
   dailyTxns,
@@ -18,10 +19,12 @@ export const TRow = ({
   token1,
   totalSupply,
 }: PairDayData) => {
+  const router = useRouter();
+
   return (
     <Grid align="center">
       <Grid.Col span={6}>
-        <Group>
+        <Group sx={{ cursor: 'pointer' }} onClick={() => router.push(`/pair/${id}`)}>
           <Avatar.Group className="flex -gap-y-4">
             <Avatar radius="xl" src={getLogoUri(token0.id)} size="md">
               <IconCircle fill="white" size="full" />

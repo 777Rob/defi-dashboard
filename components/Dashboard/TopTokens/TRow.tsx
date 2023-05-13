@@ -1,6 +1,6 @@
 import { Text, Avatar, Grid, Group } from '@mantine/core';
 import React from 'react';
-import { TopToken } from 'hooks/useTopTokensBSC';
+import { TopToken } from 'hooks/useTopTokens';
 import { IconCircle } from '@tabler/icons';
 import { displayNumber } from 'utils';
 

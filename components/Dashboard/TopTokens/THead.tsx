@@ -1,6 +1,6 @@
 import { Text, Grid, Group, ActionIcon } from '@mantine/core';
 import React from 'react';
-import { TopToken } from 'hooks/useTopTokensBSC';
+import { TopToken } from 'hooks/useTopTokens';
 import { IconArrowsSort } from '@tabler/icons';
 
 export type SortOrder = {

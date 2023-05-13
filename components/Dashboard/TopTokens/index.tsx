@@ -1,10 +1,10 @@
 import { Card, Pagination, Skeleton } from '@mantine/core';
 import React, { useState } from 'react';
-import useTopTokens from 'hooks/useTopTokensBSC';
+import useTopTokens from 'hooks/useTopTokens';
 import { TRow } from './TRow';
 import { SortableField, SortOrder, sortData, THead } from './THead';
 
-const TopTokensBSC = () => {
+const TopTokens = () => {
   const { loading, data } = useTopTokens();
   const [sortBy, setSortBy] = useState<SortableField>('name');
   const [sortOrder, setSortOrder] = useState<SortOrder>({
@@ -13,7 +13,7 @@ const TopTokensBSC = () => {
     liquidityUSD: 'desc',
     volumeUSD: 'desc',
   });
-  const [activePage, setPage] = useState(0);
+  const [activePage, setPage] = useState(1);
 
   const handleSortChange = (newSortBy: SortableField) => {
     setSortBy(newSortBy);
@@ -41,4 +41,4 @@ const TopTokensBSC = () => {
   );
 };
 
-export default TopTokensBSC;
+export default TopTokens;

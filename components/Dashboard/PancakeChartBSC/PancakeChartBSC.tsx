@@ -1,6 +1,6 @@
 import { Card, Group, Paper, SegmentedControl, Skeleton, Text } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import usePancakeDayDataBSC from '../../../hooks/usePancakeDayDataBSC';
+import usePancakeDayDataBSC from '../../../hooks/usePancakeDayData';
 import {
   Bar,
   BarChart,

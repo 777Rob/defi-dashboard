@@ -1,7 +1,7 @@
-import { Box, Grid } from '@mantine/core';
+import { Text, Box, Grid, Stack } from '@mantine/core';
 import { PancakeChartBSC } from './PancakeChartBSC/PancakeChartBSC';
 import PancakeDetails from './PancakeDetails';
-import TopTokensBSC from './TopTokensBSC';
+import TopTokens from './TopTokens';
 
 function Dashboard() {
   return (
@@ -11,10 +11,20 @@ function Dashboard() {
           <PancakeDetails />
         </Grid.Col>
         <Grid.Col span={12}>
-          <PancakeChartBSC />
+          <Stack>
+            <Text weight={700} align="center" size="xl">
+              Pancake Swap Trading Volume Diagram
+            </Text>
+            <PancakeChartBSC />
+          </Stack>
         </Grid.Col>
         <Grid.Col span={12}>
-          <TopTokensBSC />
+          <Stack>
+            <Text weight={700} align="center" size="xl">
+              Trending Tokens
+            </Text>
+            <TopTokens />
+          </Stack>
         </Grid.Col>
       </Grid>
     </Box>

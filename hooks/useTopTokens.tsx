@@ -4,6 +4,8 @@ import { getAddress } from 'ethers';
 import { useGetTopTokensBscLazyQuery } from 'generated/bsc-query-types';
 import { customRound } from 'utils';
 import { Chains } from 'utils/chain';
+import { useEffect } from 'react';
+import { getLogoUri } from 'utils/getLogoUri';
 export type TopToken = {
   name: string;
   symbol: string;
@@ -25,14 +27,22 @@ const useTopTokens = (
    * @NOTE: date is in unix timestamp in seconds (not milliseconds) !!!
    */
 
-  const [getTopTokensBSC, { loading, data, error }] = useGetTopTokensBscLazyQuery({
+  const [getTopTokensBSC, { loading, data, error, called }] = useGetTopTokensBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
       topTokens: topTokens,
     },
   });
 
-  if (!loading) {
+  useEffect(() => {
+    if (chain === Chains.BSC) {
+      getTopTokensBSC();
+    } else {
+      // getTopPairsETH()
+    }
+  }, [chain]);
+
+  if (!loading && called) {
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
@@ -40,7 +50,7 @@ const useTopTokens = (
     if (error) {
       topTokens = mockTopTokens;
     } else {
-      topTokens = data.tokenDayDatas;
+      topTokens = data?.tokenDayDatas!;
     }
 
     let topTokensFormatted: TopToken[] = topTokens.map((dataEntry: any, index: any) => {
@@ -61,7 +71,7 @@ const useTopTokens = (
       error,
     };
   }
-  return { loading, data, error };
+  return { loading, data: undefined, error };
 };
 
 export default useTopTokens;

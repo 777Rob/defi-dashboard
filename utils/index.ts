@@ -6,7 +6,7 @@ export const displayNumber = (number: number) => {
   } else if (number > 1000) {
     return `${(number / 1000).toFixed(2)}K`;
   } else {
-    return number;
+    return number.toFixed(2);
   }
 };
 

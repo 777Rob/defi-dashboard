@@ -1,20 +1,17 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client';
 import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayData.dto';
 import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
-import {
-  useGetPancakeDayDatasBscLazyQuery,
-  useGetPancakeDayDatasBscQuery,
-} from 'generated/graphql';
 import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
+import { useGetPancakeDayDatasBscLazyQuery } from 'generated/bsc-query-types';
 
 const usePancakeDayData = (chain = Chains.BSC) => {
-  const [getPancakeDayDatasBsc, { loading, data, error, networkStatus }] =
+  const [getPancakeDayDatasBsc, { loading, data, error, called }] =
     useGetPancakeDayDatasBscLazyQuery({
       fetchPolicy: 'cache-first',
     });
-
-  // const [getPancakeDayDatasEth, { loading, data, error, networkStatus }] =
+  console.log(data);
+  // const [getPancakeDayDatasEth, { loading, data, error, called }] =
   //   useGetPancakeDayDatasEthLazyQuery({
   //     fetchPolicy: 'cache-first',
   //   });
@@ -27,7 +24,7 @@ const usePancakeDayData = (chain = Chains.BSC) => {
     }
   }, [chain]);
 
-  if (!loading) {
+  if (!loading && called) {
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
@@ -39,7 +36,7 @@ const usePancakeDayData = (chain = Chains.BSC) => {
       pancakeDayDatas = data?.pancakeDayDatas;
     }
 
-    let pancakeDayDatasFormatted: PancakeDataEntry[] = pancakeDayDatas.map(
+    let pancakeDayDatasFormatted: PancakeDataEntry[] = pancakeDayDatas?.map(
       (dataEntry: PancakeDataEntryRequest, index: any) => {
         return {
           ...dataEntry,
@@ -59,7 +56,7 @@ const usePancakeDayData = (chain = Chains.BSC) => {
       error,
     };
   }
-  return { loading, data, error };
+  return { loading, data: undefined, error };
 };
 
 export default usePancakeDayData;

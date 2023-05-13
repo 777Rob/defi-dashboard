@@ -1,3 +1,5 @@
+import { gql } from '@apollo/client';
+
 export const GET_TOP_TOKENS = gql`
   query GetTopTokensBSC($topTokens: [ID!]) {
     tokenDayDatas(orderBy: dailyVolumeUSD, orderDirection: desc, where: { id_in: $topTokens }) {

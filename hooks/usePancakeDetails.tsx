@@ -20,7 +20,7 @@ const usePancakeDetails = (
   data?: PancakeDetails | any;
   error?: any;
 } => {
-  const [getCombinedDetailsBSC, { loading, data, error, networkStatus }] =
+  const [getCombinedDetailsBSC, { loading, data, error, called }] =
     useGetCombinedDetailsBscLazyQuery({
       fetchPolicy: 'cache-first',
     });
@@ -42,7 +42,7 @@ const usePancakeDetails = (
     throw new Error(error.message);
   }
 
-  if (loading) return { loading, data, error };
+  if (loading || !called) return { loading, data, error };
 
   if (chain == Chains.BSC && data) {
     const { pancakeFactory, pancakeDayDatas } = data;

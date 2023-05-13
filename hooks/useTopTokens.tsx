@@ -1,8 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 import { topTokens } from 'data/topTokens';
 import { getAddress } from 'ethers';
+import { useGetTopTokensBscLazyQuery } from 'generated/bsc-query-types';
 import { customRound } from 'utils';
-
+import { Chains } from 'utils/chain';
 export type TopToken = {
   name: string;
   symbol: string;
@@ -13,7 +14,9 @@ export type TopToken = {
   logoUri: string;
 };
 
-const useTopTokens = (): {
+const useTopTokens = (
+  chain = Chains.BSC
+): {
   loading: boolean;
   data: TopToken[] | undefined;
   error: any | undefined;
@@ -22,37 +25,12 @@ const useTopTokens = (): {
    * @NOTE: date is in unix timestamp in seconds (not milliseconds) !!!
    */
 
-  const GET_TOP_TOKENS = gql`
-    query tokens($topTokens: [ID!]) {
-      tokenDayDatas(orderBy: dailyVolumeUSD, orderDirection: desc, where: { id_in: $topTokens }) {
-        token {
-          id
-          name
-          symbol
-          totalLiquidity
-          derivedUSD
-        }
-        dailyVolumeUSD
-        totalLiquidityUSD
-      }
-    }
-  `;
-
-  const { loading, data, error } = useQuery(GET_TOP_TOKENS, {
+  const [getTopTokensBSC, { loading, data, error }] = useGetTopTokensBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
       topTokens: topTokens,
     },
   });
-
-  const getLogoUri = (address: string) => {
-    const checksumAddress = getAddress(address);
-    const baseURL = `https://tokens.pancakeswap.finance/images/${checksumAddress}.png`;
-
-    // const logoURL = `${baseURL}${checksumAddress}/logo.png`;
-
-    return baseURL;
-  };
 
   if (!loading) {
     /**

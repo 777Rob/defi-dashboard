@@ -12,59 +12,12 @@ export type TopToken = {
   priceUSD: number;
   logoUri: string;
 };
-const GET_TOP_PAIRS = gql`
-  GetTopPairs($first: Int!, $date_gt: Int!, $skip: Int) {
-    pairDayDatas(
-      first: $first
-      where: { dailyTxns_gt: 1000, date_gt: $date_gt }
-      orderDirection: desc
-      skip: $skip
-      orderBy: dailyVolumeUSD
-    ) {
-      id
-      dailyVolumeUSD
-      token0 {
-        name
-        id
-        symbol
-      }
-      token1 {
-        name
-        id
-        symbol
-      }
-      reserveUSD
-      dailyVolumeUSD
-      dailyTxns
-    }
-  }
-`;
 
 const useTopPairs = (): {
   loading: boolean;
   data: TopToken[] | undefined;
   error: any | undefined;
 } => {
-  /**
-   * @NOTE: date is in unix timestamp in seconds (not milliseconds) !!!
-   */
-
-  const GET_TOP_TOKENS = gql`
-    query tokens($topTokens: [ID!]) {
-      tokenDayDatas(orderBy: dailyVolumeUSD, orderDirection: desc, where: { id_in: $topTokens }) {
-        token {
-          id
-          name
-          symbol
-          totalLiquidity
-          derivedUSD
-        }
-        dailyVolumeUSD
-        totalLiquidityUSD
-      }
-    }
-  `;
-
   const { loading, data, error } = useQuery(GET_TOP_TOKENS, {
     fetchPolicy: 'cache-first',
     variables: {

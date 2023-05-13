@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - 'https://open-platform.nodereal.io/7e14908068a54145aa61c9e9f0ddb7d8/pancakeswap-free/graphql':
+  # - 'endpoint-for-getting-eth-data':
+
+generates:
+  generated/bsc-query-types.ts:
+    schema: 'https://open-platform.nodereal.io/7e14908068a54145aa61c9e9f0ddb7d8/pancakeswap-free/graphql'
+    documents: 'queries/bsc.ts'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  # generated/eth-query-types.ts:
+  #   schema: 'endpoint-for-getting-eth-data'
+  #   documents: 'queries/eth.ts'
+  #   plugins:
+  #     - 'typescript'
+  #     - 'typescript-operations'
+  #     - 'typescript-react-apollo'

@@ -1,7 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import bscClient, { ethClient } from 'apollo';
-
-type Chain = 'bsc' | 'eth';
+import { useGetCombinedDetailsBscLazyQuery } from 'generated/bsc-query-types';
+import { useEffect } from 'react';
+import { Chains } from 'utils/chain';
 
 type PancakeDetails = {
   totalPairs: number;
@@ -13,57 +14,39 @@ type PancakeDetails = {
 };
 
 const usePancakeDetails = (
-  chain: Chain = 'bsc'
+  chain = Chains.BSC
 ): {
   loading: boolean;
-  data?: PancakeDetails;
+  data?: PancakeDetails | any;
   error?: any;
 } => {
-  const GET_PANCAKE_DETAILS_BSC = gql`
-    query GetCombinedDetails {
-      pancakeFactory {
-        id
-        totalPairs
-        totalVolumeUSD
-        totalLiquidityUSD
-      }
+  const [getCombinedDetailsBSC, { loading, data, error, networkStatus }] =
+    useGetCombinedDetailsBscLazyQuery({
+      fetchPolicy: 'cache-first',
+    });
 
-      pancakeDayDatas(first: 1, orderBy: date, orderDirection: desc) {
-        dailyVolumeUSD
-        date
-        totalTransactions
-        id
-        dailyVolumeBNB
-        dailyVolumeUntracked
-        totalLiquidityUSD
-      }
+  // const [getCombinedDetailsETH, { loading, data, error, networkStatus }] =
+  // useGetCombinedDetailsEthLazyQuery({
+  //   fetchPolicy: 'cache-first',
+  // });
+
+  useEffect(() => {
+    if (chain == Chains.BSC) {
+      getCombinedDetailsBSC();
+    } else {
+      // getCombinedDetailsETH();
     }
-  `;
+  }, [chain]);
 
-  let QUERY = GET_PANCAKE_DETAILS_BSC;
-  let client;
-
-  if (chain == 'bsc') {
-    client = bscClient;
-    QUERY = GET_PANCAKE_DETAILS_BSC;
-  } else if (chain == 'eth') {
-    client = ethClient;
-    QUERY = GET_PANCAKE_DETAILS_BSC;
-  }
-
-  const { loading, data, error, networkStatus } = useQuery(QUERY, {
-    client,
-    fetchPolicy: 'cache-first',
-  });
   if (error) {
     throw new Error(error.message);
   }
 
   if (loading) return { loading, data, error };
 
-  if (chain == 'bsc') {
+  if (chain == Chains.BSC && data) {
     const { pancakeFactory, pancakeDayDatas } = data;
-    const { totalPairs, totalVolumeUSD, totalLiquidityUSD, id } = pancakeFactory;
+    const { totalPairs, totalVolumeUSD, totalLiquidityUSD, id } = pancakeFactory!;
     const { dailyVolumeUSD, totalTransactions } = pancakeDayDatas[0];
     const pancakeDetails = {
       totalPairs,
@@ -81,7 +64,7 @@ const usePancakeDetails = (
     };
   }
 
-  if (chain === 'eth') {
+  if (chain === Chains.ETH && data) {
     return {
       loading,
       data,

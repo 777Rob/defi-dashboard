@@ -5,34 +5,46 @@ import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
 import { useGetPancakeDayDatasBscLazyQuery } from 'generated/bsc-query-types';
 import { useChain } from './useChain';
+import { useGetPancakeDayDatasEthLazyQuery } from 'generated/eth-query-types';
+import { ethClient } from 'apollo';
 
 const usePancakeDayData = () => {
   const { chain } = useChain();
-  const [getPancakeDayDatasBsc, { loading, data, error, called }] =
-    useGetPancakeDayDatasBscLazyQuery({
-      fetchPolicy: 'cache-first',
-    });
-  console.log(data);
-  // const [getPancakeDayDatasEth, { loading, data, error, called }] =
-  //   useGetPancakeDayDatasEthLazyQuery({
-  //     fetchPolicy: 'cache-first',
-  //   });
+  const [
+    getPancakeDayDatasBsc,
+    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
+  ] = useGetPancakeDayDatasBscLazyQuery({
+    fetchPolicy: 'cache-first',
+  });
+
+  const [
+    getPancakeDayDatasEth,
+    { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
+  ] = useGetPancakeDayDatasEthLazyQuery({
+    fetchPolicy: 'cache-first',
+    client: ethClient,
+  });
 
   useEffect(() => {
     if (chain == Chains.BSC) {
       getPancakeDayDatasBsc();
     } else {
-      // getPancakeDayDatasEth();
+      getPancakeDayDatasEth();
     }
   }, [chain]);
 
+  let { loading, data, error, called } =
+    chain == Chains.BSC
+      ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
+      : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
+
   if (!loading && called) {
+    let pancakeDayDatas: PancakeDataEntryRequest[] = [];
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
 
-    let pancakeDayDatas: PancakeDataEntryRequest[] = [];
-    if (error) {
+    if (error || !data) {
       pancakeDayDatas = mockPancakeBSCVolumeData;
     } else {
       pancakeDayDatas = data?.pancakeDayDatas;

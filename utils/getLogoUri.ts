@@ -13,7 +13,7 @@ export const getLogoUri = (address: string) => {
     return logoURI;
   }
 
-  const logoUri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${checksumAddress}/logo.png`;
+  const logoUri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${checksumAddress}/logo.png`;
 
   return logoUri;
 };

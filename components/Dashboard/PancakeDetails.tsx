@@ -17,11 +17,6 @@ const chains = [
     label: 'Ethereum',
     value: Chains.ETH,
   },
-  {
-    image: 'multiple.svg',
-    label: 'All Networks',
-    value: Chains.BSC,
-  },
 ];
 
 interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {

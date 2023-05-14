@@ -89,7 +89,7 @@ const useTopPairs = (): {
 
       return formattedData;
     },
-    [data]
+    [data, chain]
   );
 
   useEffect(() => {

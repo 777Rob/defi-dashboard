@@ -52,6 +52,12 @@ const useTopTokens = (): {
       date_gt: yesterdayTimestampInSeconds,
     },
     client: ethClient,
+    onCompleted: (data) => {
+      if (data) {
+        const formattedData = formatData(data.tokenDayDatas);
+        setFormattedData(formattedData);
+      }
+    },
   });
 
   let { loading, data, error, called } =
@@ -93,11 +99,15 @@ const useTopTokens = (): {
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
-    let topTokens = [];
-    if (error) {
-      topTokens = mockTopTokens;
-    } else {
-      topTokens = data?.tokenDayDatas!;
+
+    if (error || !formattedData) {
+      console.log('Error fetching top tokens');
+      console.error(error);
+      return {
+        loading,
+        data: mockTopTokens,
+        error,
+      };
     }
 
     return {

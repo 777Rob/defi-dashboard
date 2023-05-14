@@ -1,15 +1,11 @@
-import { Card, Text, Grid, Skeleton, Button } from '@mantine/core';
+import { Text, Grid, Skeleton } from '@mantine/core';
 import PairChart from './PairChart';
 import usePairDayDatas from 'hooks/usePairDayDatas';
-import { Chains } from 'utils/chain';
 import StatisticCard from 'components/UI/StatisticCard';
 import TokenStatisticCard from 'components/UI/TokenStatisticCard';
-import { useRouter } from 'next/router';
-import { useChain } from 'hooks/useChain';
+import { Error } from '../Error';
 const Pair = ({ pairAddress }: { pairAddress: string }) => {
   const { data, loading, error } = usePairDayDatas(pairAddress);
-  const router = useRouter();
-  const { chain, setChain } = useChain();
 
   if (loading) {
     return (
@@ -20,43 +16,7 @@ const Pair = ({ pairAddress }: { pairAddress: string }) => {
   }
 
   if (error !== undefined || data == undefined || data.length == 0) {
-    return (
-      <Card
-        w="full"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          height: '250px',
-        }}
-      >
-        <Text
-          sx={{
-            fontSize: '50px',
-          }}
-          weight={700}
-        >
-          Error getting data
-        </Text>
-        <Button.Group orientation="vertical" sx={{ gap: 10 }}>
-          <Button size="xl" onClick={() => router.push('/')}>
-            Return To Dashboard
-          </Button>
-          <Button
-            size="xl"
-            onClick={() => {
-              const newChain = chain == Chains.ETH ? Chains.BSC : Chains.ETH;
-
-              setChain(newChain);
-            }}
-          >
-            Try Different Chain
-          </Button>
-        </Button.Group>
-      </Card>
-    );
+    return <Error />;
   }
 
   const token0 = data[0]?.token0;

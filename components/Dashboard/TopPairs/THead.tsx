@@ -38,7 +38,7 @@ export const sortData = (
 
 export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) => void }) => {
   return (
-    <Grid align="center">
+    <Grid align="center" pb="sm">
       <Grid.Col span={6}>
         <Group>
           <Text>Name</Text>

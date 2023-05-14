@@ -1,34 +1,76 @@
-import { Text, Card, Tooltip, ActionIcon, Group, Skeleton } from '@mantine/core';
+import { Text, Card, Tooltip, ActionIcon, Group, Skeleton, Avatar, Stack } from '@mantine/core';
 import React from 'react';
-import { IconInfoSquare } from '@tabler/icons';
-import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
+import { IconCircle, IconInfoSquare, IconSearch } from '@tabler/icons';
+import { FormattedToken } from 'hooks/usePairDayDatas';
+import { getLogoUri } from 'utils/getLogoUri';
+import { displayNumber } from 'utils';
 
 const TokenStatisticCard = ({
   token,
-  tooltip,
-  children,
-  loading = false,
+  dailyVolume = 0,
+  reserve = 0,
 }: {
-  token: Pick<Token, 'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'>;
-  tooltip: string;
-  children: any;
-  loading?: boolean;
+  token: FormattedToken;
+  reserve: number;
+  dailyVolume: number;
 }) => {
   return (
     <Card h={'100%'}>
       <Group position="apart">
-        <Text size="md" weight={600}></Text>
-        {tooltip && (
-          <Tooltip position="top" withinPortal width={220} zIndex={100} multiline label={tooltip}>
+        <Text
+          size="lg"
+          weight={700}
+          display="flex"
+          sx={{
+            gap: 4,
+            alignItems: 'center',
+          }}
+        >
+          <Avatar src={getLogoUri(token?.id)} size="md" radius="xl">
+            <IconCircle fill="white" size="full" />
+          </Avatar>
+          {token?.name} ({token?.symbol})
+        </Text>
+
+        <Tooltip
+          position="top"
+          withinPortal
+          width={220}
+          zIndex={100}
+          multiline
+          label="See in block explorer"
+        >
+          <a href={`https://bscscan.com/address/${token?.id}`}>
             <ActionIcon variant="primary">
-              <IconInfoSquare color="#00abfb" />
+              <IconSearch color="#00abfb" />
             </ActionIcon>
-          </Tooltip>
-        )}
+          </a>
+        </Tooltip>
       </Group>
-      <Skeleton visible={loading} py="sm">
-        {children}
-      </Skeleton>
+      <Card.Section px="sm" py="sm">
+        <Stack spacing={0}>
+          <Text weight={500}>
+            <b>Price (USD): {'   '}</b>
+            {token?.derivedUSD ? `${parseFloat(token?.derivedUSD).toFixed(2)} $` : 'N/A'}
+          </Text>
+          <Text weight={500}>
+            <b>Volume Total 24H (USD): {'   '}</b>
+            {token?.tradeVolume ? `$${displayNumber(token?.tradeVolume)}` : 'N/A'}
+          </Text>
+          <Text weight={500}>
+            <b>Volume Pair (USD): {'   '}</b>
+            {dailyVolume ? `$${displayNumber(dailyVolume)}` : 'N/A'}
+          </Text>
+          <Text weight={500}>
+            <b>Reserve (Token): {'   '}</b>
+            {reserve ? `${displayNumber(reserve)} ${token.symbol}` : 'N/A'}
+          </Text>
+          <Text weight={500}>
+            <b>Reserve (USD): {'   '}</b>
+            {reserve ? `${displayNumber(reserve * parseFloat(token?.derivedUSD))} $` : 'N/A'}
+          </Text>
+        </Stack>
+      </Card.Section>
     </Card>
   );
 };

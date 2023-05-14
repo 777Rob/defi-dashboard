@@ -10,6 +10,10 @@ export const GET_PAIR_DAY_DATAS_BSC = gql`
     ) {
       dailyVolumeUSD
       date
+      dailyVolumeToken0
+      dailyVolumeToken1
+      reserve0
+      reserve1
       token0 {
         name
         symbol

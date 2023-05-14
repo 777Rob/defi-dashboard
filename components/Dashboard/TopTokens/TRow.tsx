@@ -4,9 +4,29 @@ import { TopToken } from 'hooks/useTopTokens';
 import { IconCircle } from '@tabler/icons';
 import { displayNumber } from 'utils';
 
-export const TRow = ({ name, symbol, liquidityUSD, volumeUSD, priceUSD, logoUri }: TopToken) => {
+export const TRow = ({
+  name,
+  symbol,
+  liquidityUSD,
+  volumeUSD,
+  priceUSD,
+  logoUri,
+  isFirst = false,
+  isLast = false,
+}: TopToken & {
+  isFirst: boolean;
+  isLast: boolean;
+}) => {
+  console.log(logoUri);
   return (
-    <Grid align="center">
+    <Grid
+      m={0}
+      sx={{
+        borderRadius: isFirst ? '0.5rem 0.5rem 0 0' : isLast ? '0 0 0.5rem 0.5rem' : '0',
+        border: '1px solid #606166',
+      }}
+      align="center"
+    >
       <Grid.Col span={6}>
         <Group>
           <Avatar src={logoUri} size="md">

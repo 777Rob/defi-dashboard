@@ -142,12 +142,12 @@ export type Pair = {
 export type PairDayData = {
   __typename?: 'PairDayData';
   dailyTxns: Scalars['BigInt'];
-  dailyVolumeToken0: Scalars['BigDecimal'];
-  dailyVolumeToken1: Scalars['BigDecimal'];
   dailyVolumeUSD: Scalars['BigDecimal'];
   date: Scalars['Int'];
   id: Scalars['ID'];
   pairAddress: Pair;
+  dailyVolumeToken0: Scalars['BigDecimal'];
+  dailyVolumeToken1: Scalars['BigDecimal'];
   reserve0: Scalars['BigDecimal'];
   reserve1: Scalars['BigDecimal'];
   reserveUSD: Scalars['BigDecimal'];
@@ -534,6 +534,10 @@ export type GetPairDayDatasBscQuery = {
     __typename?: 'PairDayData';
     dailyVolumeUSD: any;
     date: number;
+    dailyVolumeToken0: any;
+    dailyVolumeToken1: any;
+    reserve0: any;
+    reserve1: any;
     dailyTxns: any;
     reserveUSD: any;
     id: string;
@@ -647,6 +651,10 @@ export const GetPairDayDatasBscDocument = gql`
     ) {
       dailyVolumeUSD
       date
+      dailyVolumeToken0
+      dailyVolumeToken1
+      reserve0
+      reserve1
       token0 {
         name
         symbol

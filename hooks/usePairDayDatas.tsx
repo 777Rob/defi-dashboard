@@ -6,10 +6,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
 import { getLogoUri } from '../utils/getLogoUri';
-
 export type RawPairDayData = Pick<
   PairDayData,
-  'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'dailyTxns' | 'date'
+  | 'id'
+  | 'dailyVolumeUSD'
+  | 'reserveUSD'
+  | 'dailyTxns'
+  | 'date'
+  | 'dailyVolumeToken0'
+  | 'dailyVolumeToken1'
+  | 'reserve0'
+  | 'reserve1'
 > & {
   token0: Pick<
     Token,
@@ -29,7 +36,18 @@ export type FormattedToken = Pick<
 };
 
 export type FormattedPairDayData = Omit<
-  Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'dailyTxns' | 'date'>,
+  Pick<
+    PairDayData,
+    | 'id'
+    | 'dailyVolumeUSD'
+    | 'reserveUSD'
+    | 'dailyTxns'
+    | 'date'
+    | 'dailyVolumeToken0'
+    | 'dailyVolumeToken1'
+    | 'reserve0'
+    | 'reserve1'
+  >,
   'date'
 > & {
   date: string;
@@ -51,10 +69,9 @@ const usePairDayDatas = (
       pairAddress: pairAddress,
     },
     onCompleted: (data) => {
-      console.log(data);
       if (data) {
         const formattedData = formatData(data.pairDayDatas);
-        setFormattedData(formattedData);
+        setFormattedData(formattedData as FormattedPairDayData[]);
       }
     },
   });

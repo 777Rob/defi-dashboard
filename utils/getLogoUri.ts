@@ -1,7 +1,10 @@
-import { getAddress } from 'ethers';
-import { tokens } from 'data/tokens.json';
+import { getAddress, isAddress } from 'ethers';
+import tokenData from 'data/tokens.json';
 
 export const getLogoUri = (address: string) => {
+  const { tokens } = tokenData;
+  if (!isAddress(address)) return null;
+
   const checksumAddress = getAddress(address);
 
   // const baseUrlTrustwallet = `https://github.com/trustwallet/assets/tree/master/blockchains/binance/assets/${checksumAddress}/logo.png`;

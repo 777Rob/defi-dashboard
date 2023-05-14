@@ -6,6 +6,12 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core
 import { Notifications } from '@mantine/notifications';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../apollo';
+import { Open_Sans } from 'next/font/google';
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-openSans',
+});
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -27,8 +33,14 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <ApolloProvider client={apolloClient}>
-          <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-            <Component {...pageProps} />
+          <MantineProvider
+            theme={{ colorScheme, defaultRadius: 'md' }}
+            withGlobalStyles
+            withNormalizeCSS
+          >
+            <div className={openSans.className}>
+              <Component {...pageProps} />
+            </div>
             <Notifications />
           </MantineProvider>
         </ApolloProvider>

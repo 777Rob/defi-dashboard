@@ -6,7 +6,7 @@ import { SortableField, SortOrder, sortData, THead } from './THead';
 
 const TopTokens = () => {
   const { loading, data } = useTopTokens();
-  const [sortBy, setSortBy] = useState<SortableField>('name');
+  const [sortBy, setSortBy] = useState<SortableField>('liquidityUSD');
   const [sortOrder, setSortOrder] = useState<SortOrder>({
     name: 'desc',
     priceUSD: 'desc',
@@ -34,7 +34,13 @@ const TopTokens = () => {
             sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
-              .map((token: any) => <TRow {...token} />)}
+              .map((token: any, index: number) => (
+                <TRow
+                  {...token}
+                  isFirst={index == activePage * 10 - 10}
+                  isLast={index == activePage * 10 - 1}
+                />
+              ))}
           <Pagination position="center" mt="md" value={activePage} onChange={setPage} total={5} />
         </Card.Section>
       </Skeleton>

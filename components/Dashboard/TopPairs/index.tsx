@@ -7,8 +7,7 @@ import useTopPairs from 'hooks/useTopPairs';
 
 const TopPairs = () => {
   const { loading, data } = useTopPairs();
-  console.log(data);
-  const [sortBy, setSortBy] = useState<SortableField>('dailyTxns');
+  const [sortBy, setSortBy] = useState<SortableField>('reserveUSD');
 
   const [sortOrder, setSortOrder] = useState<SortOrder>({
     dailyTxns: 'desc',
@@ -37,7 +36,13 @@ const TopPairs = () => {
             sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
-              .map((pair: any) => <TRow {...pair} />)}
+              .map((pair: any, index: number) => (
+                <TRow
+                  {...pair}
+                  isFirst={index == activePage * 10 - 10}
+                  isLast={index == activePage * 10 - 1}
+                />
+              ))}
           <Pagination position="center" mt="md" value={activePage} onChange={setPage} total={5} />
         </Card.Section>
       </Skeleton>

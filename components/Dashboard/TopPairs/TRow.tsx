@@ -9,20 +9,28 @@ import { useRouter } from 'next/router';
 
 export const TRow = ({
   dailyTxns,
-  dailyVolumeToken0,
-  dailyVolumeToken1,
   reserveUSD,
   dailyVolumeUSD,
   id,
-  pairAddress,
   token0,
   token1,
-  totalSupply,
-}: PairDayData) => {
+  isFirst = false,
+  isLast = false,
+}: PairDayData & {
+  isFirst: boolean;
+  isLast: boolean;
+}) => {
   const router = useRouter();
 
   return (
-    <Grid align="center">
+    <Grid
+      align="center"
+      m="0"
+      sx={{
+        borderRadius: isFirst ? '0.5rem 0.5rem 0 0' : isLast ? '0 0 0.5rem 0.5rem' : '0',
+        border: '1px solid #606166',
+      }}
+    >
       <Grid.Col span={6}>
         <Group sx={{ cursor: 'pointer' }} onClick={() => router.push(`/pair/${id}`)}>
           <Avatar.Group className="flex -gap-y-4">

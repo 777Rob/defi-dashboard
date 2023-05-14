@@ -1,20 +1,55 @@
-# Mantine Next Template
+# DeFi Dashboard
 
-Get started with Mantine + Next with just a few button clicks.
-Click `Use this template` button at the header of repository or [follow this link](https://github.com/mantinedev/mantine-next-template/generate) and
-create new repository with `@mantine` packages. Note that you have to be logged in to GitHub to generate template.
+DeFi Dashboard is a web application built using Next.js that enables users to visualize the trading volume of PancakeSwap on both the Binance Smart Chain (BSC) and Ethereum (ETH) chains. It utilizes Mantine for UI components, Apollo Client for data fetching, and graphql-codegen to generate hooks for seamless integration with GraphQL APIs.
 
-## Features
+This project is developed for the BNB chain Zero2Hero Hackathon - NodeReal Challenge, which focuses on using NodeReal standard and enhanced APIs to implement required features.
 
-This template comes with several essential features:
+## Overview
 
-- Server side rendering setup for Mantine
-- Color scheme is stored in cookie to avoid color scheme mismatch after hydration
-- Storybook with color scheme toggle
-- Jest with react testing library
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+DeFi Dashboard provides an interactive interface for developers and users to monitor and analyze the trading volumes on PancakeSwap. The application offers the following features:
 
-## npm scripts
+1. Display the data for PancakeSwap on both BSC and ETH chains.
+2. Display the data for PancakeSwap on a particular chain (BSC or ETH).
+3. Display a chart containing trading data for the last 90 days.
+4. Showcase top tokens and top token pairs based on trading volume.
+5. Dedicated pages to display volumes and data for all top tokens and token pairs.
+
+## Getting Started
+
+To get started with the DeFi Dashboard, follow these steps:
+
+### Prerequisites
+
+- Node.js v14.x or higher
+- Yarn package manager
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/77Rob/defi-dashboard.git
+```
+
+2. Change the working directory:
+
+```bash
+cd defi-dashboard
+```
+
+3. Install dependencies:
+
+```bash
+yarn install
+```
+
+4. Run the development server:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the DeFi Dashboard in action.
 
 ### Build and dev scripts
 
@@ -37,3 +72,26 @@ This template comes with several essential features:
 - `storybook` – starts storybook dev server
 - `storybook:build` – build production storybook bundle to `storybook-static`
 - `prettier:write` – formats all files with Prettier
+- `generate-graphql-types` - fetches and generates GraphQL types
+
+## Contributing
+
+We welcome contributions to the DeFi Dashboard. If you would like to contribute, please fork the repository, make your changes, and submit a pull request.
+
+# README Mantine Next Template
+
+Get started with Mantine + Next with just a few button clicks.
+Click `Use this template` button at the header of repository or [follow this link](https://github.com/mantinedev/mantine-next-template/generate) and
+create new repository with `@mantine` packages. Note that you have to be logged in to GitHub to generate template.
+
+## Features
+
+This template comes with several essential features:
+
+- Server side rendering setup for Mantine
+- Color scheme is stored in cookie to avoid color scheme mismatch after hydration
+- Storybook with color scheme toggle
+- Jest with react testing library
+- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+
+## npm scripts

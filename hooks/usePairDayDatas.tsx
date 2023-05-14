@@ -5,6 +5,7 @@ import { Chains } from 'utils/chain';
 import { useCallback, useEffect, useState } from 'react';
 import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
+import { getLogoUri } from '../utils/getLogoUri';
 
 export type RawPairDayData = Pick<
   PairDayData,
@@ -20,22 +21,30 @@ export type RawPairDayData = Pick<
   >;
 };
 
+export type FormattedToken = Pick<
+  Token,
+  'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
+> & {
+  logoURI: string;
+};
+
 export type FormattedPairDayData = Omit<
   Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'dailyTxns' | 'date'>,
   'date'
 > & {
   date: string;
-  token0: Pick<
-    Token,
-    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
-  >;
-  token1: Pick<
-    Token,
-    'name' | 'id' | 'symbol' | 'totalTransactions' | 'tradeVolume' | 'derivedUSD'
-  >;
+  token0: FormattedToken;
+  token1: FormattedToken;
 };
 
-const usePairDayDatas = (chain = Chains.BSC, pairAddress: string) => {
+const usePairDayDatas = (
+  chain = Chains.BSC,
+  pairAddress: string
+): {
+  data: FormattedPairDayData[] | undefined;
+  loading: boolean;
+  error: any | undefined;
+} => {
   const [getPancakeDayDatasBsc, { loading, data, error, called }] = useGetPairDayDatasBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
@@ -62,7 +71,7 @@ const usePairDayDatas = (chain = Chains.BSC, pairAddress: string) => {
 
   const formatData = useCallback(
     (rawData: RawPairDayData[]) => {
-      const formattedData = rawData.map((item, index) => {
+      const formattedData = rawData.map((item, index: number) => {
         return {
           ...item,
           dailyVolumeUSD: item.dailyVolumeUSD.split('.')[0],
@@ -70,6 +79,14 @@ const usePairDayDatas = (chain = Chains.BSC, pairAddress: string) => {
           dailyTxns: Math.abs(
             parseInt(item.dailyTxns) - (parseInt(item[index - 1]?.totalTransactions) || 0)
           ),
+          token0: {
+            ...item.token0,
+            logoURI: getLogoUri(item.token0.id),
+          },
+          token1: {
+            ...item.token1,
+            logoURI: getLogoUri(item.token1.id),
+          },
         };
       });
 

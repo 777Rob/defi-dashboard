@@ -1,4 +1,4 @@
-import { PancakeDataEntryRequest } from '../hooks/usePancakeDayDataBSC.dto';
+import { PancakeDataEntryRequest } from '../hooks/usePancakeDayData.dto';
 
 export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
   {

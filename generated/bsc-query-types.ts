@@ -67,7 +67,7 @@ export type Burn_Filter = {
 };
 
 export enum Burn_OrderBy {
-  Timestamp = 'timestamp',
+  Timestamp = 'timestamp'
 }
 
 export type FactoryFilter = {
@@ -108,12 +108,12 @@ export type Mint_Filter = {
 };
 
 export enum Mint_OrderBy {
-  Timestamp = 'timestamp',
+  Timestamp = 'timestamp'
 }
 
 export enum OrderDirection {
   Asc = 'asc',
-  Desc = 'desc',
+  Desc = 'desc'
 }
 
 export type Pair = {
@@ -142,12 +142,12 @@ export type Pair = {
 export type PairDayData = {
   __typename?: 'PairDayData';
   dailyTxns: Scalars['BigInt'];
+  dailyVolumeToken0: Scalars['BigDecimal'];
+  dailyVolumeToken1: Scalars['BigDecimal'];
   dailyVolumeUSD: Scalars['BigDecimal'];
   date: Scalars['Int'];
   id: Scalars['ID'];
   pairAddress: Pair;
-  dailyVolumeToken0: Scalars['BigDecimal'];
-  dailyVolumeToken1: Scalars['BigDecimal'];
   reserve0: Scalars['BigDecimal'];
   reserve1: Scalars['BigDecimal'];
   reserveUSD: Scalars['BigDecimal'];
@@ -171,7 +171,7 @@ export type PairDayData_Filter = {
 
 export enum PairDayData_OrderBy {
   DailyVolumeUsd = 'dailyVolumeUSD',
-  Date = 'date',
+  Date = 'date'
 }
 
 export type PairHourData = {
@@ -198,7 +198,7 @@ export type PairHourData_Filter = {
 };
 
 export enum PairHourData_OrderBy {
-  HourStartUnix = 'hourStartUnix',
+  HourStartUnix = 'hourStartUnix'
 }
 
 export type Pair_Filter = {
@@ -214,7 +214,7 @@ export type Pair_Filter = {
 };
 
 export enum Pair_OrderBy {
-  TrackedReserveBnb = 'trackedReserveBNB',
+  TrackedReserveBnb = 'trackedReserveBNB'
 }
 
 export type PancakeDayData = {
@@ -238,7 +238,7 @@ export type PancakeDayData_Filter = {
 };
 
 export enum PancakeDayData_OrderBy {
-  Date = 'date',
+  Date = 'date'
 }
 
 export type PancakeFactory = {
@@ -279,19 +279,23 @@ export type Query = {
   tokens: Array<Token>;
 };
 
+
 export type QueryBundleArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
 
+
 export type QueryBundlesArgs = {
   block?: InputMaybe<Block_Height>;
 };
+
 
 export type QueryBurnArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
+
 
 export type QueryBurnsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -302,10 +306,12 @@ export type QueryBurnsArgs = {
   where?: InputMaybe<Burn_Filter>;
 };
 
+
 export type QueryMintArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
+
 
 export type QueryMintsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -316,14 +322,17 @@ export type QueryMintsArgs = {
   where?: InputMaybe<Mint_Filter>;
 };
 
+
 export type QueryPairArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
 
+
 export type QueryPairDayDataArgs = {
   id: Scalars['ID'];
 };
+
 
 export type QueryPairDayDatasArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -333,9 +342,11 @@ export type QueryPairDayDatasArgs = {
   where?: InputMaybe<PairDayData_Filter>;
 };
 
+
 export type QueryPairHourDataArgs = {
   id: Scalars['ID'];
 };
+
 
 export type QueryPairHourDatasArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -344,6 +355,7 @@ export type QueryPairHourDatasArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PairHourData_Filter>;
 };
+
 
 export type QueryPairsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -354,9 +366,11 @@ export type QueryPairsArgs = {
   where?: InputMaybe<Pair_Filter>;
 };
 
+
 export type QueryPancakeDayDataArgs = {
   id: Scalars['ID'];
 };
+
 
 export type QueryPancakeDayDatasArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -366,20 +380,24 @@ export type QueryPancakeDayDatasArgs = {
   where?: InputMaybe<PancakeDayData_Filter>;
 };
 
+
 export type QueryPancakeFactoriesArgs = {
   block?: InputMaybe<Block_Height>;
   first?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type QueryPancakeFactoryArgs = {
   block?: InputMaybe<Block_Height>;
 };
+
 
 export type QuerySwapArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
+
 
 export type QuerySwapsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -390,14 +408,17 @@ export type QuerySwapsArgs = {
   where?: InputMaybe<Swap_Filter>;
 };
 
+
 export type QueryTokenArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID'];
 };
 
+
 export type QueryTokenDayDataArgs = {
   id: Scalars['ID'];
 };
+
 
 export type QueryTokenDayDatasArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -406,6 +427,7 @@ export type QueryTokenDayDatasArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<TokenDayData_Filter>;
 };
+
 
 export type QueryTokensArgs = {
   block?: InputMaybe<Block_Height>;
@@ -455,7 +477,7 @@ export type Swap_Filter = {
 };
 
 export enum Swap_OrderBy {
-  Timestamp = 'timestamp',
+  Timestamp = 'timestamp'
 }
 
 export type Token = {
@@ -500,7 +522,7 @@ export type TokenDayData_Filter = {
 
 export enum TokenDayData_OrderBy {
   DailyVolumeUsd = 'dailyVolumeUSD',
-  Date = 'date',
+  Date = 'date'
 }
 
 export type Token_Filter = {
@@ -511,7 +533,7 @@ export type Token_Filter = {
 };
 
 export enum Token_OrderBy {
-  TradeVolumeUsd = 'tradeVolumeUSD',
+  TradeVolumeUsd = 'tradeVolumeUSD'
 }
 
 export type Transaction = {
@@ -528,99 +550,25 @@ export type GetPairDayDatasBscQueryVariables = Exact<{
   pairAddress: Scalars['Bytes'];
 }>;
 
-export type GetPairDayDatasBscQuery = {
-  __typename?: 'Query';
-  pairDayDatas: Array<{
-    __typename?: 'PairDayData';
-    dailyVolumeUSD: any;
-    date: number;
-    dailyVolumeToken0: any;
-    dailyVolumeToken1: any;
-    reserve0: any;
-    reserve1: any;
-    dailyTxns: any;
-    reserveUSD: any;
-    id: string;
-    token0: {
-      __typename?: 'Token';
-      name: string;
-      symbol: string;
-      totalTransactions: any;
-      tradeVolume: any;
-      derivedUSD?: any | null;
-      id: string;
-    };
-    token1: {
-      __typename?: 'Token';
-      name: string;
-      symbol: string;
-      totalTransactions: any;
-      tradeVolume: any;
-      derivedUSD?: any | null;
-      id: string;
-    };
-  }>;
-};
+
+export type GetPairDayDatasBscQuery = { __typename?: 'Query', pairDayDatas: Array<{ __typename?: 'PairDayData', dailyVolumeUSD: any, date: number, dailyVolumeToken0: any, dailyVolumeToken1: any, reserve0: any, reserve1: any, dailyTxns: any, reserveUSD: any, id: string, token0: { __typename?: 'Token', name: string, symbol: string, totalTransactions: any, tradeVolume: any, derivedUSD?: any | null, id: string }, token1: { __typename?: 'Token', name: string, symbol: string, totalTransactions: any, tradeVolume: any, derivedUSD?: any | null, id: string } }> };
 
 export type GetTopTokensBscQueryVariables = Exact<{
   topTokens?: InputMaybe<Array<Scalars['ID']> | Scalars['ID']>;
 }>;
 
-export type GetTopTokensBscQuery = {
-  __typename?: 'Query';
-  tokenDayDatas: Array<{
-    __typename?: 'TokenDayData';
-    dailyVolumeUSD: any;
-    totalLiquidityUSD: any;
-    token: {
-      __typename?: 'Token';
-      id: string;
-      name: string;
-      symbol: string;
-      totalLiquidity: any;
-      derivedUSD?: any | null;
-    };
-  }>;
-};
 
-export type GetPancakeDayDatasBscQueryVariables = Exact<{ [key: string]: never }>;
+export type GetTopTokensBscQuery = { __typename?: 'Query', tokenDayDatas: Array<{ __typename?: 'TokenDayData', dailyVolumeUSD: any, totalLiquidityUSD: any, token: { __typename?: 'Token', id: string, name: string, symbol: string, totalLiquidity: any, derivedUSD?: any | null } }> };
 
-export type GetPancakeDayDatasBscQuery = {
-  __typename?: 'Query';
-  pancakeDayDatas: Array<{
-    __typename?: 'PancakeDayData';
-    dailyVolumeUSD: any;
-    date: number;
-    totalTransactions: any;
-    id: string;
-    dailyVolumeBNB: any;
-    dailyVolumeUntracked: any;
-    totalLiquidityUSD: any;
-  }>;
-};
+export type GetPancakeDayDatasBscQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetCombinedDetailsBscQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetCombinedDetailsBscQuery = {
-  __typename?: 'Query';
-  pancakeFactory?: {
-    __typename?: 'PancakeFactory';
-    id: string;
-    totalPairs: any;
-    totalVolumeUSD: any;
-    totalLiquidityUSD: any;
-  } | null;
-  pancakeDayDatas: Array<{
-    __typename?: 'PancakeDayData';
-    dailyVolumeUSD: any;
-    date: number;
-    totalTransactions: any;
-    id: string;
-    dailyVolumeBNB: any;
-    dailyVolumeUntracked: any;
-    totalLiquidityUSD: any;
-  }>;
-};
+export type GetPancakeDayDatasBscQuery = { __typename?: 'Query', pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', dailyVolumeUSD: any, date: number, totalTransactions: any, id: string, dailyVolumeBNB: any, dailyVolumeUntracked: any, totalLiquidityUSD: any }> };
+
+export type GetCombinedDetailsBscQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCombinedDetailsBscQuery = { __typename?: 'Query', pancakeFactory?: { __typename?: 'PancakeFactory', id: string, totalPairs: any, totalVolumeUSD: any, totalLiquidityUSD: any } | null, pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', dailyVolumeUSD: any, date: number, totalTransactions: any, id: string, dailyVolumeBNB: any, dailyVolumeUntracked: any, totalLiquidityUSD: any }> };
 
 export type GetTopPairsBscQueryVariables = Exact<{
   first: Scalars['Int'];
@@ -628,55 +576,46 @@ export type GetTopPairsBscQueryVariables = Exact<{
   skip?: InputMaybe<Scalars['Int']>;
 }>;
 
-export type GetTopPairsBscQuery = {
-  __typename?: 'Query';
-  pairDayDatas: Array<{
-    __typename?: 'PairDayData';
-    id: string;
-    dailyVolumeUSD: any;
-    reserveUSD: any;
-    dailyTxns: any;
-    token0: { __typename?: 'Token'; name: string; id: string; symbol: string };
-    token1: { __typename?: 'Token'; name: string; id: string; symbol: string };
-  }>;
-};
+
+export type GetTopPairsBscQuery = { __typename?: 'Query', pairDayDatas: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: any, reserveUSD: any, dailyTxns: any, token0: { __typename?: 'Token', name: string, id: string, symbol: string }, token1: { __typename?: 'Token', name: string, id: string, symbol: string } }> };
+
 
 export const GetPairDayDatasBscDocument = gql`
-  query GetPairDayDatasBSC($pairAddress: Bytes!) {
-    pairDayDatas(
-      where: { pairAddress: $pairAddress }
-      orderBy: date
-      orderDirection: desc
-      first: 90
-    ) {
-      dailyVolumeUSD
-      date
-      dailyVolumeToken0
-      dailyVolumeToken1
-      reserve0
-      reserve1
-      token0 {
-        name
-        symbol
-        totalTransactions
-        tradeVolume
-        derivedUSD
-        id
-      }
-      token1 {
-        name
-        symbol
-        totalTransactions
-        tradeVolume
-        derivedUSD
-        id
-      }
-      dailyTxns
-      reserveUSD
+    query GetPairDayDatasBSC($pairAddress: Bytes!) {
+  pairDayDatas(
+    where: {pairAddress: $pairAddress}
+    orderBy: date
+    orderDirection: desc
+    first: 90
+  ) {
+    dailyVolumeUSD
+    date
+    dailyVolumeToken0
+    dailyVolumeToken1
+    reserve0
+    reserve1
+    token0 {
+      name
+      symbol
+      totalTransactions
+      tradeVolume
+      derivedUSD
       id
     }
+    token1 {
+      name
+      symbol
+      totalTransactions
+      tradeVolume
+      derivedUSD
+      id
+    }
+    dailyTxns
+    reserveUSD
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useGetPairDayDatasBscQuery__
@@ -694,50 +633,36 @@ export const GetPairDayDatasBscDocument = gql`
  *   },
  * });
  */
-export function useGetPairDayDatasBscQuery(
-  baseOptions: Apollo.QueryHookOptions<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>(
-    GetPairDayDatasBscDocument,
-    options
-  );
-}
-export function useGetPairDayDatasBscLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetPairDayDatasBscQuery,
-    GetPairDayDatasBscQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>(
-    GetPairDayDatasBscDocument,
-    options
-  );
-}
-export type GetPairDayDatasBscQueryHookResult = ReturnType<typeof useGetPairDayDatasBscQuery>;
-export type GetPairDayDatasBscLazyQueryHookResult = ReturnType<
-  typeof useGetPairDayDatasBscLazyQuery
->;
-export type GetPairDayDatasBscQueryResult = Apollo.QueryResult<
-  GetPairDayDatasBscQuery,
-  GetPairDayDatasBscQueryVariables
->;
-export const GetTopTokensBscDocument = gql`
-  query GetTopTokensBSC($topTokens: [ID!]) {
-    tokenDayDatas(orderBy: dailyVolumeUSD, orderDirection: desc, where: { id_in: $topTokens }) {
-      token {
-        id
-        name
-        symbol
-        totalLiquidity
-        derivedUSD
+export function useGetPairDayDatasBscQuery(baseOptions: Apollo.QueryHookOptions<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>(GetPairDayDatasBscDocument, options);
       }
-      dailyVolumeUSD
-      totalLiquidityUSD
+export function useGetPairDayDatasBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>(GetPairDayDatasBscDocument, options);
+        }
+export type GetPairDayDatasBscQueryHookResult = ReturnType<typeof useGetPairDayDatasBscQuery>;
+export type GetPairDayDatasBscLazyQueryHookResult = ReturnType<typeof useGetPairDayDatasBscLazyQuery>;
+export type GetPairDayDatasBscQueryResult = Apollo.QueryResult<GetPairDayDatasBscQuery, GetPairDayDatasBscQueryVariables>;
+export const GetTopTokensBscDocument = gql`
+    query GetTopTokensBSC($topTokens: [ID!]) {
+  tokenDayDatas(
+    orderBy: dailyVolumeUSD
+    orderDirection: desc
+    where: {id_in: $topTokens}
+  ) {
+    token {
+      id
+      name
+      symbol
+      totalLiquidity
+      derivedUSD
     }
+    dailyVolumeUSD
+    totalLiquidityUSD
   }
-`;
+}
+    `;
 
 /**
  * __useGetTopTokensBscQuery__
@@ -755,43 +680,30 @@ export const GetTopTokensBscDocument = gql`
  *   },
  * });
  */
-export function useGetTopTokensBscQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>(
-    GetTopTokensBscDocument,
-    options
-  );
-}
-export function useGetTopTokensBscLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>(
-    GetTopTokensBscDocument,
-    options
-  );
-}
+export function useGetTopTokensBscQuery(baseOptions?: Apollo.QueryHookOptions<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>(GetTopTokensBscDocument, options);
+      }
+export function useGetTopTokensBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>(GetTopTokensBscDocument, options);
+        }
 export type GetTopTokensBscQueryHookResult = ReturnType<typeof useGetTopTokensBscQuery>;
 export type GetTopTokensBscLazyQueryHookResult = ReturnType<typeof useGetTopTokensBscLazyQuery>;
-export type GetTopTokensBscQueryResult = Apollo.QueryResult<
-  GetTopTokensBscQuery,
-  GetTopTokensBscQueryVariables
->;
+export type GetTopTokensBscQueryResult = Apollo.QueryResult<GetTopTokensBscQuery, GetTopTokensBscQueryVariables>;
 export const GetPancakeDayDatasBscDocument = gql`
-  query GetPancakeDayDatasBSC {
-    pancakeDayDatas(first: 90, orderBy: date, orderDirection: desc) {
-      dailyVolumeUSD
-      date
-      totalTransactions
-      id
-      dailyVolumeBNB
-      dailyVolumeUntracked
-      totalLiquidityUSD
-    }
+    query GetPancakeDayDatasBSC {
+  pancakeDayDatas(first: 90, orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD
+    date
+    totalTransactions
+    id
+    dailyVolumeBNB
+    dailyVolumeUntracked
+    totalLiquidityUSD
   }
-`;
+}
+    `;
 
 /**
  * __useGetPancakeDayDatasBscQuery__
@@ -808,57 +720,36 @@ export const GetPancakeDayDatasBscDocument = gql`
  *   },
  * });
  */
-export function useGetPancakeDayDatasBscQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetPancakeDayDatasBscQuery,
-    GetPancakeDayDatasBscQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>(
-    GetPancakeDayDatasBscDocument,
-    options
-  );
-}
-export function useGetPancakeDayDatasBscLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetPancakeDayDatasBscQuery,
-    GetPancakeDayDatasBscQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>(
-    GetPancakeDayDatasBscDocument,
-    options
-  );
-}
+export function useGetPancakeDayDatasBscQuery(baseOptions?: Apollo.QueryHookOptions<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>(GetPancakeDayDatasBscDocument, options);
+      }
+export function useGetPancakeDayDatasBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>(GetPancakeDayDatasBscDocument, options);
+        }
 export type GetPancakeDayDatasBscQueryHookResult = ReturnType<typeof useGetPancakeDayDatasBscQuery>;
-export type GetPancakeDayDatasBscLazyQueryHookResult = ReturnType<
-  typeof useGetPancakeDayDatasBscLazyQuery
->;
-export type GetPancakeDayDatasBscQueryResult = Apollo.QueryResult<
-  GetPancakeDayDatasBscQuery,
-  GetPancakeDayDatasBscQueryVariables
->;
+export type GetPancakeDayDatasBscLazyQueryHookResult = ReturnType<typeof useGetPancakeDayDatasBscLazyQuery>;
+export type GetPancakeDayDatasBscQueryResult = Apollo.QueryResult<GetPancakeDayDatasBscQuery, GetPancakeDayDatasBscQueryVariables>;
 export const GetCombinedDetailsBscDocument = gql`
-  query GetCombinedDetailsBSC {
-    pancakeFactory {
-      id
-      totalPairs
-      totalVolumeUSD
-      totalLiquidityUSD
-    }
-    pancakeDayDatas(first: 1, orderBy: date, orderDirection: desc) {
-      dailyVolumeUSD
-      date
-      totalTransactions
-      id
-      dailyVolumeBNB
-      dailyVolumeUntracked
-      totalLiquidityUSD
-    }
+    query GetCombinedDetailsBSC {
+  pancakeFactory {
+    id
+    totalPairs
+    totalVolumeUSD
+    totalLiquidityUSD
   }
-`;
+  pancakeDayDatas(first: 1, orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD
+    date
+    totalTransactions
+    id
+    dailyVolumeBNB
+    dailyVolumeUntracked
+    totalLiquidityUSD
+  }
+}
+    `;
 
 /**
  * __useGetCombinedDetailsBscQuery__
@@ -875,65 +766,44 @@ export const GetCombinedDetailsBscDocument = gql`
  *   },
  * });
  */
-export function useGetCombinedDetailsBscQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetCombinedDetailsBscQuery,
-    GetCombinedDetailsBscQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>(
-    GetCombinedDetailsBscDocument,
-    options
-  );
-}
-export function useGetCombinedDetailsBscLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetCombinedDetailsBscQuery,
-    GetCombinedDetailsBscQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>(
-    GetCombinedDetailsBscDocument,
-    options
-  );
-}
+export function useGetCombinedDetailsBscQuery(baseOptions?: Apollo.QueryHookOptions<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>(GetCombinedDetailsBscDocument, options);
+      }
+export function useGetCombinedDetailsBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>(GetCombinedDetailsBscDocument, options);
+        }
 export type GetCombinedDetailsBscQueryHookResult = ReturnType<typeof useGetCombinedDetailsBscQuery>;
-export type GetCombinedDetailsBscLazyQueryHookResult = ReturnType<
-  typeof useGetCombinedDetailsBscLazyQuery
->;
-export type GetCombinedDetailsBscQueryResult = Apollo.QueryResult<
-  GetCombinedDetailsBscQuery,
-  GetCombinedDetailsBscQueryVariables
->;
+export type GetCombinedDetailsBscLazyQueryHookResult = ReturnType<typeof useGetCombinedDetailsBscLazyQuery>;
+export type GetCombinedDetailsBscQueryResult = Apollo.QueryResult<GetCombinedDetailsBscQuery, GetCombinedDetailsBscQueryVariables>;
 export const GetTopPairsBscDocument = gql`
-  query GetTopPairsBSC($first: Int!, $date_gt: Int!, $skip: Int) {
-    pairDayDatas(
-      first: $first
-      where: { dailyTxns_gt: 1000, date_gt: $date_gt }
-      orderDirection: desc
-      skip: $skip
-      orderBy: dailyVolumeUSD
-    ) {
+    query GetTopPairsBSC($first: Int!, $date_gt: Int!, $skip: Int) {
+  pairDayDatas(
+    first: $first
+    where: {dailyTxns_gt: 1000, date_gt: $date_gt}
+    orderDirection: desc
+    skip: $skip
+    orderBy: dailyVolumeUSD
+  ) {
+    id
+    dailyVolumeUSD
+    token0 {
+      name
       id
-      dailyVolumeUSD
-      token0 {
-        name
-        id
-        symbol
-      }
-      token1 {
-        name
-        id
-        symbol
-      }
-      reserveUSD
-      dailyVolumeUSD
-      dailyTxns
+      symbol
     }
+    token1 {
+      name
+      id
+      symbol
+    }
+    reserveUSD
+    dailyVolumeUSD
+    dailyTxns
   }
-`;
+}
+    `;
 
 /**
  * __useGetTopPairsBscQuery__
@@ -953,27 +823,14 @@ export const GetTopPairsBscDocument = gql`
  *   },
  * });
  */
-export function useGetTopPairsBscQuery(
-  baseOptions: Apollo.QueryHookOptions<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>(
-    GetTopPairsBscDocument,
-    options
-  );
-}
-export function useGetTopPairsBscLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>(
-    GetTopPairsBscDocument,
-    options
-  );
-}
+export function useGetTopPairsBscQuery(baseOptions: Apollo.QueryHookOptions<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>(GetTopPairsBscDocument, options);
+      }
+export function useGetTopPairsBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>(GetTopPairsBscDocument, options);
+        }
 export type GetTopPairsBscQueryHookResult = ReturnType<typeof useGetTopPairsBscQuery>;
 export type GetTopPairsBscLazyQueryHookResult = ReturnType<typeof useGetTopPairsBscLazyQuery>;
-export type GetTopPairsBscQueryResult = Apollo.QueryResult<
-  GetTopPairsBscQuery,
-  GetTopPairsBscQueryVariables
->;
+export type GetTopPairsBscQueryResult = Apollo.QueryResult<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>;

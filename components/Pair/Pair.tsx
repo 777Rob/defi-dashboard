@@ -5,9 +5,11 @@ import { Chains } from 'utils/chain';
 import StatisticCard from 'components/UI/StatisticCard';
 import TokenStatisticCard from 'components/UI/TokenStatisticCard';
 import { useRouter } from 'next/router';
+import { useChain } from 'hooks/useChain';
 const Pair = ({ pairAddress }: { pairAddress: string }) => {
   const { data, loading, error } = usePairDayDatas(pairAddress);
   const router = useRouter();
+  const { chain, setChain } = useChain();
 
   if (loading) {
     return (
@@ -38,9 +40,21 @@ const Pair = ({ pairAddress }: { pairAddress: string }) => {
         >
           Error getting data
         </Text>
-        <Button size="xl" onClick={() => router.push('/')}>
-          Return To Dashboard
-        </Button>
+        <Button.Group orientation="vertical" sx={{ gap: 10 }}>
+          <Button size="xl" onClick={() => router.push('/')}>
+            Return To Dashboard
+          </Button>
+          <Button
+            size="xl"
+            onClick={() => {
+              const newChain = chain == Chains.ETH ? Chains.BSC : Chains.ETH;
+
+              setChain(newChain);
+            }}
+          >
+            Try Different Chain
+          </Button>
+        </Button.Group>
       </Card>
     );
   }

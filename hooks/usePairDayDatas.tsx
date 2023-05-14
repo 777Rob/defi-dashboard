@@ -4,6 +4,8 @@ import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
 import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { getLogoUri } from '../utils/getLogoUri';
 import { useChain } from './useChain';
+import { useGetPairDayDatasEthLazyQuery } from 'generated/eth-query-types';
+import { ethClient } from 'apollo';
 
 export type RawPairDayData = Pick<
   PairDayData,
@@ -62,8 +64,11 @@ const usePairDayDatas = (
   error: any | undefined;
 } => {
   const { chain } = useChain();
+  const [
+    getPancakeDayDatasBsc,
 
-  const [getPancakeDayDatasBsc, { loading, data, error, called }] = useGetPairDayDatasBscLazyQuery({
+    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
+  ] = useGetPairDayDatasBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
       pairAddress: pairAddress,
@@ -76,11 +81,44 @@ const usePairDayDatas = (
     },
   });
 
+  const [
+    getPancakeDayDatasEth,
+    { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
+  ] = useGetPairDayDatasEthLazyQuery({
+    fetchPolicy: 'cache-first',
+    variables: {
+      pairAddress: pairAddress,
+    },
+    onCompleted: (data) => {
+      if (data) {
+        const preFormattedData = data.poolDayDatas.map((entry) => {
+          return {
+            ...entry,
+            reserve0: entry.pool.reserve0,
+            reserve1: entry.pool.reserve1,
+            token0: entry.pool.token0,
+            token1: entry.pool.token1,
+          };
+        });
+        const formattedData = formatData(preFormattedData as unknown as RawPairDayData[]);
+        console.log(preFormattedData);
+        setFormattedData(formattedData as FormattedPairDayData[]);
+      }
+    },
+    client: ethClient,
+  });
+
+  console.log(dataETH, loadingETH, calledETH, errorETH);
+  let { loading, data, error, called } =
+    chain == Chains.BSC
+      ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
+      : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
+
   useEffect(() => {
     if (chain == Chains.BSC) {
       getPancakeDayDatasBsc();
     } else {
-      // getPancakeDayDatasEth();
+      getPancakeDayDatasEth();
     }
   }, [chain, pairAddress]);
 
@@ -88,7 +126,9 @@ const usePairDayDatas = (
 
   const formatData = useCallback(
     (rawData: RawPairDayData[]) => {
+      console.log('formatting data');
       const formattedData = rawData.map((item, index: number) => {
+        console.log(item);
         return {
           ...item,
           dailyVolumeUSD: item.dailyVolumeUSD.split('.')[0],
@@ -106,10 +146,11 @@ const usePairDayDatas = (
           },
         };
       });
-
+      console.log('formattedData');
+      console.log(formattedData);
       return formattedData;
     },
-    [data]
+    [data, chain]
   );
 
   if (!loading && called) {

@@ -6,7 +6,7 @@ import StatisticCard from 'components/UI/StatisticCard';
 import TokenStatisticCard from 'components/UI/TokenStatisticCard';
 import { useRouter } from 'next/router';
 const Pair = ({ pairAddress }: { pairAddress: string }) => {
-  const { data, loading, error } = usePairDayDatas(Chains.BSC, pairAddress);
+  const { data, loading, error } = usePairDayDatas(pairAddress);
   const router = useRouter();
 
   if (loading) {
@@ -17,7 +17,7 @@ const Pair = ({ pairAddress }: { pairAddress: string }) => {
     );
   }
 
-  if (error || !data) {
+  if (error !== undefined || data == undefined || data.length == 0) {
     return (
       <Card
         w="full"
@@ -38,14 +38,16 @@ const Pair = ({ pairAddress }: { pairAddress: string }) => {
         >
           Error getting data
         </Text>
-        <Button size="xl" onClick={() => Router.push}>
+        <Button size="xl" onClick={() => router.push('/')}>
           Return To Dashboard
         </Button>
       </Card>
     );
   }
-  const token0 = data[0].token0;
-  const token1 = data[0].token1;
+
+  const token0 = data[0]?.token0;
+  const token1 = data[0]?.token1;
+
   return (
     <Grid>
       <Grid.Col span={4}>

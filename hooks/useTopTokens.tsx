@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { topTokens } from 'data/topTokens';
 import { getAddress } from 'ethers';
 import { useGetTopTokensBscLazyQuery } from 'generated/bsc-query-types';
-import { customRound } from 'utils';
+import { customRound } from 'utils/customRound';
 import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
 import { getLogoUri } from 'utils/getLogoUri';

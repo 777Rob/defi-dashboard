@@ -1,7 +1,7 @@
 import { Avatar, Box, Grid, Group, Select, Text } from '@mantine/core';
 import usePancakeDetails from 'hooks/usePancakeDetails';
 import React, { forwardRef, useEffect, useState } from 'react';
-import { displayNumber } from '../../utils/index';
+import { displayNumber } from 'utils/displayNumber';
 import StatisticCard from '../UI/StatisticCard';
 import { useChain } from 'hooks/useChain';
 import { Chains } from 'utils/chain';

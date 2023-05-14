@@ -14,7 +14,7 @@ import {
   YAxis,
 } from 'recharts';
 import { CustomTooltip } from './CustomTooltip';
-import { generateTicks } from 'utils';
+import { generateTicks } from 'utils/generateTicks';
 import { BinanceIcon } from '../../icons';
 
 export const PairChart = () => {

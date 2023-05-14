@@ -2,7 +2,7 @@ import { Text, Avatar, Grid, Group } from '@mantine/core';
 import React from 'react';
 import { TopToken } from 'hooks/useTopTokens';
 import { IconCircle } from '@tabler/icons';
-import { displayNumber } from 'utils';
+import { displayNumber } from 'utils/displayNumber';
 import { PairDayData } from 'generated/bsc-query-types';
 import { getLogoUri } from 'utils/getLogoUri';
 import { useRouter } from 'next/router';
@@ -53,7 +53,7 @@ export const TRow = ({
       </Grid.Col>
       <Grid.Col span={2}>
         <Text size="md" weight={650}>
-          ${displayNumber(dailyTxns)}
+          {displayNumber(dailyTxns)}
         </Text>
       </Grid.Col>
       <Grid.Col span={2}>

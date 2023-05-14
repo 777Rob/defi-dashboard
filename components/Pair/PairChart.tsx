@@ -1,6 +1,5 @@
 import { Avatar, Card, Group, Paper, SegmentedControl, Skeleton, Text } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import usePancakeDayDataBSC from 'hooks/usePairDayDatas';
 import {
   Bar,
   BarChart,
@@ -14,14 +13,22 @@ import {
   YAxis,
 } from 'recharts';
 import { CustomTooltip } from './Chart/CustomTooltip';
-import { generateTicks } from 'utils';
+import { generateTicks } from 'utils/generateTicks';
 import { BinanceIcon } from 'components/icons';
-import usePairDayDatas from 'hooks/usePairDayDatas';
+import usePairDayDatas, { FormattedPairDayData } from 'hooks/usePairDayDatas';
 import { Chains } from 'utils/chain';
 import { IconCircle } from '@tabler/icons';
 import { getLogoUri } from 'utils/getLogoUri';
 
-const PairChart = ({ data, loading, error }: any) => {
+const PairChart = ({
+  data,
+  loading,
+  error,
+}: {
+  data: FormattedPairDayData[];
+  loading: boolean;
+  error: any;
+}) => {
   const [timePeriod, setTimePeriod] = useState<any>(7);
 
   const ticks = useMemo(() => {

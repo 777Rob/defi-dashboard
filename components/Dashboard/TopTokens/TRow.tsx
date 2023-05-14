@@ -2,7 +2,7 @@ import { Text, Avatar, Grid, Group } from '@mantine/core';
 import React from 'react';
 import { TopToken } from 'hooks/useTopTokens';
 import { IconCircle } from '@tabler/icons';
-import { displayNumber } from 'utils';
+import { displayNumber } from 'utils/displayNumber';
 
 export const TRow = ({
   name,

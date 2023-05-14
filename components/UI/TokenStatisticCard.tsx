@@ -3,7 +3,7 @@ import React from 'react';
 import { IconCircle, IconInfoSquare, IconSearch } from '@tabler/icons';
 import { FormattedToken } from 'hooks/usePairDayDatas';
 import { getLogoUri } from 'utils/getLogoUri';
-import { displayNumber } from 'utils';
+import { displayNumber } from 'utils/displayNumber';
 
 const TokenStatisticCard = ({
   token,

@@ -8,7 +8,7 @@ import {
   useGetTopPairsBscLazyQuery,
 } from 'generated/bsc-query-types';
 import { useCallback, useEffect, useState } from 'react';
-import { customRound } from 'utils';
+import { customRound } from 'utils/customRound';
 import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
 

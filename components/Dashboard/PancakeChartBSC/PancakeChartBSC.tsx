@@ -1,10 +1,8 @@
-import { Card, Group, Paper, SegmentedControl, Skeleton, Text } from '@mantine/core';
+import { Card, Group, SegmentedControl, Skeleton, Text } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import usePancakeDayDataBSC from '../../../hooks/usePancakeDayData';
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   Legend,
   Line,
   LineChart,
@@ -13,29 +11,49 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { generateTicks } from 'utils/generateTicks';
+import usePancakeDayData from '../../../hooks/usePancakeDayData';
 import { CustomTooltip } from './CustomTooltip';
-import { generateTicks } from 'utils';
-import { BinanceIcon } from '../../icons';
+import { curveBasis } from 'd3-shape';
+
+const calculateTrendlineData = (data, key) => {
+  if (!data) return [];
+
+  const n = data.length;
+  const sumX = data.reduce((sum, item, index) => sum + index, 0);
+  const sumY = data.reduce((sum, item) => sum + item[key], 0);
+  const sumXY = data.reduce((sum, item, index) => sum + index * item[key], 0);
+  const sumXX = data.reduce((sum, item, index) => sum + index * index, 0);
+
+  const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+  const intercept = (sumY - slope * sumX) / n;
+
+  return data.map((item, index) => ({
+    ...item,
+    trendline: slope * index + intercept,
+  }));
+};
 
 export const PancakeChartBSC = () => {
-  const { loading, data } = usePancakeDayDataBSC();
+  const { loading, data } = usePancakeDayData();
   const [timePeriod, setTimePeriod] = useState<any>(7);
 
   const ticks = useMemo(() => {
     return generateTicks(data?.slice(0, timePeriod));
   }, [data, timePeriod]);
 
-  const dataForPeriod = useMemo(() => {
-    if (!data) return [];
-
-    return data?.slice(0, timePeriod);
-  }, [ticks]);
-
   const timePeriods = [
     { label: '7 Days', value: '7' },
     { label: '30 Days', value: '30' },
     { label: '90 Days', value: '90' },
   ];
+
+  const dataForPeriod = useMemo(() => {
+    if (!data) return [];
+
+    const dataWithTrendline = calculateTrendlineData(data.slice(0, timePeriod), 'dailyVolumeUSD');
+    return dataWithTrendline;
+  }, [data, timePeriod]);
 
   return (
     <Card>
@@ -65,7 +83,6 @@ export const PancakeChartBSC = () => {
             }}
             data={dataForPeriod}
           >
-            {/* <CartesianGrid /> */}
             <XAxis dataKey="date" />
             <YAxis
               yAxisId="left"
@@ -73,6 +90,7 @@ export const PancakeChartBSC = () => {
               tickFormatter={(tick) => `${(tick / 1000000).toFixed(0)}M`}
               ticks={ticks}
             />
+
             <YAxis yAxisId="right" orientation="right" />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
@@ -84,25 +102,6 @@ export const PancakeChartBSC = () => {
               radius={[5, 5, 0, 0]}
               unit="k"
             />
-            <Line type="monotone" unit="k" dataKey="dailyVolumeUSD" stroke="#ff7300" />
-
-            <LineChart>
-              <Line
-                yAxisId="right"
-                type="monotone"
-                dataKey="totalTransactions"
-                stroke="#ff7300"
-                activeDot={{ r: 5 }}
-              />
-              <Line
-                yAxisId="right"
-                type="monotone"
-                label="Daily Volume USD"
-                dataKey="Daily Volume USD"
-                stroke="#387908"
-                activeDot={{ r: 5 }}
-              />
-            </LineChart>
           </BarChart>
         </ResponsiveContainer>
       </Skeleton>

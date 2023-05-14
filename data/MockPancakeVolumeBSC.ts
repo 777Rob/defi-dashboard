@@ -7,7 +7,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '919113403',
     id: '19467',
     dailyVolumeBNB: '551495.4418235655616375231314393997',
-    dailyVolumeUntracked: '365019966.6692288077140977515617199',
     totalLiquidityUSD: '1919608647.857095954807954674575581',
   },
   {
@@ -16,7 +15,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '918543932',
     id: '19466',
     dailyVolumeBNB: '633090.3540720991831551483737816899',
-    dailyVolumeUntracked: '1117052544.377387315440474582444375',
     totalLiquidityUSD: '1933989502.803344639278467405313815',
   },
   {
@@ -25,7 +23,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '917863155',
     id: '19465',
     dailyVolumeBNB: '592896.2849652440961057157919590354',
-    dailyVolumeUntracked: '209448273.409144706632141982921693',
     totalLiquidityUSD: '2027677471.170208813038596219101652',
   },
   {
@@ -34,7 +31,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '917175434',
     id: '19464',
     dailyVolumeBNB: '739784.9212627016410171621929639681',
-    dailyVolumeUntracked: '438198547.1918914505081210297449897',
     totalLiquidityUSD: '2020790319.433093096921442148473661',
   },
   {
@@ -43,7 +39,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '916553220',
     id: '19463',
     dailyVolumeBNB: '723161.0761739873076310343733300245',
-    dailyVolumeUntracked: '339813311.3299374164840681416815655',
     totalLiquidityUSD: '2063555548.633712390273721542840935',
   },
   {
@@ -52,7 +47,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '915947603',
     id: '19462',
     dailyVolumeBNB: '552895.4598123400063763763620447156',
-    dailyVolumeUntracked: '266466044.5882492383749750046385333',
     totalLiquidityUSD: '2025820619.071716326597128291125954',
   },
   {
@@ -61,7 +55,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '915370197',
     id: '19461',
     dailyVolumeBNB: '523344.5939902100244565650840720022',
-    dailyVolumeUntracked: '177214522.7067531254668885508602387',
     totalLiquidityUSD: '2010917006.999997052321731372483711',
   },
   {
@@ -70,7 +63,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '914754219',
     id: '19460',
     dailyVolumeBNB: '528365.9545229926866942010403871921',
-    dailyVolumeUntracked: '556584502.1477155407817152330736726',
     totalLiquidityUSD: '2013457224.484697890828456717810362',
   },
   {
@@ -79,7 +71,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '914165124',
     id: '19459',
     dailyVolumeBNB: '470948.743104087391289593194663867',
-    dailyVolumeUntracked: '199406051.6998798806345437120716799',
     totalLiquidityUSD: '2009541322.092255167398985185024238',
   },
   {
@@ -88,7 +79,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '913600170',
     id: '19458',
     dailyVolumeBNB: '487401.2845123405629639953637209162',
-    dailyVolumeUntracked: '224982753.471601220345345240671356',
     totalLiquidityUSD: '2027151985.472966247524401008675843',
   },
   {
@@ -97,7 +87,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '913020513',
     id: '19457',
     dailyVolumeBNB: '455437.6576821837470468790423954085',
-    dailyVolumeUntracked: '146137106.1603780248602795272652868',
     totalLiquidityUSD: '2050248357.315478476863934699691537',
   },
   {
@@ -106,7 +95,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '912452488',
     id: '19456',
     dailyVolumeBNB: '403203.1794712585530479436876754717',
-    dailyVolumeUntracked: '272524205.6059081732142438908719375',
     totalLiquidityUSD: '2037731470.179730217554551660276465',
   },
   {
@@ -115,7 +103,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '911957279',
     id: '19455',
     dailyVolumeBNB: '402268.1381702317442636889885963945',
-    dailyVolumeUntracked: '206034773.9938271071203481153462575',
     totalLiquidityUSD: '2063489631.635070203034034011364421',
   },
   {
@@ -124,7 +111,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '911461413',
     id: '19454',
     dailyVolumeBNB: '374368.5038101908346150035472738768',
-    dailyVolumeUntracked: '10246982350.65320391001720932072779',
     totalLiquidityUSD: '2101740305.209978430860266757832801',
   },
   {
@@ -133,7 +119,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '910955628',
     id: '19453',
     dailyVolumeBNB: '462485.5559660695566772298267572207',
-    dailyVolumeUntracked: '44338001761.15419939489861512299847',
     totalLiquidityUSD: '2129493623.74992811753959517938084',
   },
   {
@@ -142,7 +127,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '910402395',
     id: '19452',
     dailyVolumeBNB: '501689.6045004127105489299412845079',
-    dailyVolumeUntracked: '440378050.068071239024639981066227',
     totalLiquidityUSD: '2150253288.366556014231411427939709',
   },
   {
@@ -151,7 +135,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '909839799',
     id: '19451',
     dailyVolumeBNB: '453005.3145417984543534252691336649',
-    dailyVolumeUntracked: '824874862.8492545972255771338780138',
     totalLiquidityUSD: '2172111819.055394813244844713627811',
   },
   {
@@ -160,7 +143,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '909292749',
     id: '19450',
     dailyVolumeBNB: '605955.9424467253857678350052722336',
-    dailyVolumeUntracked: '1644645249.543523509616039364282179',
     totalLiquidityUSD: '2193580641.190567336978001991847056',
   },
   {
@@ -169,7 +151,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '908652707',
     id: '19449',
     dailyVolumeBNB: '499989.8496876812700888355352017534',
-    dailyVolumeUntracked: '742304836.7578600227969457439058902',
     totalLiquidityUSD: '2277559411.603024810635864415682511',
   },
   {
@@ -178,7 +159,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '908089087',
     id: '19448',
     dailyVolumeBNB: '479685.6417293738789333364393308462',
-    dailyVolumeUntracked: '3660031946.257263173561510250531742',
     totalLiquidityUSD: '2289278389.91991424151318869158211',
   },
   {
@@ -187,7 +167,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '907525671',
     id: '19447',
     dailyVolumeBNB: '546596.3793575497972178485151151939',
-    dailyVolumeUntracked: '448704400.7186641231934692868760848',
     totalLiquidityUSD: '2297241602.308287669841949823807327',
   },
   {
@@ -196,7 +175,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '906923434',
     id: '19446',
     dailyVolumeBNB: '580925.871895329935747295205562173',
-    dailyVolumeUntracked: '912643770.6904371304213683920014517',
     totalLiquidityUSD: '2284744631.330706172938252733764115',
   },
   {
@@ -205,7 +183,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '906339124',
     id: '19445',
     dailyVolumeBNB: '551902.3228394415469061529888467464',
-    dailyVolumeUntracked: '14460462893.3170718720097558129711',
     totalLiquidityUSD: '2273514091.108641379974158777697908',
   },
   {
@@ -214,7 +191,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '905741901',
     id: '19444',
     dailyVolumeBNB: '555397.995560086289312995981295983',
-    dailyVolumeUntracked: '2281364734.867629715982580831472803',
     totalLiquidityUSD: '2258953655.911948106159228762983439',
   },
   {
@@ -223,7 +199,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '905127314',
     id: '19443',
     dailyVolumeBNB: '591667.9468762442925397037612378083',
-    dailyVolumeUntracked: '563584895.4284871904285500991538338',
     totalLiquidityUSD: '2248955461.894522827969800300649721',
   },
   {
@@ -232,7 +207,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '904524397',
     id: '19442',
     dailyVolumeBNB: '416465.6136617226321132380902018942',
-    dailyVolumeUntracked: '139795544.8575251883359841827142394',
     totalLiquidityUSD: '2318780845.070925681429674057352933',
   },
   {
@@ -241,7 +215,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '904027207',
     id: '19441',
     dailyVolumeBNB: '447923.9978076499246097561355136622',
-    dailyVolumeUntracked: '284716256.5669641003312720489183564',
     totalLiquidityUSD: '2275504602.621238156880476626722308',
   },
   {
@@ -250,7 +223,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '903522610',
     id: '19440',
     dailyVolumeBNB: '517793.6356525910024912384340323581',
-    dailyVolumeUntracked: '2539458598.780435540700322649916115',
     totalLiquidityUSD: '2266240467.0516368865472141516161',
   },
   {
@@ -259,7 +231,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '902977267',
     id: '19439',
     dailyVolumeBNB: '529183.6959935175714784216030220843',
-    dailyVolumeUntracked: '316343199.9221201983040705908627971',
     totalLiquidityUSD: '2293270474.280120425575958662545059',
   },
   {
@@ -268,7 +239,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '902359310',
     id: '19438',
     dailyVolumeBNB: '758960.6417038890075318629678600553',
-    dailyVolumeUntracked: '258922324.7115530827622771728121483',
     totalLiquidityUSD: '2221906209.605541379427267851220632',
   },
   {
@@ -277,7 +247,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '901622237',
     id: '19437',
     dailyVolumeBNB: '650783.5611770418099470426405064231',
-    dailyVolumeUntracked: '380321141316.3237697661506378900752',
     totalLiquidityUSD: '2131392518.967385866545712132207046',
   },
   {
@@ -286,7 +255,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '900963691',
     id: '19436',
     dailyVolumeBNB: '670099.7274584198742621491877274908',
-    dailyVolumeUntracked: '366022528.8981268271610788167414048',
     totalLiquidityUSD: '2117365556.879329384535823604994514',
   },
   {
@@ -295,7 +263,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '900295096',
     id: '19435',
     dailyVolumeBNB: '544835.3613724713785888595445376218',
-    dailyVolumeUntracked: '638503227.7976606337036404440008304',
     totalLiquidityUSD: '2145619975.686669870533007323075901',
   },
   {
@@ -304,7 +271,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '899711512',
     id: '19434',
     dailyVolumeBNB: '612914.5413476879024622284934474363',
-    dailyVolumeUntracked: '556311155.2825019352410959202739858',
     totalLiquidityUSD: '2119626007.916921341767288233538939',
   },
   {
@@ -313,7 +279,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '899096195',
     id: '19433',
     dailyVolumeBNB: '733726.6047295817293835332697353466',
-    dailyVolumeUntracked: '726767202.2448046581349025913875352',
     totalLiquidityUSD: '2167091327.4319635766720438124835',
   },
   {
@@ -322,7 +287,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '898424311',
     id: '19432',
     dailyVolumeBNB: '827272.1310773096155993089777178205',
-    dailyVolumeUntracked: '312988068.8738418425938346415125754',
     totalLiquidityUSD: '2218840519.296853102580794350170639',
   },
   {
@@ -331,7 +295,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '897713725',
     id: '19431',
     dailyVolumeBNB: '767926.3393972851314321442066567207',
-    dailyVolumeUntracked: '1811553132.787126754151325407250876',
     totalLiquidityUSD: '2343721569.356453022195483767963779',
   },
   {
@@ -340,7 +303,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '896961438',
     id: '19430',
     dailyVolumeBNB: '802904.0677927911303044169981438215',
-    dailyVolumeUntracked: '401896651.2381751253684338504971797',
     totalLiquidityUSD: '2359640761.579605062027606506515495',
   },
   {
@@ -349,7 +311,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '896265145',
     id: '19429',
     dailyVolumeBNB: '879982.3052695872981690212487087611',
-    dailyVolumeUntracked: '1133361628.021844939904177149998257',
     totalLiquidityUSD: '2347717106.136193919549193575076062',
   },
   {
@@ -358,7 +319,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '895541774',
     id: '19428',
     dailyVolumeBNB: '621420.513946586619936803774004194',
-    dailyVolumeUntracked: '328681868.0320271937336008514952858',
     totalLiquidityUSD: '2236625639.342697282027386160569786',
   },
   {
@@ -367,7 +327,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '894968239',
     id: '19427',
     dailyVolumeBNB: '1161837.061387530268278684370043517',
-    dailyVolumeUntracked: '2108548608.603629866082213601181764',
     totalLiquidityUSD: '2170654404.725594893433258268011146',
   },
   {
@@ -376,7 +335,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '894307049',
     id: '19426',
     dailyVolumeBNB: '877720.1671166909772011446125281838',
-    dailyVolumeUntracked: '818791489.9054539735367657008931985',
     totalLiquidityUSD: '2220539613.208925225863650677007765',
   },
   {
@@ -385,7 +343,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '893568269',
     id: '19425',
     dailyVolumeBNB: '662034.4434560091772135546772138685',
-    dailyVolumeUntracked: '14820982821974.2936519300433063268',
     totalLiquidityUSD: '2216699949.557010935428072698636294',
   },
   {
@@ -394,7 +351,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '892872918',
     id: '19424',
     dailyVolumeBNB: '620005.7620818363284123697473687174',
-    dailyVolumeUntracked: '300662475.2204551184859291362282149',
     totalLiquidityUSD: '2279048994.459460584208854311485652',
   },
   {
@@ -403,7 +359,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '892223484',
     id: '19423',
     dailyVolumeBNB: '627393.6128725541417744280965586956',
-    dailyVolumeUntracked: '293377926.6763308942144207169790244',
     totalLiquidityUSD: '2293548002.146600614062279526525778',
   },
   {
@@ -412,7 +367,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '891534703',
     id: '19422',
     dailyVolumeBNB: '570072.5943194729267311481740190814',
-    dailyVolumeUntracked: '737171455.2087868170208448641154572',
     totalLiquidityUSD: '2280918312.331796360315246312176213',
   },
   {
@@ -421,7 +375,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '890890502',
     id: '19421',
     dailyVolumeBNB: '460846.8976007045939307322013892724',
-    dailyVolumeUntracked: '386119449.4271653173973675181006347',
     totalLiquidityUSD: '2281626173.479055388109348275064751',
   },
   {
@@ -430,7 +383,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '890307980',
     id: '19420',
     dailyVolumeBNB: '514511.9257675566911152488944221714',
-    dailyVolumeUntracked: '244064815.521962465785151367081892',
     totalLiquidityUSD: '2280347189.9351520695730000048438',
   },
   {
@@ -439,7 +391,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '889660472',
     id: '19419',
     dailyVolumeBNB: '689959.9183927436176448427919322762',
-    dailyVolumeUntracked: '1980952213.995973916408677502944589',
     totalLiquidityUSD: '2279940797.215724861591459267072185',
   },
   {
@@ -448,7 +399,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '888878180',
     id: '19418',
     dailyVolumeBNB: '665774.5941415684636701765491487646',
-    dailyVolumeUntracked: '1772448222.446932799504641909251267',
     totalLiquidityUSD: '2331041985.745115206258768817384593',
   },
   {
@@ -457,7 +407,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '888129182',
     id: '19417',
     dailyVolumeBNB: '715856.4194383239151300028982091603',
-    dailyVolumeUntracked: '995923136.1167003372197129972342218',
     totalLiquidityUSD: '2338630863.446673181629568341463134',
   },
   {
@@ -466,7 +415,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '887306038',
     id: '19416',
     dailyVolumeBNB: '854303.1910764653499849689002952891',
-    dailyVolumeUntracked: '15789509971.54587751119393161230769',
     totalLiquidityUSD: '2342736097.195430964504418894751416',
   },
   {
@@ -475,7 +423,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '886435735',
     id: '19415',
     dailyVolumeBNB: '695915.0099158085076354930431738126',
-    dailyVolumeUntracked: '338455823.3649812932872819764725311',
     totalLiquidityUSD: '2342519534.042949185571447915234905',
   },
   {
@@ -484,7 +431,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '885653823',
     id: '19414',
     dailyVolumeBNB: '652502.0321867342534376745483745382',
-    dailyVolumeUntracked: '604661428.2361863431950636427744043',
     totalLiquidityUSD: '2369588857.111233144491772900462648',
   },
   {
@@ -493,7 +439,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '884943153',
     id: '19413',
     dailyVolumeBNB: '583602.3361400078559402544128045502',
-    dailyVolumeUntracked: '591683813.2136810569320685006963175',
     totalLiquidityUSD: '2327621139.307992075387308558076028',
   },
   {
@@ -502,7 +447,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '884251333',
     id: '19412',
     dailyVolumeBNB: '686719.4055476612583480147075667037',
-    dailyVolumeUntracked: '272349193.5789101536504838881321754',
     totalLiquidityUSD: '2324223587.624010791998939723047143',
   },
   {
@@ -511,7 +455,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '883516970',
     id: '19411',
     dailyVolumeBNB: '589390.3170312246267798967402590602',
-    dailyVolumeUntracked: '478139199.7756326176485308115526013',
     totalLiquidityUSD: '2362073188.215980435417426910926605',
   },
   {
@@ -520,7 +463,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '882783874',
     id: '19410',
     dailyVolumeBNB: '799526.4064824487515010659879274654',
-    dailyVolumeUntracked: '5618210689403145791133747142679722',
     totalLiquidityUSD: '2381688305.45209385908404871904772',
   },
   {
@@ -529,7 +471,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '881995699',
     id: '19409',
     dailyVolumeBNB: '744976.9596683460184243279319077879',
-    dailyVolumeUntracked: '387569042.6540802575602625393831386',
     totalLiquidityUSD: '2367232625.27669313470505028949789',
   },
   {
@@ -538,7 +479,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '881206131',
     id: '19408',
     dailyVolumeBNB: '808764.5193533380049030851682304035',
-    dailyVolumeUntracked: '393474977.0541281389867392800199675',
     totalLiquidityUSD: '2394636789.483957040402027818607364',
   },
   {
@@ -547,7 +487,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '880383225',
     id: '19407',
     dailyVolumeBNB: '656009.4991990541372659002289378137',
-    dailyVolumeUntracked: '649423759.1441498595693598218766896',
     totalLiquidityUSD: '2376645364.969522651384404424063625',
   },
   {
@@ -556,7 +495,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '879626580',
     id: '19406',
     dailyVolumeBNB: '670435.1108900167227030365858260403',
-    dailyVolumeUntracked: '226782611.9050723923042419652290718',
     totalLiquidityUSD: '2410399276.383400845883127368535216',
   },
   {
@@ -565,7 +503,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '878880297',
     id: '19405',
     dailyVolumeBNB: '771327.3795600259258997358365501287',
-    dailyVolumeUntracked: '380542857.8356122813773758461595289',
     totalLiquidityUSD: '2395461831.731476857703089026789152',
   },
   {
@@ -574,7 +511,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '878106474',
     id: '19404',
     dailyVolumeBNB: '876770.0462405173668421759851331032',
-    dailyVolumeUntracked: '506903322.9596438829123074462970673',
     totalLiquidityUSD: '2338477116.273149209848483056141261',
   },
   {
@@ -583,7 +519,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '877270185',
     id: '19403',
     dailyVolumeBNB: '765544.8697488617465075264931624785',
-    dailyVolumeUntracked: '303484338.4796838940555479007351777',
     totalLiquidityUSD: '2418181534.696366778324445701328269',
   },
   {
@@ -592,7 +527,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '876515804',
     id: '19402',
     dailyVolumeBNB: '715139.3120353904772256662580174711',
-    dailyVolumeUntracked: '388694168.2697289809735723535187078',
     totalLiquidityUSD: '2317818573.444490265955443401530856',
   },
   {
@@ -601,7 +535,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '875801912',
     id: '19401',
     dailyVolumeBNB: '1064974.788135525359316365674196702',
-    dailyVolumeUntracked: '336379344.6973474135005277682270768',
     totalLiquidityUSD: '2316710042.31795724208032569978658',
   },
   {
@@ -610,7 +543,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '875072950',
     id: '19400',
     dailyVolumeBNB: '711322.988327889063633369858781468',
-    dailyVolumeUntracked: '1535438127.215413496023863590668066',
     totalLiquidityUSD: '2418526168.799814559760288580474245',
   },
   {
@@ -619,7 +551,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '874421164',
     id: '19399',
     dailyVolumeBNB: '625840.9705663593330044932662119604',
-    dailyVolumeUntracked: '1780090675.594121942152618055991907',
     totalLiquidityUSD: '2423149198.265395211771132197287384',
   },
   {
@@ -628,7 +559,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '873808982',
     id: '19398',
     dailyVolumeBNB: '999624.3539667089938542846995471911',
-    dailyVolumeUntracked: '4338756052.284857440217067341980581',
     totalLiquidityUSD: '2388684303.076055526921677748943858',
   },
   {
@@ -637,7 +567,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '873107343',
     id: '19397',
     dailyVolumeBNB: '1115931.468713907933821607259242017',
-    dailyVolumeUntracked: '4407372594.842629395163357240702738',
     totalLiquidityUSD: '2387526838.832820963871604261495581',
   },
   {
@@ -646,7 +575,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '872330368',
     id: '19396',
     dailyVolumeBNB: '909708.7247893703116881462694427167',
-    dailyVolumeUntracked: '4820792838.363653344247778295201664',
     totalLiquidityUSD: '2526503371.19255147331057592591061',
   },
   {
@@ -655,7 +583,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '871586839',
     id: '19395',
     dailyVolumeBNB: '963904.3981607171678183470212938875',
-    dailyVolumeUntracked: '4297927369.895621267678292977600782',
     totalLiquidityUSD: '2544191652.311214553175117321185535',
   },
   {
@@ -664,7 +591,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '870824876',
     id: '19394',
     dailyVolumeBNB: '789078.5828873683502042788829858321',
-    dailyVolumeUntracked: '2967393479.064062534469121058306949',
     totalLiquidityUSD: '2499341935.992230575375918201177414',
   },
   {
@@ -673,7 +599,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '870118751',
     id: '19393',
     dailyVolumeBNB: '754217.6315097797145380584440581914',
-    dailyVolumeUntracked: '2767082660.452380109917708380371728',
     totalLiquidityUSD: '2513612773.867046710390007198995162',
   },
   {
@@ -682,7 +607,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '869392456',
     id: '19392',
     dailyVolumeBNB: '871885.1077871994802094443997862771',
-    dailyVolumeUntracked: '4678152189.315140582589434192666523',
     totalLiquidityUSD: '2527979670.556887208925697636548869',
   },
   {
@@ -691,7 +615,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '868679957',
     id: '19391',
     dailyVolumeBNB: '1049313.166496045096220811790648075',
-    dailyVolumeUntracked: '9172292468.352623812876133284130703',
     totalLiquidityUSD: '2527520270.38815106231293883474256',
   },
   {
@@ -700,7 +623,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '867949392',
     id: '19390',
     dailyVolumeBNB: '1128598.85029642707072742357037378',
-    dailyVolumeUntracked: '10609047081.51497341345212563689162',
     totalLiquidityUSD: '2481824759.563933247137449786096758',
   },
   {
@@ -709,7 +631,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '867153842',
     id: '19389',
     dailyVolumeBNB: '919443.4729732337127540797335902471',
-    dailyVolumeUntracked: '5395212526.900197015134592076959788',
     totalLiquidityUSD: '2464928507.65256955821223761673771',
   },
   {
@@ -718,7 +639,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '866395725',
     id: '19388',
     dailyVolumeBNB: '950602.2446803118819375885212777553',
-    dailyVolumeUntracked: '5093750830.927040194440879980340507',
     totalLiquidityUSD: '2432685180.390407750209014751693175',
   },
   {
@@ -727,7 +647,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '865595235',
     id: '19387',
     dailyVolumeBNB: '955892.3035589448633944618620117124',
-    dailyVolumeUntracked: '2973548735.393535517438933000515914',
     totalLiquidityUSD: '2399643841.783951827247089228470041',
   },
   {
@@ -736,7 +655,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '864822793',
     id: '19386',
     dailyVolumeBNB: '759970.3412277506081964708678093692',
-    dailyVolumeUntracked: '2318367765.090361549675238260248425',
     totalLiquidityUSD: '2466202914.571786982759136537692247',
   },
   {
@@ -745,7 +663,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '864080546',
     id: '19385',
     dailyVolumeBNB: '416641.6630846909481410829712163592',
-    dailyVolumeUntracked: '472441271.677423425344013826612005',
     totalLiquidityUSD: '2404344335.059702442831191156806311',
   },
   {
@@ -754,7 +671,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '863447049',
     id: '19384',
     dailyVolumeBNB: '535935.9103946320727552951087295764',
-    dailyVolumeUntracked: '171677480.1584224672379728128260859',
     totalLiquidityUSD: '2415001973.275412727308680366099529',
   },
   {
@@ -763,7 +679,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '862789477',
     id: '19383',
     dailyVolumeBNB: '503316.1517341920331082731613983416',
-    dailyVolumeUntracked: '166846635.1136472615940346675530839',
     totalLiquidityUSD: '2398670188.013144225163514077490023',
   },
   {
@@ -772,7 +687,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '862107669',
     id: '19382',
     dailyVolumeBNB: '583634.1180698432117383259293302122',
-    dailyVolumeUntracked: '203644257.2666791618464576533147259',
     totalLiquidityUSD: '2411001706.831480824751654110643643',
   },
   {
@@ -781,7 +695,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '861426446',
     id: '19381',
     dailyVolumeBNB: '573768.0273437526010679989187440519',
-    dailyVolumeUntracked: '416597656.650753565768993124796608',
     totalLiquidityUSD: '2367554489.839809488363688472049817',
   },
   {
@@ -790,7 +703,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '860789028',
     id: '19380',
     dailyVolumeBNB: '458424.580092738705925125188240524',
-    dailyVolumeUntracked: '206035163.3111572702053547445958705',
     totalLiquidityUSD: '2399527705.350266023318489472656858',
   },
   {
@@ -799,7 +711,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '860177673',
     id: '19379',
     dailyVolumeBNB: '599099.3121594803494698891752466107',
-    dailyVolumeUntracked: '1125043087.611475954818929996602091',
     totalLiquidityUSD: '2375706179.217476592139983899924115',
   },
   {
@@ -808,7 +719,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '859538200',
     id: '19378',
     dailyVolumeBNB: '598086.8099613247040297780357184724',
-    dailyVolumeUntracked: '522926928.9122061930980851502031592',
     totalLiquidityUSD: '2358473849.834912412331185279943025',
   },
   {
@@ -817,7 +727,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '858579213',
     id: '19377',
     dailyVolumeBNB: '529714.2455157527980817360875886755',
-    dailyVolumeUntracked: '261151327.0898641652976817622192142',
     totalLiquidityUSD: '2392962998.169049908510005441166803',
   },
   {
@@ -826,7 +735,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '857833115',
     id: '19376',
     dailyVolumeBNB: '446072.2200246121295062836140865596',
-    dailyVolumeUntracked: '139754610.2330470676612330601967254',
     totalLiquidityUSD: '2336446519.324134423004007651966193',
   },
   {
@@ -835,7 +743,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '857217056',
     id: '19375',
     dailyVolumeBNB: '669995.3560317693712526557042906573',
-    dailyVolumeUntracked: '228537567.6208453447343211954594602',
     totalLiquidityUSD: '2294894088.614856370853507822517543',
   },
   {
@@ -844,7 +751,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '856542949',
     id: '19374',
     dailyVolumeBNB: '499974.0406872729531689301341322964',
-    dailyVolumeUntracked: '163652583.4676750705747696762010696',
     totalLiquidityUSD: '2366766666.659256644488048309264325',
   },
   {
@@ -853,7 +759,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '855910904',
     id: '19373',
     dailyVolumeBNB: '546117.4673370299149732462679212902',
-    dailyVolumeUntracked: '233772203.9734943827833053145045398',
     totalLiquidityUSD: '2364783786.629890244056630937355546',
   },
   {
@@ -862,7 +767,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '855279199',
     id: '19372',
     dailyVolumeBNB: '509496.7850350498000114323281087793',
-    dailyVolumeUntracked: '216747997.0015449396554801840676399',
     totalLiquidityUSD: '2380414509.192405243660966952423592',
   },
   {
@@ -871,7 +775,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '854664091',
     id: '19371',
     dailyVolumeBNB: '753093.7442407974605934404047630795',
-    dailyVolumeUntracked: '285543807.9322999596555736316546865',
     totalLiquidityUSD: '2405469589.87160663252543601202736',
   },
   {
@@ -880,7 +783,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '853955988',
     id: '19370',
     dailyVolumeBNB: '542322.700832573812933800126798801',
-    dailyVolumeUntracked: '101876239556.0121708257847384411512',
     totalLiquidityUSD: '2380290581.410263011308628245073134',
   },
   {
@@ -889,7 +791,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '853296499',
     id: '19369',
     dailyVolumeBNB: '703477.9459821553699797107311375444',
-    dailyVolumeUntracked: '470245128.6731564693726991753389257',
     totalLiquidityUSD: '2346801722.710823638795106059634164',
   },
   {
@@ -898,7 +799,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '852636994',
     id: '19368',
     dailyVolumeBNB: '490047.1635122385356910069449167375',
-    dailyVolumeUntracked: '159334969.5236333071027939309937804',
     totalLiquidityUSD: '2333601573.201828819538284074150151',
   },
   {
@@ -907,7 +807,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '852019021',
     id: '19367',
     dailyVolumeBNB: '532952.6028251694099421948311425279',
-    dailyVolumeUntracked: '259420543.6667007553000621121413904',
     totalLiquidityUSD: '2296424166.316296839484201784651311',
   },
   {
@@ -916,7 +815,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '851401419',
     id: '19366',
     dailyVolumeBNB: '597987.4774309313983410754787724691',
-    dailyVolumeUntracked: '228658184.0468223810719630111829016',
     totalLiquidityUSD: '2268676068.53462103621700820367423',
   },
   {
@@ -925,7 +823,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '850713412',
     id: '19365',
     dailyVolumeBNB: '440838.8853788662352230137281447459',
-    dailyVolumeUntracked: '124982368.8948135162080641456954807',
     totalLiquidityUSD: '2293877817.929402646127032842746429',
   },
   {
@@ -934,7 +831,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '850119872',
     id: '19364',
     dailyVolumeBNB: '402142.3501860079459424693427775102',
-    dailyVolumeUntracked: '111256786.2569598519431815658367009',
     totalLiquidityUSD: '2228542826.724510444299267493973579',
   },
   {
@@ -943,7 +839,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '849544910',
     id: '19363',
     dailyVolumeBNB: '481827.6193325698960020480955567407',
-    dailyVolumeUntracked: '140272804.3584418907788922749901774',
     totalLiquidityUSD: '2218050063.990716422243259022923037',
   },
   {
@@ -952,7 +847,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '848975122',
     id: '19362',
     dailyVolumeBNB: '406216.8979727072463141494223080581',
-    dailyVolumeUntracked: '122083599.6067202566583006499728888',
     totalLiquidityUSD: '2182019618.499086006694524258401069',
   },
   {
@@ -961,7 +855,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '848396956',
     id: '19361',
     dailyVolumeBNB: '516910.4745407166901001765018668662',
-    dailyVolumeUntracked: '138146909.9601458193102870638711451',
     totalLiquidityUSD: '2194938271.430454614767316958814148',
   },
   {
@@ -970,7 +863,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '847796330',
     id: '19360',
     dailyVolumeBNB: '449949.9537169331857258707155245119',
-    dailyVolumeUntracked: '160825421.1812480087555663432435114',
     totalLiquidityUSD: '2120409277.464118400757096148331166',
   },
   {
@@ -979,7 +871,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '847224097',
     id: '19359',
     dailyVolumeBNB: '426827.4999497884242709491899221321',
-    dailyVolumeUntracked: '103841777.7565625961141098839010199',
     totalLiquidityUSD: '2123916922.10284464760764267537589',
   },
   {
@@ -988,7 +879,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '846650031',
     id: '19358',
     dailyVolumeBNB: '358495.5794293980060534989509825324',
-    dailyVolumeUntracked: '580990417.800344111596745145598554',
     totalLiquidityUSD: '2119111969.070555441925740571804425',
   },
   {
@@ -997,7 +887,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '846155991',
     id: '19357',
     dailyVolumeBNB: '426298.2896794422795573913111236072',
-    dailyVolumeUntracked: '1354117131.938946251313620631738185',
     totalLiquidityUSD: '2146927276.571735274599830711563616',
   },
   {
@@ -1006,7 +895,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '845657169',
     id: '19356',
     dailyVolumeBNB: '458781.9134381033080417999108209505',
-    dailyVolumeUntracked: '125445353.6127301389853969432215102',
     totalLiquidityUSD: '2143824789.556202858581352499418528',
   },
   {
@@ -1015,7 +903,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '845081964',
     id: '19355',
     dailyVolumeBNB: '438207.0435634214099854301425664346',
-    dailyVolumeUntracked: '144427881.3431243383929968124129012',
     totalLiquidityUSD: '2152538326.425261873809896835635604',
   },
   {
@@ -1024,7 +911,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '844551317',
     id: '19354',
     dailyVolumeBNB: '422787.9438836163570503263378167357',
-    dailyVolumeUntracked: '105464240.260531189454280202682542',
     totalLiquidityUSD: '2138953094.218083738879374457230207',
   },
   {
@@ -1033,7 +919,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '844046120',
     id: '19353',
     dailyVolumeBNB: '362734.5431831363183363121169041535',
-    dailyVolumeUntracked: '113442014.7698572190534253337599244',
     totalLiquidityUSD: '2166636302.022113387656565753183638',
   },
   {
@@ -1042,7 +927,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '843555465',
     id: '19352',
     dailyVolumeBNB: '358922.388365541030516615135043641',
-    dailyVolumeUntracked: '87695691.96811035137747835375579373',
     totalLiquidityUSD: '2165087618.334803182585968209166105',
   },
   {
@@ -1051,7 +935,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '843033314',
     id: '19351',
     dailyVolumeBNB: '361108.7174016520315605922442402999',
-    dailyVolumeUntracked: '88460126.24246710007296724599947561',
     totalLiquidityUSD: '2165828806.569635506286208791517676',
   },
   {
@@ -1060,7 +943,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '842497102',
     id: '19350',
     dailyVolumeBNB: '331105.7933010101537999439414040823',
-    dailyVolumeUntracked: '80239313.37788335524795022213422295',
     totalLiquidityUSD: '2176872311.392011664875074311972832',
   },
   {
@@ -1069,7 +951,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '841943401',
     id: '19349',
     dailyVolumeBNB: '371176.1609275484072521535964033',
-    dailyVolumeUntracked: '91326805.3970174270195533225436123',
     totalLiquidityUSD: '2187797903.027750236811091170486671',
   },
   {
@@ -1078,7 +959,6 @@ export const mockPancakeBSCVolumeData: PancakeDataEntryRequest[] = [
     totalTransactions: '841398994',
     id: '19348',
     dailyVolumeBNB: '471320.6698755776325078113296868956',
-    dailyVolumeUntracked: '176940823.144092535476386657561813',
     totalLiquidityUSD: '2195992604.212753840431568162112116',
   },
 ];

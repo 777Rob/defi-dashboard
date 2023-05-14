@@ -5563,6 +5563,32 @@ export type GetPairDayDatasEthQueryVariables = Exact<{
 
 export type GetPairDayDatasEthQuery = { __typename?: 'Query', poolDayDatas: Array<{ __typename?: 'PoolDayData', date: number, token0Price: any, token1Price: any, id: string, dailyVolumeUSD: any, dailyVolumeToken0: any, dailyVolumeToken1: any, reserveUSD: any, pool: { __typename?: 'Pool', reserve0: any, reserve1: any, token0: { __typename?: 'Token', id: string, name: string, symbol: string, derivedUSD: any, totalTransactions: any, tradeVolume: any }, token1: { __typename?: 'Token', id: string, name: string, symbol: string, derivedUSD: any, totalTransactions: any, tradeVolume: any } } }> };
 
+export type GetCombinedDetailsEthQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCombinedDetailsEthQuery = { __typename?: 'Query', pancakeFactory?: { __typename?: 'Factory', id: string, totalVolumeUSD: any, totalPairs: any, totalLiquidityUSD: any } | null, pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', date: number, dailyVolumeUSD: any, dailyVolumeBNB: any, totalTransactions: any, totalLiquidityUSD: any }> };
+
+export type GetPancakeDayDatasEthQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPancakeDayDatasEthQuery = { __typename?: 'Query', pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', date: number, id: string, dailyVolumeUSD: any, totalTransactions: any, dailyVolumeBNB: any, totalLiquidityUSD: any }> };
+
+export type GetTopPairsEthQueryVariables = Exact<{
+  first: Scalars['Int'];
+  date_gt: Scalars['Int'];
+  skip?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetTopPairsEthQuery = { __typename?: 'Query', poolDayDatas: Array<{ __typename?: 'PoolDayData', id: string, date: number, dailyVolumeUSD: any, reserveUSD: any, dailyTxns: any, pool: { __typename?: 'Pool', token0: { __typename?: 'Token', name: string, symbol: string, id: string }, token1: { __typename?: 'Token', id: string, name: string, symbol: string } } }> };
+
+export type GetTopTokensEthQueryVariables = Exact<{
+  date_gt: Scalars['Int'];
+}>;
+
+
+export type GetTopTokensEthQuery = { __typename?: 'Query', tokenDayDatas: Array<{ __typename?: 'TokenDayData', dailyVolumeUSD: any, totalLiquidityUSD: any, token: { __typename?: 'Token', id: string, symbol: string, name: string, derivedUSD: any, totalLiquidity: any } }> };
+
 
 export const GetPairDayDatasEthDocument = gql`
     query GetPairDayDatasETH($pairAddress: String!) {
@@ -5631,3 +5657,186 @@ export function useGetPairDayDatasEthLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type GetPairDayDatasEthQueryHookResult = ReturnType<typeof useGetPairDayDatasEthQuery>;
 export type GetPairDayDatasEthLazyQueryHookResult = ReturnType<typeof useGetPairDayDatasEthLazyQuery>;
 export type GetPairDayDatasEthQueryResult = Apollo.QueryResult<GetPairDayDatasEthQuery, GetPairDayDatasEthQueryVariables>;
+export const GetCombinedDetailsEthDocument = gql`
+    query GetCombinedDetailsETH {
+  pancakeFactory: factory(id: "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865") {
+    id
+    totalPairs: poolCount
+    totalVolumeUSD
+    totalLiquidityUSD: totalValueLockedUSD
+  }
+  pancakeDayDatas(first: 1, orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD: volumeUSD
+    dailyVolumeBNB: volumeETH
+    date
+    totalTransactions: txCount
+    totalLiquidityUSD: tvlUSD
+  }
+}
+    `;
+
+/**
+ * __useGetCombinedDetailsEthQuery__
+ *
+ * To run a query within a React component, call `useGetCombinedDetailsEthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCombinedDetailsEthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCombinedDetailsEthQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCombinedDetailsEthQuery(baseOptions?: Apollo.QueryHookOptions<GetCombinedDetailsEthQuery, GetCombinedDetailsEthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCombinedDetailsEthQuery, GetCombinedDetailsEthQueryVariables>(GetCombinedDetailsEthDocument, options);
+      }
+export function useGetCombinedDetailsEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCombinedDetailsEthQuery, GetCombinedDetailsEthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCombinedDetailsEthQuery, GetCombinedDetailsEthQueryVariables>(GetCombinedDetailsEthDocument, options);
+        }
+export type GetCombinedDetailsEthQueryHookResult = ReturnType<typeof useGetCombinedDetailsEthQuery>;
+export type GetCombinedDetailsEthLazyQueryHookResult = ReturnType<typeof useGetCombinedDetailsEthLazyQuery>;
+export type GetCombinedDetailsEthQueryResult = Apollo.QueryResult<GetCombinedDetailsEthQuery, GetCombinedDetailsEthQueryVariables>;
+export const GetPancakeDayDatasEthDocument = gql`
+    query GetPancakeDayDatasETH {
+  pancakeDayDatas(first: 90, orderBy: date, orderDirection: desc) {
+    dailyVolumeUSD: volumeUSD
+    date
+    totalTransactions: txCount
+    id
+    dailyVolumeBNB: volumeETH
+    totalLiquidityUSD: tvlUSD
+  }
+}
+    `;
+
+/**
+ * __useGetPancakeDayDatasEthQuery__
+ *
+ * To run a query within a React component, call `useGetPancakeDayDatasEthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPancakeDayDatasEthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPancakeDayDatasEthQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPancakeDayDatasEthQuery(baseOptions?: Apollo.QueryHookOptions<GetPancakeDayDatasEthQuery, GetPancakeDayDatasEthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPancakeDayDatasEthQuery, GetPancakeDayDatasEthQueryVariables>(GetPancakeDayDatasEthDocument, options);
+      }
+export function useGetPancakeDayDatasEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPancakeDayDatasEthQuery, GetPancakeDayDatasEthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPancakeDayDatasEthQuery, GetPancakeDayDatasEthQueryVariables>(GetPancakeDayDatasEthDocument, options);
+        }
+export type GetPancakeDayDatasEthQueryHookResult = ReturnType<typeof useGetPancakeDayDatasEthQuery>;
+export type GetPancakeDayDatasEthLazyQueryHookResult = ReturnType<typeof useGetPancakeDayDatasEthLazyQuery>;
+export type GetPancakeDayDatasEthQueryResult = Apollo.QueryResult<GetPancakeDayDatasEthQuery, GetPancakeDayDatasEthQueryVariables>;
+export const GetTopPairsEthDocument = gql`
+    query GetTopPairsETH($first: Int!, $date_gt: Int!, $skip: Int) {
+  poolDayDatas(first: $first, where: {date_gt: $date_gt}, orderBy: liquidity) {
+    id
+    dailyVolumeUSD: volumeUSD
+    date
+    reserveUSD: tvlUSD
+    dailyTxns: txCount
+    pool {
+      token0 {
+        name
+        symbol
+        id
+      }
+      token1 {
+        id
+        name
+        symbol
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTopPairsEthQuery__
+ *
+ * To run a query within a React component, call `useGetTopPairsEthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTopPairsEthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTopPairsEthQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      date_gt: // value for 'date_gt'
+ *      skip: // value for 'skip'
+ *   },
+ * });
+ */
+export function useGetTopPairsEthQuery(baseOptions: Apollo.QueryHookOptions<GetTopPairsEthQuery, GetTopPairsEthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopPairsEthQuery, GetTopPairsEthQueryVariables>(GetTopPairsEthDocument, options);
+      }
+export function useGetTopPairsEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopPairsEthQuery, GetTopPairsEthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopPairsEthQuery, GetTopPairsEthQueryVariables>(GetTopPairsEthDocument, options);
+        }
+export type GetTopPairsEthQueryHookResult = ReturnType<typeof useGetTopPairsEthQuery>;
+export type GetTopPairsEthLazyQueryHookResult = ReturnType<typeof useGetTopPairsEthLazyQuery>;
+export type GetTopPairsEthQueryResult = Apollo.QueryResult<GetTopPairsEthQuery, GetTopPairsEthQueryVariables>;
+export const GetTopTokensEthDocument = gql`
+    query GetTopTokensETH($date_gt: Int!) {
+  tokenDayDatas(
+    orderBy: token__volumeUSD
+    orderDirection: desc
+    where: {date_gt: $date_gt}
+  ) {
+    dailyVolumeUSD: volumeUSD
+    totalLiquidityUSD: totalValueLockedUSD
+    token {
+      id
+      symbol
+      name
+      derivedUSD
+      totalLiquidity: totalValueLockedUSD
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTopTokensEthQuery__
+ *
+ * To run a query within a React component, call `useGetTopTokensEthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTopTokensEthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTopTokensEthQuery({
+ *   variables: {
+ *      date_gt: // value for 'date_gt'
+ *   },
+ * });
+ */
+export function useGetTopTokensEthQuery(baseOptions: Apollo.QueryHookOptions<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>(GetTopTokensEthDocument, options);
+      }
+export function useGetTopTokensEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>(GetTopTokensEthDocument, options);
+        }
+export type GetTopTokensEthQueryHookResult = ReturnType<typeof useGetTopTokensEthQuery>;
+export type GetTopTokensEthLazyQueryHookResult = ReturnType<typeof useGetTopTokensEthLazyQuery>;
+export type GetTopTokensEthQueryResult = Apollo.QueryResult<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>;

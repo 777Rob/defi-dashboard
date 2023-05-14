@@ -11,6 +11,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { customRound } from 'utils/customRound';
 import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
+import { useGetTopPairsEthLazyQuery } from 'generated/eth-query-types';
+import { ethClient } from 'apollo';
 
 export type FormattedPairDayData = Pick<
   PairDayData,
@@ -29,7 +31,10 @@ const useTopPairs = (): {
 } => {
   const { chain } = useChain();
 
-  const [getTopPairsBSC, { loading, data, error, called }] = useGetTopPairsBscLazyQuery({
+  const [
+    getTopPairsBSC,
+    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
+  ] = useGetTopPairsBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
       date_gt: yesterdayTimestampInSeconds,
@@ -44,7 +49,33 @@ const useTopPairs = (): {
     },
   });
 
+  const [
+    getTopPairsETH,
+    { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
+  ] = useGetTopPairsEthLazyQuery({
+    fetchPolicy: 'cache-first',
+    variables: {
+      date_gt: yesterdayTimestampInSeconds,
+      first: 100,
+      skip: 0,
+    },
+    onCompleted: (data) => {
+      if (data) {
+        const preformattedData = data.poolDayDatas.map((item) => {
+          return { ...item, token0: item.pool.token0, token1: item.pool.token1 };
+        });
+        const formattedData = formatData(preformattedData);
+        setFormattedData(formattedData);
+      }
+    },
+    client: ethClient,
+  });
   const [formattedData, setFormattedData] = useState<FormattedPairDayData[] | undefined>(undefined);
+
+  let { loading, data, error, called } =
+    chain == Chains.BSC
+      ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
+      : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
 
   const formatData = useCallback(
     (rawData: FormattedPairDayData[]) => {
@@ -61,20 +92,11 @@ const useTopPairs = (): {
     [data]
   );
 
-  // const [getTopPairsETH, { loading, data, error }] = useGetTopPairsETHLazyQuery({
-  //   fetchPolicy: 'cache-first',
-  //   variables: {
-  //     date_gt: yesterdayTimestampInSeconds,
-  //     first: 100,
-  //     skip: 0,
-  //   },
-  // });
-
   useEffect(() => {
     if (chain === Chains.BSC) {
       getTopPairsBSC();
     } else {
-      // getTopPairsETH()
+      getTopPairsETH();
     }
   }, [chain]);
 
@@ -85,8 +107,6 @@ const useTopPairs = (): {
     let topTokens = [];
     if (error) {
       topTokens = mockTopTokens;
-    } else {
-      topTokens = data?.pairDayDatas!;
     }
 
     return {

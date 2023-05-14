@@ -563,7 +563,7 @@ export type GetTopTokensBscQuery = { __typename?: 'Query', tokenDayDatas: Array<
 export type GetPancakeDayDatasBscQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPancakeDayDatasBscQuery = { __typename?: 'Query', pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', dailyVolumeUSD: any, date: number, totalTransactions: any, id: string, dailyVolumeBNB: any, dailyVolumeUntracked: any, totalLiquidityUSD: any }> };
+export type GetPancakeDayDatasBscQuery = { __typename?: 'Query', pancakeDayDatas: Array<{ __typename?: 'PancakeDayData', dailyVolumeUSD: any, date: number, totalTransactions: any, id: string, dailyVolumeBNB: any, totalLiquidityUSD: any }> };
 
 export type GetCombinedDetailsBscQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -699,7 +699,6 @@ export const GetPancakeDayDatasBscDocument = gql`
     totalTransactions
     id
     dailyVolumeBNB
-    dailyVolumeUntracked
     totalLiquidityUSD
   }
 }

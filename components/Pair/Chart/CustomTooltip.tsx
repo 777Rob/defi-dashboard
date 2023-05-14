@@ -4,7 +4,6 @@ import { displayNumber } from '../../../utils/displayNumber';
 
 export const CustomTooltip = React.memo(({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
-    console.log(payload);
     const { token0, token1 } = payload[0].payload;
     const { reserve0, reserve1, dailyTxns } = payload[0].payload;
     return (

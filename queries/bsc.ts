@@ -61,7 +61,6 @@ export const GET_VOLUMES_BSC = gql`
       totalTransactions
       id
       dailyVolumeBNB
-      dailyVolumeUntracked
       totalLiquidityUSD
     }
   }

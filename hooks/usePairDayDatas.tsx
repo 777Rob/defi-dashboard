@@ -101,14 +101,12 @@ const usePairDayDatas = (
           };
         });
         const formattedData = formatData(preFormattedData as unknown as RawPairDayData[]);
-        console.log(preFormattedData);
         setFormattedData(formattedData as FormattedPairDayData[]);
       }
     },
     client: ethClient,
   });
 
-  console.log(dataETH, loadingETH, calledETH, errorETH);
   let { loading, data, error, called } =
     chain == Chains.BSC
       ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
@@ -126,16 +124,12 @@ const usePairDayDatas = (
 
   const formatData = useCallback(
     (rawData: RawPairDayData[]) => {
-      console.log('formatting data');
       const formattedData = rawData.map((item, index: number) => {
-        console.log(item);
         return {
           ...item,
           dailyVolumeUSD: item.dailyVolumeUSD.split('.')[0],
           date: new Date(item.date * 1000).toLocaleDateString(),
-          dailyTxns: Math.abs(
-            parseInt(item.dailyTxns) - (parseInt(item[index - 1]?.totalTransactions) || 0)
-          ),
+          dailyTxns: Math.abs(parseInt(item.dailyTxns)),
           token0: {
             ...item.token0,
             logoURI: getLogoUri(item.token0.id),
@@ -146,6 +140,7 @@ const usePairDayDatas = (
           },
         };
       });
+
       console.log('formattedData');
       console.log(formattedData);
       return formattedData;
@@ -157,8 +152,8 @@ const usePairDayDatas = (
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
-    if (error) {
-      return { loading, error, data: formatData(mockPairDayDataBSC) };
+    if (error || !data) {
+      return { loading, error, data: mockPairDayDataBSC };
     }
 
     return {

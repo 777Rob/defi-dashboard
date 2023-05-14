@@ -17,7 +17,6 @@ export const TRow = ({
   isFirst: boolean;
   isLast: boolean;
 }) => {
-  console.log(logoUri);
   return (
     <Grid
       m={0}

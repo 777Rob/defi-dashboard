@@ -4,6 +4,7 @@ import { useGetCombinedDetailsBscLazyQuery } from 'generated/bsc-query-types';
 import { useEffect } from 'react';
 import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
+import { useGetCombinedDetailsEthLazyQuery } from 'generated/eth-query-types';
 
 type PancakeDetails = {
   totalPairs: number;
@@ -20,23 +21,33 @@ const usePancakeDetails = (): {
   error?: any;
 } => {
   const { chain } = useChain();
-  const [getCombinedDetailsBSC, { loading, data, error, called }] =
-    useGetCombinedDetailsBscLazyQuery({
-      fetchPolicy: 'cache-first',
-    });
+  const [
+    getCombinedDetailsBSC,
+    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
+  ] = useGetCombinedDetailsBscLazyQuery({
+    fetchPolicy: 'cache-first',
+  });
 
-  // const [getCombinedDetailsETH, { loading, data, error, networkStatus }] =
-  // useGetCombinedDetailsEthLazyQuery({
-  //   fetchPolicy: 'cache-first',
-  // });
+  const [
+    getCombinedDetailsETH,
+    { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
+  ] = useGetCombinedDetailsEthLazyQuery({
+    fetchPolicy: 'cache-first',
+    client: ethClient,
+  });
 
   useEffect(() => {
     if (chain == Chains.BSC) {
       getCombinedDetailsBSC();
     } else {
-      // getCombinedDetailsETH();
+      getCombinedDetailsETH();
     }
   }, [chain]);
+
+  let { loading, data, error, called } =
+    chain == Chains.BSC
+      ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
+      : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
 
   if (error) {
     throw new Error(error.message);
@@ -44,7 +55,7 @@ const usePancakeDetails = (): {
 
   if (loading || !called) return { loading, data, error };
 
-  if (chain == Chains.BSC && data) {
+  if (data) {
     const { pancakeFactory, pancakeDayDatas } = data;
     const { totalPairs, totalVolumeUSD, totalLiquidityUSD, id } = pancakeFactory!;
     const { dailyVolumeUSD, totalTransactions } = pancakeDayDatas[0];

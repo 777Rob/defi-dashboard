@@ -3,22 +3,24 @@ import usePancakeDetails from 'hooks/usePancakeDetails';
 import React, { forwardRef, useEffect, useState } from 'react';
 import { displayNumber } from '../../utils/index';
 import StatisticCard from '../UI/StatisticCard';
+import { useChain } from 'hooks/useChain';
+import { Chains } from 'utils/chain';
 
 const chains = [
   {
     image: 'bsc.png',
     label: 'Binance Smart Chain',
-    value: 'bsc',
+    value: Chains.BSC,
   },
   {
     image: 'eth.png',
     label: 'Ethereum',
-    value: 'eth',
+    value: Chains.ETH,
   },
   {
     image: 'multiple.svg',
     label: 'All Networks',
-    value: 'all',
+    value: Chains.BSC,
   },
 ];
 
@@ -42,8 +44,7 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
 
 const PancakeDetails = () => {
   const { data, loading, error } = usePancakeDetails();
-  console.log(data, loading, error);
-  const [chain, setChain] = useState('bsc');
+  const { chain, setChain } = useChain();
 
   return (
     <Grid align="stretch">
@@ -93,7 +94,7 @@ const PancakeDetails = () => {
             clearable={false}
             value={chain}
             variant="filled"
-            onChange={(value: string) => setChain(value)}
+            onChange={(value: Chains) => setChain(value)}
             icon={<Avatar size="1.8rem" src={chains.find((c) => c.value === chain)?.image} />}
             defaultValue={chains[0].value}
             dropdownPosition="bottom"

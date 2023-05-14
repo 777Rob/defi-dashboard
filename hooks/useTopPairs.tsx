@@ -10,6 +10,7 @@ import {
 import { useCallback, useEffect, useState } from 'react';
 import { customRound } from 'utils';
 import { Chains } from 'utils/chain';
+import { useChain } from './useChain';
 
 export type FormattedPairDayData = Pick<
   PairDayData,
@@ -21,13 +22,13 @@ export type FormattedPairDayData = Pick<
 
 const yesterdayTimestampInSeconds = Math.floor((Date.now() - 24 * 60 * 60 * 1000) / 1000);
 
-const useTopPairs = (
-  chain = Chains.BSC
-): {
+const useTopPairs = (): {
   loading: boolean;
   data: FormattedPairDayData[] | undefined;
   error: any | undefined;
 } => {
+  const { chain } = useChain();
+
   const [getTopPairsBSC, { loading, data, error, called }] = useGetTopPairsBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {

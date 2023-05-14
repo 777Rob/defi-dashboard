@@ -4,8 +4,10 @@ import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
 import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
 import { useGetPancakeDayDatasBscLazyQuery } from 'generated/bsc-query-types';
+import { useChain } from './useChain';
 
-const usePancakeDayData = (chain = Chains.BSC) => {
+const usePancakeDayData = () => {
+  const { chain } = useChain();
   const [getPancakeDayDatasBsc, { loading, data, error, called }] =
     useGetPancakeDayDatasBscLazyQuery({
       fetchPolicy: 'cache-first',

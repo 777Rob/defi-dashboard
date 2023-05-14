@@ -6,6 +6,7 @@ import { customRound } from 'utils';
 import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
 import { getLogoUri } from 'utils/getLogoUri';
+import { useChain } from './useChain';
 export type TopToken = {
   name: string;
   symbol: string;
@@ -16,16 +17,12 @@ export type TopToken = {
   logoUri: string;
 };
 
-const useTopTokens = (
-  chain = Chains.BSC
-): {
+const useTopTokens = (): {
   loading: boolean;
   data: TopToken[] | undefined;
   error: any | undefined;
 } => {
-  /**
-   * @NOTE: date is in unix timestamp in seconds (not milliseconds) !!!
-   */
+  const { chain } = useChain();
 
   const [getTopTokensBSC, { loading, data, error, called }] = useGetTopTokensBscLazyQuery({
     fetchPolicy: 'cache-first',

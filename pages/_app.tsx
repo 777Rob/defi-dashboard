@@ -7,6 +7,7 @@ import { Notifications } from '@mantine/notifications';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../apollo';
 import { Open_Sans } from 'next/font/google';
+import { ChainProvider } from 'store/ChainProvider';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -32,18 +33,20 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       </Head>
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <ApolloProvider client={apolloClient}>
-          <MantineProvider
-            theme={{ colorScheme, defaultRadius: 'md' }}
-            withGlobalStyles
-            withNormalizeCSS
-          >
-            <div className={openSans.className}>
-              <Component {...pageProps} />
-            </div>
-            <Notifications />
-          </MantineProvider>
-        </ApolloProvider>
+        <ChainProvider>
+          <ApolloProvider client={apolloClient}>
+            <MantineProvider
+              theme={{ colorScheme, defaultRadius: 'md' }}
+              withGlobalStyles
+              withNormalizeCSS
+            >
+              <div className={openSans.className}>
+                <Component {...pageProps} />
+              </div>
+              <Notifications />
+            </MantineProvider>
+          </ApolloProvider>
+        </ChainProvider>
       </ColorSchemeProvider>
     </>
   );

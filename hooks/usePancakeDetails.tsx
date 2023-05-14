@@ -3,6 +3,7 @@ import bscClient, { ethClient } from 'apollo';
 import { useGetCombinedDetailsBscLazyQuery } from 'generated/bsc-query-types';
 import { useEffect } from 'react';
 import { Chains } from 'utils/chain';
+import { useChain } from './useChain';
 
 type PancakeDetails = {
   totalPairs: number;
@@ -13,13 +14,12 @@ type PancakeDetails = {
   id: string;
 };
 
-const usePancakeDetails = (
-  chain = Chains.BSC
-): {
+const usePancakeDetails = (): {
   loading: boolean;
   data?: PancakeDetails | any;
   error?: any;
 } => {
+  const { chain } = useChain();
   const [getCombinedDetailsBSC, { loading, data, error, called }] =
     useGetCombinedDetailsBscLazyQuery({
       fetchPolicy: 'cache-first',

@@ -1,11 +1,10 @@
-import { gql, useLazyQuery, useQuery } from '@apollo/client';
-import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayData.dto';
-import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
-import { Chains } from 'utils/chain';
 import { useCallback, useEffect, useState } from 'react';
-import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
+import { Chains } from 'utils/chain';
 import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
+import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { getLogoUri } from '../utils/getLogoUri';
+import { useChain } from './useChain';
+
 export type RawPairDayData = Pick<
   PairDayData,
   | 'id'
@@ -56,13 +55,14 @@ export type FormattedPairDayData = Omit<
 };
 
 const usePairDayDatas = (
-  chain = Chains.BSC,
   pairAddress: string
 ): {
   data: FormattedPairDayData[] | undefined;
   loading: boolean;
   error: any | undefined;
 } => {
+  const { chain } = useChain();
+
   const [getPancakeDayDatasBsc, { loading, data, error, called }] = useGetPairDayDatasBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {

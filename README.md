@@ -112,5 +112,3 @@ This template comes with several essential features:
 - Storybook with color scheme toggle
 - Jest with react testing library
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
-
-## npm scripts

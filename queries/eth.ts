@@ -105,3 +105,24 @@ export const GET_TOP_TOKENS = gql`
     }
   }
 `;
+
+export const TOKEN_DAY_DATAS_ETH = gql`
+  query TokenDayDatasETH($tokenAddress: String!) {
+    tokenDayDatas(orderBy: date, orderDirection: desc, first: 90, where: { token: $tokenAddress }) {
+      date
+      priceUSD
+      dailyVolumeUSD: volumeUSD
+      totalLiquidityUSD: totalValueLockedUSD
+      token {
+        id
+        derivedUSD
+        tradeVolume: volume
+        symbol
+        name
+        dailyTxns: txCount
+        derivedUSD
+        totalLiquidity: totalValueLockedUSD
+      }
+    }
+  }
+`;

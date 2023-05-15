@@ -64,9 +64,9 @@ const usePairDayDatas = (
   error: any | undefined;
 } => {
   const { chain } = useChain();
+
   const [
     getPancakeDayDatasBsc,
-
     { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
   ] = useGetPairDayDatasBscLazyQuery({
     fetchPolicy: 'cache-first',
@@ -87,7 +87,7 @@ const usePairDayDatas = (
   ] = useGetPairDayDatasEthLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
-      pairAddress: pairAddress,
+      pairAddress: pairAddress.split('-')[0],
     },
     onCompleted: (data) => {
       if (data) {

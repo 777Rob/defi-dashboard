@@ -15,7 +15,7 @@ const Token = ({ tokenAddress }: { tokenAddress: string }) => {
     );
   }
 
-  if (error !== undefined || data == undefined || data.length == 0) {
+  if (error || !data) {
     return <Error />;
   }
   console.log(data);

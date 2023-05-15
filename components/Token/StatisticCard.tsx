@@ -59,10 +59,6 @@ const TokenStatisticCard = ({ token }: { token: any }) => {
               <b>Volume Total 24H (USD): {'   '}</b>
               {token?.tradeVolume ? `$${displayNumber(token?.tradeVolume)}` : 'N/A'}
             </Text>
-            <Text weight={500}>
-              <b>Volume Total 24H (USD): {'   '}</b>
-              {token?.tradeVolume ? `$${displayNumber(token?.tradeVolume)}` : 'N/A'}
-            </Text>
           </Grid.Col>
           <Grid.Col span={6}>
             <Text weight={500}>

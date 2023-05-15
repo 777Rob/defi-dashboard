@@ -24,14 +24,14 @@ const Pair = ({ pairAddress }: { pairAddress: string }) => {
 
   return (
     <Grid>
-      <Grid.Col span={4}>
+      <Grid.Col span={6}>
         <TokenStatisticCard
           token={token0}
           reserve={data[0].reserve0}
           dailyVolume={data[0].dailyVolumeToken0}
         />
       </Grid.Col>
-      <Grid.Col span={4}>
+      <Grid.Col span={6}>
         <TokenStatisticCard
           token={token1}
           reserve={data[0].reserve1}

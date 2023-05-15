@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
 import { useGetCombinedDetailsEthLazyQuery } from 'generated/eth-query-types';
+import { mockPancakeData } from 'constants/mockPancakeData';
 
 type PancakeDetails = {
   totalPairs: number;
@@ -50,7 +51,11 @@ const usePancakeDetails = (): {
       : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
 
   if (error) {
-    throw new Error(error.message);
+    return {
+      loading,
+      data: mockPancakeData,
+      error,
+    };
   }
 
   if (loading || !called) return { loading, data, error };
@@ -71,14 +76,6 @@ const usePancakeDetails = (): {
     return {
       loading,
       data: pancakeDetails,
-      error,
-    };
-  }
-
-  if (chain === Chains.ETH && data) {
-    return {
-      loading,
-      data,
       error,
     };
   }

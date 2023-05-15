@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Chains } from 'utils/chain';
-import { mockPairDayDataBSC } from '../constants/mockPairDayDataBSC';
+import { mockPairDayData } from '../constants';
 import { PairDayData, Token, useGetPairDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { getLogoUri } from '../utils/getLogoUri';
 import { useChain } from './useChain';
@@ -151,7 +151,7 @@ const usePairDayDatas = (
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
     if (error || !data) {
-      return { loading, error, data: mockPairDayDataBSC };
+      return { loading, error, data: mockPairDayData };
     }
 
     return {

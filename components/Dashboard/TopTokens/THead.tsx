@@ -39,7 +39,7 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
     <Grid align="center" pb="md">
       <Grid.Col span={6}>
         <Group>
-          <Text>Name</Text>
+          <Text weight={700}>Name</Text>
           <ActionIcon size="sm" onClick={() => onSortChange('name')}>
             <IconArrowsSort />
           </ActionIcon>
@@ -47,7 +47,7 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
       </Grid.Col>
       <Grid.Col span={2}>
         <Group>
-          <Text>Price</Text>
+          <Text weight={700}>Price</Text>
           <ActionIcon size="sm" onClick={() => onSortChange('priceUSD')}>
             <IconArrowsSort />
           </ActionIcon>
@@ -55,7 +55,7 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
       </Grid.Col>
       <Grid.Col span={2}>
         <Group>
-          <Text>Liquidity</Text>
+          <Text weight={700}>TVL (USD)</Text>
           <ActionIcon size="sm" onClick={() => onSortChange('liquidityUSD')}>
             <IconArrowsSort />
           </ActionIcon>
@@ -63,7 +63,7 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
       </Grid.Col>
       <Grid.Col span={2}>
         <Group>
-          <Text>Volume (24h)</Text>
+          <Text weight={700}>Volume (24h)</Text>
           <ActionIcon size="sm" onClick={() => onSortChange('volumeUSD')}>
             <IconArrowsSort />
           </ActionIcon>

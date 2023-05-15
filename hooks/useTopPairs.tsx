@@ -13,7 +13,8 @@ import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
 import { useGetTopPairsEthLazyQuery } from 'generated/eth-query-types';
 import { ethClient } from 'apollo';
-import { mockTopTokenPairs } from 'constants/mockTopTokenPairs';
+import { mockTopPairs } from 'constants/mockTopPairs';
+import _ from 'lodash';
 
 export type FormattedPairDayData = Pick<
   PairDayData,
@@ -23,7 +24,7 @@ export type FormattedPairDayData = Pick<
   token1: Pick<PairDayData['token1'], 'name' | 'id' | 'symbol'>;
 };
 
-const yesterdayTimestampInSeconds = Math.floor((Date.now() - 48 * 60 * 60 * 1000) / 1000);
+const yesterdayTimestampInSeconds = Math.floor((Date.now() - 36 * 60 * 60 * 1000) / 1000);
 
 const useTopPairs = (): {
   loading: boolean;
@@ -34,7 +35,7 @@ const useTopPairs = (): {
 
   const [
     getTopPairsBSC,
-    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC },
+    { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC, fetchMore },
   ] = useGetTopPairsBscLazyQuery({
     fetchPolicy: 'cache-first',
     variables: {
@@ -43,10 +44,12 @@ const useTopPairs = (): {
       skip: 0,
     },
     onCompleted: (data) => {
-      if (data) {
-        const formattedData = formatData(data.pairDayDatas);
-        setFormattedData(formattedData);
-      }
+      const preformatedData = _.uniqBy(
+        _.orderBy(data.pairDayDatas, [(e) => -parseInt(e.id.split('-')[1])]),
+        (e) => e.id.split('-')[0]
+      );
+      const formattedData = formatData(preformatedData);
+      setFormattedData(formattedData);
     },
   });
 
@@ -65,7 +68,12 @@ const useTopPairs = (): {
         const preformattedData = data.poolDayDatas.map((item) => {
           return { ...item, token0: item.pool.token0, token1: item.pool.token1 };
         });
-        const formattedData = formatData(preformattedData);
+        const uniquePreformattedData = _.uniqBy(
+          _.orderBy(preformattedData, [(e) => -parseInt(e.id.split('-')[1])]),
+          (e) => e.id.split('-')[0]
+        );
+
+        const formattedData = formatData(uniquePreformattedData);
         setFormattedData(formattedData);
       }
     },
@@ -88,9 +96,10 @@ const useTopPairs = (): {
         };
       });
 
+      console.log('formattedData', formattedData);
       return formattedData;
     },
-    [data, chain]
+    [chain, data]
   );
 
   useEffect(() => {
@@ -106,10 +115,10 @@ const useTopPairs = (): {
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
 
-    if (error || !data) {
+    if (error) {
       return {
         loading,
-        data: mockTopTokenPairs,
+        data: mockTopPairs,
         error,
       };
     }

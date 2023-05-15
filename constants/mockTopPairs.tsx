@@ -1,7 +1,7 @@
 /**
  * @NOTE: API Rate is limited in case limit is reached, use mock data
  */
-export const mockTopPairsBSC = [
+export const mockTopPairs = [
   {
     __typename: 'PairDayData',
     id: '0x7efaef62fddcca950418312c6c91aef321375a00-19490',

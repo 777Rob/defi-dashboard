@@ -5,10 +5,11 @@ import { TRow } from './TRow';
 import { SortableField, SortOrder, sortData, THead } from './THead';
 import useTopPairs from 'hooks/useTopPairs';
 import { useChain } from 'hooks/useChain';
+import _ from 'lodash';
 
 const TopPairs = () => {
   const { loading, data } = useTopPairs();
-  const { chain, setChain } = useChain();
+  const { chain } = useChain();
   useEffect(() => {
     setPage(1);
   }, [chain]);

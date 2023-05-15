@@ -65,7 +65,7 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
       </Grid.Col>
       <Grid.Col span={2}>
         <Group>
-          <Text weight={700}>Reserve USD</Text>
+          <Text weight={700}>TVL USD</Text>
           <ActionIcon size="sm" onClick={() => onSortChange('reserveUSD')}>
             <IconArrowsSort />
           </ActionIcon>

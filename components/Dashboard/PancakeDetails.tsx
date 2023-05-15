@@ -57,7 +57,7 @@ const PancakeDetails = () => {
       <Grid.Col span={3}>
         <StatisticCard
           loading={loading}
-          title="Total Liquidity USD"
+          title="Total Value Locked USD"
           tooltip="Total amount of USD currently locked in the exchange"
         >
           <Text weight={700} size="xl">

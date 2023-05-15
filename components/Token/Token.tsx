@@ -21,10 +21,9 @@ const Token = ({ tokenAddress }: { tokenAddress: string }) => {
   console.log(data);
   return (
     <Grid>
-      <Grid.Col span={4}>
+      <Grid.Col span={12}>
         <TokenStatisticCard token={data[0]} />
       </Grid.Col>
-      <Grid.Col span={4}></Grid.Col>
       <Grid.Col span={12}>
         <PairChart data={data} loading={loading} error={error} />;
       </Grid.Col>

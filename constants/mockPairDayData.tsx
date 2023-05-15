@@ -1,7 +1,7 @@
 /**
  * @NOTE: API Rate is limited in case limit is reached, use mock data
  */
-export const mockPairDayDataBSC = [
+export const mockPairDayData = [
   {
     __typename: 'PairDayData',
     dailyVolumeUSD: '48037184',

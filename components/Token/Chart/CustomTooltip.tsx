@@ -29,11 +29,11 @@ export const CustomTooltip = React.memo(({ active, payload, label }: any) => {
         </Text>
 
         <Text>
-          <strong>Liquidity {symbol}: </strong>
+          <strong>TVL {symbol}: </strong>
           {totalLiquidityToken ? `${displayNumber(totalLiquidityToken)} $` : 'N/A'}
         </Text>
         <Text>
-          <strong>Liquidity USD: </strong>
+          <strong>TVL USD: </strong>
           {totalLiquidityUSD ? `${displayNumber(totalLiquidityUSD)} $` : 'N/A'}
         </Text>
       </Paper>

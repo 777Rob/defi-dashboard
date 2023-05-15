@@ -1,5 +1,5 @@
-import { gql, useQuery } from '@apollo/client';
-import { getAddress } from 'ethers';
+import _ from 'lodash';
+import { mockTopTokens } from 'constants/mockTopTokens';
 import { topTokens } from 'constants/topTokens';
 import { useGetTopTokensBscLazyQuery } from 'generated/bsc-query-types';
 import { customRound } from 'utils/customRound';
@@ -18,7 +18,7 @@ export type TopToken = {
   priceUSD: number;
   logoUri: string;
 };
-const yesterdayTimestampInSeconds = Math.floor((Date.now() - 48 * 60 * 60 * 1000) / 1000);
+const yesterdayTimestampInSeconds = Math.floor((Date.now() - 30 * 60 * 60 * 1000) / 1000);
 
 const useTopTokens = (): {
   loading: boolean;
@@ -67,6 +67,8 @@ const useTopTokens = (): {
 
   const [formattedData, setFormattedData] = useState<TopToken[] | undefined>(undefined);
 
+  console.log('formattedData: ', formattedData);
+
   useEffect(() => {
     if (chain === Chains.BSC) {
       getTopTokensBSC();
@@ -77,21 +79,24 @@ const useTopTokens = (): {
 
   const formatData = useCallback(
     (rawData: any) => {
-      let formattedData: TopToken[] = rawData.map((dataEntry: any, index: any) => {
-        return {
-          name: dataEntry.token.name,
-          symbol: dataEntry.token.symbol,
-          address: dataEntry.token.id,
-          liquidityUSD: parseFloat(dataEntry.totalLiquidityUSD),
-          volumeUSD: parseFloat(dataEntry.dailyVolumeUSD),
-          priceUSD: customRound(parseFloat(dataEntry.token.derivedUSD)),
-          logoUri: getLogoUri(dataEntry.token.id)!,
-        };
-      });
+      let formattedData: TopToken[] = _.uniqBy(
+        rawData.map((dataEntry: any, index: any) => {
+          return {
+            name: dataEntry.token.name,
+            symbol: dataEntry.token.symbol,
+            address: dataEntry.token.id,
+            liquidityUSD: parseFloat(dataEntry.totalLiquidityUSD),
+            volumeUSD: parseFloat(dataEntry.dailyVolumeUSD),
+            priceUSD: customRound(parseFloat(dataEntry.token.derivedUSD)),
+            logoUri: getLogoUri(dataEntry.token.id)!,
+          };
+        }),
+        'address'
+      );
 
       return formattedData;
     },
-    [chain, data]
+    [chain]
   );
 
   if (!loading && called) {

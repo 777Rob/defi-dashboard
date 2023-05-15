@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Chains } from 'utils/chain';
-import { mockPairDayDataBSC } from '../constants/mockPairDayDataBSC';
+import { mockPairDayData } from '../constants';
 import {
   PairDayData,
   Token,
@@ -101,7 +101,7 @@ const useTokenData = (tokenAddress: string) => {
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
     if (error || !data) {
-      return { loading, error, data: mockPairDayDataBSC };
+      return { loading, error, data: mockPairDayData };
     }
 
     return {

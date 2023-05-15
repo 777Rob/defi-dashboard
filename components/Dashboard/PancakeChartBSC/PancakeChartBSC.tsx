@@ -16,19 +16,22 @@ import usePancakeDayData from '../../../hooks/usePancakeDayData';
 import { CustomTooltip } from './CustomTooltip';
 import { curveBasis } from 'd3-shape';
 
-const calculateTrendlineData = (data, key) => {
+const calculateTrendlineData = (data: any, key: any) => {
   if (!data) return [];
 
   const n = data.length;
-  const sumX = data.reduce((sum, item, index) => sum + index, 0);
-  const sumY = data.reduce((sum, item) => sum + item[key], 0);
-  const sumXY = data.reduce((sum, item, index) => sum + index * item[key], 0);
-  const sumXX = data.reduce((sum, item, index) => sum + index * index, 0);
+  const sumX = data.reduce((sum: any, item: any, index: any) => sum + index, 0);
+  const sumY = data.reduce((sum: any, item: { [x: string]: any }) => sum + item[key], 0);
+  const sumXY = data.reduce(
+    (sum: number, item: { [x: string]: number }, index: number) => sum + index * item[key],
+    0
+  );
+  const sumXX = data.reduce((sum: number, item: any, index: number) => sum + index * index, 0);
 
   const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
   const intercept = (sumY - slope * sumX) / n;
 
-  return data.map((item, index) => ({
+  return data.map((item: any, index: number) => ({
     ...item,
     trendline: slope * index + intercept,
   }));

@@ -87,8 +87,9 @@ const useTopTokens = (): {
           logoUri: getLogoUri(dataEntry.token.id)!,
         };
       });
-
-      return _.uniqBy(formattedData, 'address');
+      const uniqueData = _.uniqBy(formattedData, 'address');
+      console.log(uniqueData, 'uniqueData');
+      return uniqueData;
     },
     [chain]
   );

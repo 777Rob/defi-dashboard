@@ -57,7 +57,7 @@ export const TRow = ({
           {displayNumber(dailyTxns)}
         </Text>
       </Grid.Col>
-      <Grid.Col span={2}>
+      <Grid.Col onClick={() => console.log(isLast)} span={2}>
         <Text size="md" weight={650}>
           ${displayNumber(reserveUSD)}
         </Text>

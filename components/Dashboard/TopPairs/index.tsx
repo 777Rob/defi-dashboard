@@ -43,13 +43,14 @@ const TopPairs = () => {
             sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
-              .map((pair: any, index: number) => (
-                <TRow
-                  {...pair}
-                  isFirst={index == activePage * 10 - 10}
-                  isLast={index == activePage * 10 - 1}
-                />
-              ))}
+              .map((pair: any, index: number) => {
+                {
+                  const isFirst = index % 10 === 0;
+                  const isLast = index % 10 === 9 || index === sortedData.length - 1;
+
+                  return <TRow {...pair} isFirst={isFirst} isLast={isLast} />;
+                }
+              })}
           <Pagination
             position="center"
             mt="md"

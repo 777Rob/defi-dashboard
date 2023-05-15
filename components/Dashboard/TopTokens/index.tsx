@@ -41,14 +41,11 @@ const TopTokens = () => {
             sortedData.length > 0 &&
             sortedData
               .slice(activePage * 10 - 10, activePage * 10)
-              .map((token: any, index: number) => (
-                <TRow
-                  key={token.address}
-                  {...token}
-                  isFirst={index == activePage * 10 - 10}
-                  isLast={index == activePage * 10 - 1}
-                />
-              ))}
+              .map((token: any, index: number) => {
+                const isFirst = index % 10 === 0;
+                const isLast = index % 10 === 9 || index === sortedData.length - 1;
+                return <TRow key={token.address} {...token} isFirst={isFirst} isLast={isLast} />;
+              })}
           <Pagination
             position="center"
             mt="md"

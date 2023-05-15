@@ -141,8 +141,6 @@ const usePairDayDatas = (
         };
       });
 
-      console.log('formattedData');
-      console.log(formattedData);
       return formattedData;
     },
     [data, chain]

@@ -1,10 +1,9 @@
-import { Card, Group, Paper, SegmentedControl, Skeleton, Text } from '@mantine/core';
+import { Avatar, Card, Group, SegmentedControl, Skeleton, Text } from '@mantine/core';
+import { IconCircle } from '@tabler/icons';
 import { useMemo, useState } from 'react';
-import usePancakeDayDataBSC from '../../../hooks/usePancakeDayData';
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   Legend,
   Line,
   LineChart,
@@ -13,12 +12,11 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { CustomTooltip } from './CustomTooltip';
 import { generateTicks } from 'utils/generateTicks';
-import { BinanceIcon } from '../../icons';
+import { getLogoUri } from 'utils/getLogoUri';
+import { CustomTooltip } from './Chart/CustomTooltip';
 
-export const PairChart = () => {
-  const { loading, data } = usePancakeDayDataBSC();
+const TokenChart = ({ data, loading, error }: any) => {
   const [timePeriod, setTimePeriod] = useState<any>(7);
 
   const ticks = useMemo(() => {
@@ -37,12 +35,19 @@ export const PairChart = () => {
     { label: '90 Days', value: '90' },
   ];
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
+
   return (
     <Card>
       <Card.Section px="xl" py="md">
         <Group position="apart">
-          <Text weight={700} size="xl">
-            Pancake Swap Trading Volume Diagram
+          <Text weight={700} sx={{ alignItems: 'center', gap: 6 }} size="lg" display="flex">
+            <Avatar radius="xl" src={getLogoUri(data[0].id)} size="md">
+              <IconCircle fill="white" size="full" />
+            </Avatar>
+            {data[0]?.symbol}
+            Trading Volume Diagram
           </Text>
 
           <SegmentedControl
@@ -90,7 +95,7 @@ export const PairChart = () => {
               <Line
                 yAxisId="right"
                 type="monotone"
-                dataKey="totalTransactions"
+                dataKey="dailyTxns"
                 stroke="#ff7300"
                 activeDot={{ r: 5 }}
               />
@@ -109,3 +114,5 @@ export const PairChart = () => {
     </Card>
   );
 };
+
+export default TokenChart;

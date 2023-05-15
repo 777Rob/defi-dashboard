@@ -3,6 +3,7 @@ import React from 'react';
 import { TopToken } from 'hooks/useTopTokens';
 import { IconCircle } from '@tabler/icons';
 import { displayNumber } from 'utils/displayNumber';
+import { useRouter } from 'next/router';
 
 export const TRow = ({
   name,
@@ -10,6 +11,7 @@ export const TRow = ({
   liquidityUSD,
   volumeUSD,
   priceUSD,
+  address,
   logoUri,
   isFirst = false,
   isLast = false,
@@ -17,6 +19,8 @@ export const TRow = ({
   isFirst: boolean;
   isLast: boolean;
 }) => {
+  const router = useRouter();
+
   return (
     <Grid
       m={0}
@@ -27,7 +31,7 @@ export const TRow = ({
       align="center"
     >
       <Grid.Col span={6}>
-        <Group>
+        <Group onClick={() => router.push(`/token/${address}`)} sx={{ cursor: 'pointer' }}>
           <Avatar src={logoUri} size="md">
             <IconCircle fill="white" size="full" />
           </Avatar>

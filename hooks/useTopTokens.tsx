@@ -88,8 +88,7 @@ const useTopTokens = (): {
           logoUri: getLogoUri(dataEntry.token.id)!,
         };
       });
-      console.log('formattedData TOP');
-      console.log(formattedData);
+
       return formattedData;
     },
     [data, chain]

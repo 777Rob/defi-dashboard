@@ -3,7 +3,7 @@ import { Chains } from 'utils/chain';
 import { useRouter } from 'next/router';
 import { useChain } from 'hooks/useChain';
 
-export const Error = () => {
+const Error = () => {
   const router = useRouter();
   const { chain, setChain } = useChain();
   return (
@@ -44,3 +44,5 @@ export const Error = () => {
     </Card>
   );
 };
+
+export default Error;

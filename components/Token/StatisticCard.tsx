@@ -1,21 +1,10 @@
 import { Text, Card, Tooltip, ActionIcon, Group, Skeleton, Avatar, Stack } from '@mantine/core';
 import React from 'react';
 import { IconCircle, IconInfoSquare, IconSearch } from '@tabler/icons';
-import { FormattedToken } from 'hooks/usePairDayDatas';
 import { getLogoUri } from 'utils/getLogoUri';
 import { displayNumber } from 'utils/displayNumber';
 
-const TokenStatisticCard = ({
-  token,
-  dailyVolume = 0,
-  reserve = 0,
-  ...rest
-}: {
-  token: FormattedToken;
-  reserve: number;
-  dailyVolume: number;
-  [key: string]: any;
-}) => {
+const TokenStatisticCard = ({ token }: { token: any }) => {
   return (
     <Card h={'100%'}>
       <Group position="apart">
@@ -60,16 +49,14 @@ const TokenStatisticCard = ({
             {token?.tradeVolume ? `$${displayNumber(token?.tradeVolume)}` : 'N/A'}
           </Text>
           <Text weight={500}>
-            <b>Volume Pair (USD): {'   '}</b>
-            {dailyVolume ? `$${displayNumber(dailyVolume)}` : 'N/A'}
-          </Text>
-          <Text weight={500}>
             <b>Reserve (Token): {'   '}</b>
-            {reserve ? `${displayNumber(reserve)} ${token.symbol}` : 'N/A'}
+            {token?.totalLiquidityToken
+              ? `${displayNumber(token?.totalLiquidityToken)} ${token.symbol}`
+              : 'N/A'}
           </Text>
           <Text weight={500}>
             <b>Reserve (USD): {'   '}</b>
-            {reserve ? `${displayNumber(reserve * parseFloat(token?.derivedUSD))} $` : 'N/A'}
+            {token.totalLiquidityUSD ? `${displayNumber(token.totalLiquidityUSD)} $` : 'N/A'}
           </Text>
         </Stack>
       </Card.Section>

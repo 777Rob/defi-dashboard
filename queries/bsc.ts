@@ -114,3 +114,28 @@ export const GET_TOP_PAIRS = gql`
     }
   }
 `;
+
+export const GET_TOKEN_DATA = gql`
+  query GetTokenDayDatasBSC($tokenAddress: String!) {
+    tokenDayDatas(where: { token: $tokenAddress }, orderBy: date, orderDirection: desc, first: 90) {
+      id
+      dailyVolumeUSD
+      date
+      dailyTxns
+      totalLiquidityToken
+      priceUSD
+      dailyVolumeUSD
+      date
+      totalLiquidityUSD
+      token {
+        id
+        name
+        symbol
+        totalTransactions
+        tradeVolume
+        derivedUSD
+        tradeVolumeUSD
+      }
+    }
+  }
+`;

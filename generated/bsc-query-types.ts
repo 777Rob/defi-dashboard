@@ -579,6 +579,13 @@ export type GetTopPairsBscQueryVariables = Exact<{
 
 export type GetTopPairsBscQuery = { __typename?: 'Query', pairDayDatas: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: any, reserveUSD: any, dailyTxns: any, token0: { __typename?: 'Token', name: string, id: string, symbol: string }, token1: { __typename?: 'Token', name: string, id: string, symbol: string } }> };
 
+export type GetTokenDayDatasBscQueryVariables = Exact<{
+  tokenAddress: Scalars['String'];
+}>;
+
+
+export type GetTokenDayDatasBscQuery = { __typename?: 'Query', tokenDayDatas: Array<{ __typename?: 'TokenDayData', id: string, dailyVolumeUSD: any, date: number, dailyTxns: any, totalLiquidityToken: any, priceUSD: any, totalLiquidityUSD: any, token: { __typename?: 'Token', id: string, name: string, symbol: string, totalTransactions: any, tradeVolume: any, derivedUSD?: any | null, tradeVolumeUSD: any } }> };
+
 
 export const GetPairDayDatasBscDocument = gql`
     query GetPairDayDatasBSC($pairAddress: Bytes!) {
@@ -833,3 +840,60 @@ export function useGetTopPairsBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetTopPairsBscQueryHookResult = ReturnType<typeof useGetTopPairsBscQuery>;
 export type GetTopPairsBscLazyQueryHookResult = ReturnType<typeof useGetTopPairsBscLazyQuery>;
 export type GetTopPairsBscQueryResult = Apollo.QueryResult<GetTopPairsBscQuery, GetTopPairsBscQueryVariables>;
+export const GetTokenDayDatasBscDocument = gql`
+    query GetTokenDayDatasBSC($tokenAddress: String!) {
+  tokenDayDatas(
+    where: {token: $tokenAddress}
+    orderBy: date
+    orderDirection: desc
+    first: 90
+  ) {
+    id
+    dailyVolumeUSD
+    date
+    dailyTxns
+    totalLiquidityToken
+    priceUSD
+    dailyVolumeUSD
+    date
+    totalLiquidityUSD
+    token {
+      id
+      name
+      symbol
+      totalTransactions
+      tradeVolume
+      derivedUSD
+      tradeVolumeUSD
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTokenDayDatasBscQuery__
+ *
+ * To run a query within a React component, call `useGetTokenDayDatasBscQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTokenDayDatasBscQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTokenDayDatasBscQuery({
+ *   variables: {
+ *      tokenAddress: // value for 'tokenAddress'
+ *   },
+ * });
+ */
+export function useGetTokenDayDatasBscQuery(baseOptions: Apollo.QueryHookOptions<GetTokenDayDatasBscQuery, GetTokenDayDatasBscQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTokenDayDatasBscQuery, GetTokenDayDatasBscQueryVariables>(GetTokenDayDatasBscDocument, options);
+      }
+export function useGetTokenDayDatasBscLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTokenDayDatasBscQuery, GetTokenDayDatasBscQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTokenDayDatasBscQuery, GetTokenDayDatasBscQueryVariables>(GetTokenDayDatasBscDocument, options);
+        }
+export type GetTokenDayDatasBscQueryHookResult = ReturnType<typeof useGetTokenDayDatasBscQuery>;
+export type GetTokenDayDatasBscLazyQueryHookResult = ReturnType<typeof useGetTokenDayDatasBscLazyQuery>;
+export type GetTokenDayDatasBscQueryResult = Apollo.QueryResult<GetTokenDayDatasBscQuery, GetTokenDayDatasBscQueryVariables>;

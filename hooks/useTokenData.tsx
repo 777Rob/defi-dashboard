@@ -2,11 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { Chains } from 'utils/chain';
 import { mockPairDayData } from '../constants';
 import { useGetTokenDayDatasBscLazyQuery } from '../generated/bsc-query-types';
+import { useTokenDayDatasEthLazyQuery } from '../generated/eth-query-types';
 import { getLogoUri } from '../utils/getLogoUri';
 import { useChain } from './useChain';
+import { ethClient } from 'apollo';
 
 const useTokenData = (tokenAddress: string) => {
   const { chain } = useChain();
+
   const [
     getPancakeDayDatasBsc,
 
@@ -24,48 +27,40 @@ const useTokenData = (tokenAddress: string) => {
     },
   });
 
-  //   const [
-  //     getPancakeDayDatasEth,
-  //     { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
-  //   ] = useGetPairDayDatasEthLazyQuery({
-  //     fetchPolicy: 'cache-first',
-  //     variables: {
-  //       tokenAddress: tokenAddress,
-  //     },
-  //     onCompleted: (data) => {
-  //       if (data) {
-  //         const preFormattedData = data.poolDayDatas.map((entry) => {
-  //           return {
-  //             ...entry,
-  //             reserve0: entry.pool.reserve0,
-  //             reserve1: entry.pool.reserve1,
-  //             token0: entry.pool.token0,
-  //             token1: entry.pool.token1,
-  //           };
-  //         });
-  //         const formattedData = formatData(preFormattedData as unknown as RawPairDayData[]);
-  //         setFormattedData(formattedData as FormattedPairDayData[]);
-  //       }
-  //     },
-  //     client: ethClient,
-  //   });
+  const [
+    getPancakeDayDatasEth,
+    { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH },
+  ] = useTokenDayDatasEthLazyQuery({
+    fetchPolicy: 'cache-first',
+    variables: {
+      tokenAddress: tokenAddress,
+    },
+    onCompleted: (data) => {
+      if (data) {
+        const preformattedData = data.tokenDayDatas.map((entry) => {
+          return {
+            ...entry,
+            ...entry.token,
+            totalLiquidityToken: entry.token.totalLiquidity,
+          };
+        });
+        const formattedData = formatData(preformattedData);
+        setFormattedData(formattedData);
+      }
+    },
+    client: ethClient,
+  });
 
-  //   let { loading, data, error, called } =
-  //     chain == Chains.BSC
-  //       ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
-  //       : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
-  let { loading, data, error, called } = {
-    loading: loadingBSC,
-    data: dataBSC,
-    error: errorBSC,
-    called: calledBSC,
-  };
+  let { loading, data, error, called } =
+    chain == Chains.BSC
+      ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
+      : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
 
   useEffect(() => {
     if (chain == Chains.BSC) {
       getPancakeDayDatasBsc();
     } else {
-      //   getPancakeDayDatasEth();
+      getPancakeDayDatasEth();
     }
   }, [chain, tokenAddress]);
 

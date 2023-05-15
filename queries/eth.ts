@@ -107,7 +107,7 @@ export const GET_TOP_TOKENS = gql`
 `;
 
 export const TOKEN_DAY_DATAS_ETH = gql`
-  query TokenDayDatasETH($tokenAddress: String!) {
+  query GetTokenDayDatasETH($tokenAddress: String!) {
     tokenDayDatas(orderBy: date, orderDirection: desc, first: 90, where: { token: $tokenAddress }) {
       date
       priceUSD

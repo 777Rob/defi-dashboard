@@ -5589,6 +5589,13 @@ export type GetTopTokensEthQueryVariables = Exact<{
 
 export type GetTopTokensEthQuery = { __typename?: 'Query', tokenDayDatas: Array<{ __typename?: 'TokenDayData', dailyVolumeUSD: any, totalLiquidityUSD: any, token: { __typename?: 'Token', id: string, symbol: string, name: string, derivedUSD: any, totalLiquidity: any } }> };
 
+export type TokenDayDatasEthQueryVariables = Exact<{
+  tokenAddress: Scalars['String'];
+}>;
+
+
+export type TokenDayDatasEthQuery = { __typename?: 'Query', tokenDayDatas: Array<{ __typename?: 'TokenDayData', date: number, priceUSD: any, dailyVolumeUSD: any, totalLiquidityUSD: any, token: { __typename?: 'Token', id: string, derivedUSD: any, symbol: string, name: string, tradeVolume: any, dailyTxns: any, totalLiquidity: any } }> };
+
 
 export const GetPairDayDatasEthDocument = gql`
     query GetPairDayDatasETH($pairAddress: String!) {
@@ -5840,3 +5847,56 @@ export function useGetTopTokensEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type GetTopTokensEthQueryHookResult = ReturnType<typeof useGetTopTokensEthQuery>;
 export type GetTopTokensEthLazyQueryHookResult = ReturnType<typeof useGetTopTokensEthLazyQuery>;
 export type GetTopTokensEthQueryResult = Apollo.QueryResult<GetTopTokensEthQuery, GetTopTokensEthQueryVariables>;
+export const TokenDayDatasEthDocument = gql`
+    query TokenDayDatasETH($tokenAddress: String!) {
+  tokenDayDatas(
+    orderBy: date
+    orderDirection: desc
+    first: 90
+    where: {token: $tokenAddress}
+  ) {
+    date
+    priceUSD
+    dailyVolumeUSD: volumeUSD
+    totalLiquidityUSD: totalValueLockedUSD
+    token {
+      id
+      derivedUSD
+      tradeVolume: volume
+      symbol
+      name
+      dailyTxns: txCount
+      derivedUSD
+      totalLiquidity: totalValueLockedUSD
+    }
+  }
+}
+    `;
+
+/**
+ * __useTokenDayDatasEthQuery__
+ *
+ * To run a query within a React component, call `useTokenDayDatasEthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDayDatasEthQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDayDatasEthQuery({
+ *   variables: {
+ *      tokenAddress: // value for 'tokenAddress'
+ *   },
+ * });
+ */
+export function useTokenDayDatasEthQuery(baseOptions: Apollo.QueryHookOptions<TokenDayDatasEthQuery, TokenDayDatasEthQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDayDatasEthQuery, TokenDayDatasEthQueryVariables>(TokenDayDatasEthDocument, options);
+      }
+export function useTokenDayDatasEthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDayDatasEthQuery, TokenDayDatasEthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDayDatasEthQuery, TokenDayDatasEthQueryVariables>(TokenDayDatasEthDocument, options);
+        }
+export type TokenDayDatasEthQueryHookResult = ReturnType<typeof useTokenDayDatasEthQuery>;
+export type TokenDayDatasEthLazyQueryHookResult = ReturnType<typeof useTokenDayDatasEthLazyQuery>;
+export type TokenDayDatasEthQueryResult = Apollo.QueryResult<TokenDayDatasEthQuery, TokenDayDatasEthQueryVariables>;

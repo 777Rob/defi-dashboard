@@ -1,9 +1,9 @@
 import { Text, Grid, Skeleton } from '@mantine/core';
 import PairChart from './PairChart';
 import usePairDayDatas from 'hooks/usePairDayDatas';
-import StatisticCard from 'components/UI/StatisticCard';
 import TokenStatisticCard from 'components/UI/TokenStatisticCard';
 import Error from 'components/Error';
+
 const Pair = ({ pairAddress }: { pairAddress: string }) => {
   const { data, loading, error } = usePairDayDatas(pairAddress);
 

@@ -9,10 +9,9 @@ This project is developed for the BNB chain Zero2Hero Hackathon - NodeReal Chall
 DeFi Dashboard provides an interactive interface for developers and users to monitor and analyze the trading volumes on PancakeSwap. The application offers the following features:
 
 1. Display the data for PancakeSwap on both BSC and ETH chains.
-2. Display the data for PancakeSwap on a particular chain (BSC or ETH).
-3. Display a chart containing trading data for the last 90 days.
-4. Showcase top tokens and top token pairs based on trading volume.
-5. Dedicated pages to display volumes and data for all top tokens and token pairs.
+2. Display a chart containing trading data for the last 90 days.
+3. Showcase top tokens and top token pairs based on trading volume.
+4. Dedicated pages to display volumes and data for all top tokens and token pairs.
 
 ## Getting Started
 
@@ -97,7 +96,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the D
 
 We welcome contributions to the DeFi Dashboard. If you would like to contribute, please fork the repository, make your changes, and submit a pull request.
 
-# README Mantine Next Template
+# README [Mantine Next Template](https://github.com/mantinedev/mantine-next-template)
 
 Get started with Mantine + Next with just a few button clicks.
 Click `Use this template` button at the header of repository or [follow this link](https://github.com/mantinedev/mantine-next-template/generate) and

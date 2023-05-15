@@ -1,16 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Chains } from 'utils/chain';
 import { mockPairDayData } from '../constants';
-import {
-  PairDayData,
-  Token,
-  useGetPairDayDatasBscLazyQuery,
-  useGetTokenDayDatasBscLazyQuery,
-} from '../generated/bsc-query-types';
+import { useGetTokenDayDatasBscLazyQuery } from '../generated/bsc-query-types';
 import { getLogoUri } from '../utils/getLogoUri';
 import { useChain } from './useChain';
-import { useGetPairDayDatasEthLazyQuery } from 'generated/eth-query-types';
-import { ethClient } from 'apollo';
 
 const useTokenData = (tokenAddress: string) => {
   const { chain } = useChain();

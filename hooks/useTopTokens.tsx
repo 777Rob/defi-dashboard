@@ -26,6 +26,7 @@ const useTopTokens = (): {
   error: any | undefined;
 } => {
   const { chain } = useChain();
+  const [formattedData, setFormattedData] = useState<TopToken[] | undefined>(undefined);
 
   const [
     getTopTokensBSC,
@@ -65,10 +66,6 @@ const useTopTokens = (): {
       ? { loading: loadingBSC, data: dataBSC, error: errorBSC, called: calledBSC }
       : { loading: loadingETH, data: dataETH, error: errorETH, called: calledETH };
 
-  const [formattedData, setFormattedData] = useState<TopToken[] | undefined>(undefined);
-
-  console.log('formattedData: ', formattedData);
-
   useEffect(() => {
     if (chain === Chains.BSC) {
       getTopTokensBSC();
@@ -79,22 +76,19 @@ const useTopTokens = (): {
 
   const formatData = useCallback(
     (rawData: any) => {
-      let formattedData: TopToken[] = _.uniqBy(
-        rawData.map((dataEntry: any, index: any) => {
-          return {
-            name: dataEntry.token.name,
-            symbol: dataEntry.token.symbol,
-            address: dataEntry.token.id,
-            liquidityUSD: parseFloat(dataEntry.totalLiquidityUSD),
-            volumeUSD: parseFloat(dataEntry.dailyVolumeUSD),
-            priceUSD: customRound(parseFloat(dataEntry.token.derivedUSD)),
-            logoUri: getLogoUri(dataEntry.token.id)!,
-          };
-        }),
-        'address'
-      );
+      let formattedData: TopToken[] = rawData.map((dataEntry: any, index: any) => {
+        return {
+          name: dataEntry.token.name,
+          symbol: dataEntry.token.symbol,
+          address: dataEntry.token.id,
+          liquidityUSD: parseFloat(dataEntry.totalLiquidityUSD),
+          volumeUSD: parseFloat(dataEntry.dailyVolumeUSD),
+          priceUSD: customRound(parseFloat(dataEntry.token.derivedUSD)),
+          logoUri: getLogoUri(dataEntry.token.id)!,
+        };
+      });
 
-      return formattedData;
+      return _.uniqBy(formattedData, 'address');
     },
     [chain]
   );

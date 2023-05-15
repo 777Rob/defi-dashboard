@@ -2,14 +2,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider, gql, HttpLink } from '@apo
 
 export const bscClient = new ApolloClient({
   link: new HttpLink({
-    uri: process.env.NEXT_PUBLIC_BSC_GRAPHQL_URL,
+    uri: 'https://open-platform.nodereal.io/58276e806095487f89756fb2029812a9/pancakeswap-free/graphql',
   }),
   cache: new InMemoryCache(),
 });
 
 export const ethClient = new ApolloClient({
   link: new HttpLink({
-    uri: process.env.NEXT_PUBLIC_ETH_GRAPHQL_URL,
+    uri: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-eth',
   }),
   cache: new InMemoryCache(),
 });

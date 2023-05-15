@@ -64,7 +64,7 @@ generates:
       - 'typescript-react-apollo'
 ```
 
-Replace `your-bsc-graphql-url` and `your-eth-graphql-url` with the actual GraphQL API URLs for the BSC and ETH chains that you have set in the `.env.local` file.
+Replace `your-bsc-graphql-url` and `your-eth-graphql-url` with the actual GraphQL API URLs for the BSC and ETH chains that you have set in the `.env` file.
 
 The `codegen.yml` file is used by the `graphql-codegen` tool to generate TypeScript types and hooks for your GraphQL queries.
 

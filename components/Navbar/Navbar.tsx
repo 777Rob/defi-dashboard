@@ -31,11 +31,8 @@ const Navbar = () => {
           <NavButton href="/" icon={<IconLayoutGrid />}>
             Dashboard
           </NavButton>
-          <NavButton href="/documentation" icon={<IconHelp />}>
+          <NavButton href="https://github.com/777Rob/defi-dashboard" icon={<IconHelp />}>
             Documentation
-          </NavButton>
-          <NavButton href="/settings" icon={<IconSettings />}>
-            Settings
           </NavButton>
         </Button.Group>
       </MantineNavbar.Section>

@@ -20,11 +20,11 @@ export const sortData = (
     const aValue =
       sortBy === 'dailyTxns' || sortBy === 'dailyVolumeUSD' || sortBy === 'reserveUSD'
         ? a[sortBy]
-        : a[sortBy].toLowerCase();
+        : (a[sortBy] as string).toLowerCase();
     const bValue =
       sortBy === 'dailyTxns' || sortBy === 'dailyVolumeUSD' || sortBy === 'reserveUSD'
         ? b[sortBy]
-        : b[sortBy].toLowerCase();
+        : (b[sortBy] as string).toLowerCase();
 
     if (aValue > bValue) {
       return sortOrder[sortBy] === 'desc' ? -1 : 1;
@@ -42,9 +42,6 @@ export const THead = ({ onSortChange }: { onSortChange: (sortBy: SortableField) 
       <Grid.Col span={6}>
         <Group>
           <Text weight={700}>Name</Text>
-          {/* <ActionIcon size="sm" onClick={() => onSortChange('dailyVolumeUSD')}>
-            <IconArrowsSort />
-          </ActionIcon> */}
         </Group>
       </Grid.Col>
       <Grid.Col span={2}>

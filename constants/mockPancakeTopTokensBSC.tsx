@@ -1,3 +1,6 @@
+/**
+ * @NOTE: API Rate is limited in case limit is reached, use mock data
+ */
 const mockTopTokens = [
   {
     name: 'Wrapped BNB',

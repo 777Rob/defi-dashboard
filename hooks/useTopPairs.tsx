@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { topTokens } from 'data/topTokens';
+import { topTokens } from 'constants/topTokens';
 import { getAddress } from 'ethers';
 import {
   GetTopPairsBscQuery,
@@ -13,6 +13,7 @@ import { Chains } from 'utils/chain';
 import { useChain } from './useChain';
 import { useGetTopPairsEthLazyQuery } from 'generated/eth-query-types';
 import { ethClient } from 'apollo';
+import { mockTopTokenPairs } from 'constants/mockTopTokenPairs';
 
 export type FormattedPairDayData = Pick<
   PairDayData,
@@ -22,7 +23,7 @@ export type FormattedPairDayData = Pick<
   token1: Pick<PairDayData['token1'], 'name' | 'id' | 'symbol'>;
 };
 
-const yesterdayTimestampInSeconds = Math.floor((Date.now() - 24 * 60 * 60 * 1000) / 1000);
+const yesterdayTimestampInSeconds = Math.floor((Date.now() - 48 * 60 * 60 * 1000) / 1000);
 
 const useTopPairs = (): {
   loading: boolean;
@@ -104,9 +105,13 @@ const useTopPairs = (): {
     /**
      * @NOTE: API Rate is limited in case limit is reached, use mock data
      */
-    let topTokens = [];
-    if (error) {
-      topTokens = mockTopTokens;
+
+    if (error || !data) {
+      return {
+        loading,
+        data: mockTopTokenPairs,
+        error,
+      };
     }
 
     return {

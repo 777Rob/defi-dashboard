@@ -1,5 +1,5 @@
 import { getAddress, isAddress } from 'ethers';
-import tokenData from 'data/tokens.json';
+import tokenData from 'constants/tokens.json';
 
 export const getLogoUri = (address: string) => {
   const { tokens } = tokenData;

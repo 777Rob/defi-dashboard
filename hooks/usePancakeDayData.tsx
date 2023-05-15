@@ -1,6 +1,6 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client';
 import { PancakeDataEntryRequest, PancakeDataEntry } from './usePancakeDayData.dto';
-import { mockPancakeBSCVolumeData } from '../data/MockPancakeVolumeBSC';
+import { mockPancakeBSCVolumeData } from '../constants/MockPancakeVolumeBSC';
 import { Chains } from 'utils/chain';
 import { useEffect } from 'react';
 import { useGetPancakeDayDatasBscLazyQuery } from 'generated/bsc-query-types';

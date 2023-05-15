@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import { getAddress } from 'ethers';
-import { topTokens } from 'data/topTokens';
+import { topTokens } from 'constants/topTokens';
 import { useGetTopTokensBscLazyQuery } from 'generated/bsc-query-types';
 import { customRound } from 'utils/customRound';
 import { Chains } from 'utils/chain';
@@ -18,6 +18,7 @@ export type TopToken = {
   priceUSD: number;
   logoUri: string;
 };
+const yesterdayTimestampInSeconds = Math.floor((Date.now() - 48 * 60 * 60 * 1000) / 1000);
 
 const useTopTokens = (): {
   loading: boolean;
@@ -41,7 +42,6 @@ const useTopTokens = (): {
       }
     },
   });
-  const yesterdayTimestampInSeconds = Math.floor((Date.now() - 24 * 60 * 60 * 1000) / 1000);
 
   const [
     getTopTokensETH,
@@ -91,7 +91,7 @@ const useTopTokens = (): {
 
       return formattedData;
     },
-    [data, chain]
+    [chain, data]
   );
 
   if (!loading && called) {

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Chains } from 'utils/chain';
-import { mockPairDayDataBSC } from '../data/mockPairDayDataBSC';
+import { mockPairDayDataBSC } from '../constants/mockPairDayDataBSC';
 import {
   PairDayData,
   Token,

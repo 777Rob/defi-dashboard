@@ -23,6 +23,7 @@ export const TRow = ({
 
   return (
     <Grid
+      key={address}
       m={0}
       sx={{
         borderRadius: isFirst ? '0.5rem 0.5rem 0 0' : isLast ? '0 0 0.5rem 0.5rem' : '0',

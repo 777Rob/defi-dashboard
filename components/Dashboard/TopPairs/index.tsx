@@ -1,12 +1,18 @@
 import { Card, Pagination, Skeleton } from '@mantine/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useTopTokens from 'hooks/useTopTokens';
 import { TRow } from './TRow';
 import { SortableField, SortOrder, sortData, THead } from './THead';
 import useTopPairs from 'hooks/useTopPairs';
+import { useChain } from 'hooks/useChain';
 
 const TopPairs = () => {
   const { loading, data } = useTopPairs();
+  const { chain, setChain } = useChain();
+  useEffect(() => {
+    setPage(1);
+  }, [chain]);
+
   const [sortBy, setSortBy] = useState<SortableField>('reserveUSD');
 
   const [sortOrder, setSortOrder] = useState<SortOrder>({
@@ -43,7 +49,13 @@ const TopPairs = () => {
                   isLast={index == activePage * 10 - 1}
                 />
               ))}
-          <Pagination position="center" mt="md" value={activePage} onChange={setPage} total={5} />
+          <Pagination
+            position="center"
+            mt="md"
+            value={activePage}
+            onChange={setPage}
+            total={sortedData.length > 41 ? 5 : sortedData.length / 10}
+          />
         </Card.Section>
       </Skeleton>
     </Card>

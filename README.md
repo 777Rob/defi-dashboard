@@ -1,6 +1,6 @@
 # DeFi Dashboard
 
-DeFi Dashboard is a web application built using Next.js that enables users to visualize the trading volume of PancakeSwap on both the Binance Smart Chain (BSC) and Ethereum (ETH) chains. It utilizes Mantine for UI components, Apollo Client for data fetching, and graphql-codegen to generate hooks for seamless integration with GraphQL APIs.
+DeFi Dashboard is a web application built using Next.js that enables users to visualize the trading volumes and other data of PancakeSwap DEX on both the Binance Smart Chain (BSC) and Ethereum (ETH) chains. It utilizes Mantine for UI components, Apollo Client for data fetching, and graphql-codegen to generate hooks for seamless integration with GraphQL APIs.
 
 This project is developed for the BNB chain Zero2Hero Hackathon - NodeReal Challenge, which focuses on using NodeReal standard and enhanced APIs to implement required features.
 
@@ -9,9 +9,9 @@ This project is developed for the BNB chain Zero2Hero Hackathon - NodeReal Chall
 DeFi Dashboard provides an interactive interface for developers and users to monitor and analyze the trading volumes on PancakeSwap. The application offers the following features:
 
 1. Display the data for PancakeSwap on both BSC and ETH chains.
-2. Display a chart containing trading data for the last 90 days.
+2. Display a charts containing trading data for the last 90 days.
 3. Showcase top tokens and top token pairs based on trading volume.
-4. Dedicated pages to display volumes and data for all top tokens and token pairs.
+4. Display volumes and data for any token or token pair on PancakeSwap.
 
 ## Getting Started
 
@@ -39,6 +39,39 @@ For example, your BSC GraphQL URL might look like this:
 
 ```plaintext
 https://open-platform.nodereal.io/7e14908068a54145aa61c9e9f0ddb7d8/pancakeswap-free/graphql
+```
+
+### Generating Hooks
+
+To generate TypeScript hooks for the GraphQL queries, update the `codegen.yml` file with the GraphQL API URLs set in the environment variables:
+
+```yaml
+overwrite: true
+generates:
+  generated/bsc-query-types.ts:
+    schema: 'your-bsc-graphql-url' # Update with your BSC GraphQL URL
+    documents: 'queries/bsc.ts'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  generated/eth-query-types.ts:
+    schema: 'your-bsc-graphql-eth'
+    documents: 'queries/eth.ts'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+```
+
+Replace `your-bsc-graphql-url` and `your-eth-graphql-url` with the actual GraphQL API URLs for the BSC and ETH chains that you have set in the `.env.local` file.
+
+The `codegen.yml` file is used by the `graphql-codegen` tool to generate TypeScript types and hooks for your GraphQL queries.
+
+In order to generate hooks for a query, that query needs to be specified either in `queries/eth.ts` or `queries/bsc.ts`. Once you have added the queries, you can generate the hooks by running:
+
+```bash
+yarn generate-graphql-types
 ```
 
 ## Installation

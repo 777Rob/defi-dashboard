@@ -79,7 +79,7 @@ yarn generate-graphql-types
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/77Rob/defi-dashboard.git
+git clone https://github.com/777Rob/defi-dashboard.git
 ```
 
 2. Change the working directory:
